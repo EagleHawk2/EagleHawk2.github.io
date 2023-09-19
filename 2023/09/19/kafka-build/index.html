@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="kafka-build  1.0" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fec591; 
+            --waline-color: #fec591; 
+            --waline-border-color: #fec591; 
+            --waline-white: #fec591; 
+            --waline-bgcolor-light: #005454;  
+        }
+        body {
+            color: #fec591;
+            background: #005454;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fec591 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fec591; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fec591;
+            color: #fec591; 
+        }
+        .wl-btn {
+            border: 1px solid #fec591; 
+            color:  #fec591;  
+        }
+        .wl-btn.primary {
+            color: #005454; 
+        }
+        .wl-header label {
+            color: #fec591;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #fec591; 
+        }
+
+        .archive li span {
+            color: #fec591;
+        }
+
+        .post-main-title {
+            color: #fec591;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fec591;
+        }
+
+        [data-waline] p {
+            color: #fec591;
+        }
+        [data-waline] a {
+            color: #fec591;
+        } 
+        .wl-sort li.active {
+            color: #fec591;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #005454;
+        }
+
+        .paper {
+            background: #005454;
+        }
+
+        .index-main {
+            background: #005454;
+        }
+
+        .paper-main {
+            background: #005454;
+        }
+
+        .wl-panel {
+            background: #005454;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #005454;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #005454;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            kafka-build  1.0
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kafka%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="post-toc-text">Kafka安装配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Zookeeper%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="post-toc-text">Zookeeper安装配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="post-toc-text">@配置环境变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">@配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#myid"><span class="post-toc-text">#myid</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#zoo-cfg"><span class="post-toc-text">#zoo.cfg</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">@启动集群</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Kafka%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-1"><span class="post-toc-text">Kafka安装配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="post-toc-text">@配置环境变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-1"><span class="post-toc-text">@配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#server-properties"><span class="post-toc-text">#server.properties</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#data-zk"><span class="post-toc-text">#data&#x2F;zk</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#zookeeper-properties"><span class="post-toc-text">#zookeeper.properties</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4-1"><span class="post-toc-text">@启动集群</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JPS"><span class="post-toc-text">@JPS</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Kafka-shell"><span class="post-toc-text">Kafka-shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#kafka-topic"><span class="post-toc-text">kafka-topic</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#bootstrap"><span class="post-toc-text">bootstrap</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#zookeeper"><span class="post-toc-text">zookeeper</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#bootstrap%E5%92%8Czookeeper%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="post-toc-text">bootstrap和zookeeper的区别</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+        <h2 id="Kafka安装配置"><a href="#Kafka安装配置" class="headerlink" title="Kafka安装配置"></a>Kafka安装配置</h2><h3 id="Zookeeper安装配置"><a href="#Zookeeper安装配置" class="headerlink" title="Zookeeper安装配置"></a>Zookeeper安装配置</h3><p>在配置Kafka之前，需要安装zookeeper</p>
+<p><strong>解压文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/zookeeper.tar.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="@配置环境变量"></a>@配置环境变量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ZOOKEEPER_HOME=/opt/module/apache-zookeeper</span><br><span class="line">export PATH=$PATH:$ZOOKEEPER_HOME/bin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="@配置文件"></a>@配置文件</h4><h5 id="myid"><a href="#myid" class="headerlink" title="#myid"></a>#myid</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/apache-zookeeper</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir data</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; data/myid</span><br></pre></td></tr></table></figure>
+
+<h5 id="zoo-cfg"><a href="#zoo-cfg" class="headerlink" title="#zoo.cfg"></a>#zoo.cfg</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/apche-zookeeper/conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/apache-zookeeper/zoo.cfg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataDir=/opt/module/apache-zookeeper/data</span><br><span class="line">server.1=master:2888:3888</span><br><span class="line">server.2=slave1:2888:3888</span><br><span class="line">server.3=slave2:2888:3888</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="@启动集群"></a>@启动集群</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/apache-zookeeper/bin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询状态</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>启动完成后jps查询</p>
+<table>
+<thead>
+<tr>
+<th align="center">节点名称</th>
+<th align="center">进程状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">master</td>
+<td align="center">Mode：follower</td>
+</tr>
+<tr>
+<td align="center">slave1</td>
+<td align="center">Mode：leader</td>
+</tr>
+<tr>
+<td align="center">slave2</td>
+<td align="center">Mode：follower</td>
+</tr>
+</tbody></table>
+<p>zookeeper正常启动后进程状态如上表所示，注意：jps查询不会有结果</p>
+</blockquote>
+<h3 id="Kafka安装配置-1"><a href="#Kafka安装配置-1" class="headerlink" title="Kafka安装配置"></a>Kafka安装配置</h3><p>当zookeeper配置完成后，即可开始配置kafka</p>
+<h4 id="配置环境变量-1"><a href="#配置环境变量-1" class="headerlink" title="@配置环境变量"></a>@配置环境变量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export KAFKA_HOME=/opt/module/kafka</span><br><span class="line">export PATH=$PATH:$KAFKA_HOME/bin</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="@配置文件"></a>@配置文件</h4><p>在配置文件时，有两个思路，一个 是启用kafka自带的zookeeper，另一个是启动zookeeper后单独启动kafka。在这里我使用的是第二种方法，第一种方法的配置内容在文末再进行说明。</p>
+<h5 id="server-properties"><a href="#server-properties" class="headerlink" title="#server.properties"></a>#server.properties</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">broker.id=1</span><br><span class="line">listeners=PLAINTEXT://192.168.100.3.9092</span><br><span class="line">log.dirs=/opt/module/kafka/kafka-logs</span><br><span class="line">zookeeper.connect=master:2181,slave1:2181,slave2:2181</span><br></pre></td></tr></table></figure>
+
+<p>broker.id为自定义的数字，可以自己设定，但是需要注意的是，kafka集群中每台节点的id值不可以相等。</p>
+<p>listeners为监听地址，配置主节点的ip地址即可。</p>
+<p>log.dirs为kafka的日志文件路径，路径自定义即可，日志文件夹会自动创建。</p>
+<p>zookeeper.connect配置为三台节点的zookeeper端口和ip名称即可。</p>
+<hr>
+<p>如果不适用自带的zookeeper，上述命令即可完成kafka搭建。</p>
+<p>下面的内容是使用自带的zookeeper需要配置的。</p>
+<h5 id="data-zk"><a href="#data-zk" class="headerlink" title="#data&#x2F;zk"></a>#data&#x2F;zk</h5><p>这里的配置方法和zookeeper中的相同，也是在根目录下新建文件夹，然后在文件夹中写入myid，注意各节点的myid值需要对应server后面的值。同时，后面dataDir对应的路径名也是myid对应的路径名。</p>
+<h5 id="zookeeper-properties"><a href="#zookeeper-properties" class="headerlink" title="#zookeeper.properties"></a>#zookeeper.properties</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/kafka/config/zookeeper.properties</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tickTime=2000</span><br><span class="line">initLimit=10</span><br><span class="line">syncLimit=5</span><br><span class="line">clientPort=2181</span><br><span class="line">dataDir=/opt/moduele/kafka/data/zk</span><br><span class="line">server.1=192.168.100.3:2888:3888</span><br><span class="line">server.2=192.168.100.4:2888:3888</span><br><span class="line">server.3=192.168.100.2:2888:3888</span><br></pre></td></tr></table></figure>
+
+<p>此文件的配置内容和zookeeper中zoo.cfg内容相同，唯一需要注意的是zoo.cfg的模板文件会添加好前几条内容作为默认配置，但是zookeeper.properties中需要自己手动添加。</p>
+<h4 id="启动集群-1"><a href="#启动集群-1" class="headerlink" title="@启动集群"></a>@启动集群</h4><p><strong>拷贝集群</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scp -r /opt/module/kafka slave1:/opt/module/</span><br><span class="line">scp -r /opt/module/kafka slave1:/opt/module/</span><br><span class="line">scp -r /etc/profile slave1:/etc/</span><br><span class="line">scp -r /etc/profile slave2:etc/</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p><strong>更改配置</strong></p>
+<p>记得在从节点上更改broker.id和listeners监听端口的ip地址（虽然我之前好行忘记改ip地址也正常启动了，但是不知道不配置会不会有什么影响，还是配上吧哈哈。）</p>
+<hr>
+<p><strong>启动Zookeeper（内置）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/zookeeper-server-start.sh config/zookeeper.properties &amp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动Kafka</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-server.start.sh config/server.properties &amp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>停止zk&#x2F;kafka</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./kafka-server-stop.sh</span><br><span class="line">./zookeeper-server.stop.sh</span><br></pre></td></tr></table></figure>
+
+<p>再开其实要先开启zk再开启kafka，同理关闭的时候也应该先关闭kafka再关闭zk（应该用不着）</p>
+<hr>
+<h4 id="JPS"><a href="#JPS" class="headerlink" title="@JPS"></a>@JPS</h4><p>启动完成后，需要进行查询状态进程来确认是否成功启动了zk和kafka</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">节点名称</th>
+<th align="center">进程状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">master</td>
+<td align="center">QuorumPeerMain、kafka</td>
+</tr>
+<tr>
+<td align="center">slave1</td>
+<td align="center">QuorumPeerMain、kafka</td>
+</tr>
+<tr>
+<td align="center">slave2</td>
+<td align="center">QuorumPeerMain、kafka</td>
+</tr>
+</tbody></table>
+<p>QuorumPeerMain进程为zookeeper成功启动后的进程</p>
+<p>kafka为kafka成功启动后的进程</p>
+</blockquote>
+<p><strong>需要强调的是，如果创建kafka-topic中replication-facor（副本数）大于1的话，需要启动分节点的kafka进程，如果不启动分节点的kafka，则无法创建，会报错broker值小于副本数。</strong></p>
+<hr>
+<h3 id="Kafka-shell"><a href="#Kafka-shell" class="headerlink" title="Kafka-shell"></a>Kafka-shell</h3><p>简单的创建topic</p>
+<h4 id="kafka-topic"><a href="#kafka-topic" class="headerlink" title="kafka-topic"></a>kafka-topic</h4><p>创建方法有两个</p>
+<p><strong>需要强调的是，如果创建kafka-topic中replication-facor（副本数）大于1的话，需要启动分节点的kafka进程，如果不启动分节点的kafka，则无法创建，会报错broker值小于副本数。</strong></p>
+<h5 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-topics.sh  --bootstrap-server localhost:9092(,loclalhost1:9092,localhost2:9092) --list</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>–list	查询集群中是否有topic</p>
+</li>
+<li><p>–bootstrap-server localhost:9092	连接服务器，<strong>localhost为本集群名称</strong>，9092为端口号，测试环境下写一个即可，生产环境则2-3个</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic name --create --partitions 1 --replication-factor 3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–topic name	选中topic，name为topic名字，name可自定义更改</li>
+<li>–create	创建topic</li>
+<li>–partitions 1 	设置分区，1可以改为自定义分区</li>
+<li>–replication-factor 3	设置副本数，3可以改为自定义副本数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic name --describe</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>-topic name	选中topic，name为topic名字，name可自定义更改</p>
+</li>
+<li><p>–describe	查询name topic的详细信息</p>
+</li>
+</ul>
+<h5 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --zookeeper localhost:2181 --topic name --create --partitions 1 --replication-factor 3</span><br></pre></td></tr></table></figure>
+
+<p>两个方法不一样的地方是再topic后面使用的指令，我现在使用的是<code>--zookeeper</code>，没有使用<code>--bootstrap-server</code>的原因是后者创建topic成功没有提示（……但是我就是要那个提示）</p>
+<hr>
+<h5 id="bootstrap和zookeeper的区别"><a href="#bootstrap和zookeeper的区别" class="headerlink" title="bootstrap和zookeeper的区别"></a>bootstrap和zookeeper的区别</h5><p>我们使用的kafka版本为2.x版本，而**#–bootstrap-server**为kafka3.x版本的指令</p>
+<p>Kafka开发团队重写了ZooKeeper的Quorum控制器代码并嵌入到Kafka中。所以从v2.8版本开始，Kafka不再依赖ZooKeeper。</p>
+<p>所以，</p>
+<p>旧版：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--zookeeper localhost:2181</span><br></pre></td></tr></table></figure>
+
+<p>新版：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--bootstrap-server localhost:9092</span><br></pre></td></tr></table></figure>
+
+<p>其中，2181是ZooKeeper的监听端口，9092是Kafka的监听端口。</p>
+<p>旧版用–zookeeper参数，主机名（或IP）和端口用ZooKeeper的，也就是server.properties文件中zookeeper.connect属性的配置值</p>
+<p>新版用–bootstrap-server参数，主机名（或IP）和端口用某个节点的即可，即主机名（或主机IP）:9092。</p>
+<hr>
+<p>附表（需要的自取）：</p>
+<table>
+<thead>
+<tr>
+<th align="center">kafka shell order</th>
+<th align="center">explain</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">–alter</td>
+<td align="center">Alter the number of partitions,replication assignment,and&#x2F;or configuration for the topic.</td>
+<td align="center">改</td>
+</tr>
+<tr>
+<td align="center">–bootstrap-server&lt;String: server to connect to&gt;</td>
+<td align="center">REQUIRED:The Kafka server to connect to.</td>
+<td align="center">连接</td>
+</tr>
+<tr>
+<td align="center">–topic&lt;String: topic&gt;</td>
+<td align="center">The topic to create, alter,describe or delete.It also accepts a regular expresstion,except for –create option.Put topic name in double quotes and use the ‘ \ ‘ prefix to escape regular expression symbols;  e.g.”test \ .topic”.</td>
+<td align="center">topic</td>
+</tr>
+<tr>
+<td align="center">–create</td>
+<td align="center">Create a new topic.</td>
+<td align="center">增</td>
+</tr>
+<tr>
+<td align="center">–delete</td>
+<td align="center">Delete a topic</td>
+<td align="center">删</td>
+</tr>
+<tr>
+<td align="center">–list</td>
+<td align="center">List all available topics</td>
+<td align="center">查</td>
+</tr>
+<tr>
+<td align="center">–describe</td>
+<td align="center">List details for the given topics</td>
+<td align="center">查</td>
+</tr>
+<tr>
+<td align="center">–partitions&lt;Integer: # of partitions&gt;</td>
+<td align="center">The number of partitions for the topic being created or altered(WARNING:If partitions are increased for a topic that has a key,the partition logic or ordering).If not supplied for create,defalts to the cluster default.</td>
+<td align="center">分区</td>
+</tr>
+<tr>
+<td align="center">–repliction-factor&lt;Integer:replication factor&gt;</td>
+<td align="center">The replication factor for each partition in the topic being created.If not supplied,defaults to the cluster default.</td>
+<td align="center">副本</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-19</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>

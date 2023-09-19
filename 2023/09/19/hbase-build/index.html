@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="hbase-build	1.0" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fec591; 
+            --waline-color: #fec591; 
+            --waline-border-color: #fec591; 
+            --waline-white: #fec591; 
+            --waline-bgcolor-light: #005454;  
+        }
+        body {
+            color: #fec591;
+            background: #005454;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fec591 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fec591; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fec591;
+            color: #fec591; 
+        }
+        .wl-btn {
+            border: 1px solid #fec591; 
+            color:  #fec591;  
+        }
+        .wl-btn.primary {
+            color: #005454; 
+        }
+        .wl-header label {
+            color: #fec591;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #fec591; 
+        }
+
+        .archive li span {
+            color: #fec591;
+        }
+
+        .post-main-title {
+            color: #fec591;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fec591;
+        }
+
+        [data-waline] p {
+            color: #fec591;
+        }
+        [data-waline] a {
+            color: #fec591;
+        } 
+        .wl-sort li.active {
+            color: #fec591;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #005454;
+        }
+
+        .paper {
+            background: #005454;
+        }
+
+        .index-main {
+            background: #005454;
+        }
+
+        .paper-main {
+            background: #005454;
+        }
+
+        .wl-panel {
+            background: #005454;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #005454;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #005454;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            hbase-build	1.0
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hbase"><span class="post-toc-text">Hbase</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="post-toc-text">配置环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hbase-env-sh"><span class="post-toc-text">@hbase-env.sh</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hbase-site-xml"><span class="post-toc-text">@hbase-site.xml</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#regionservers"><span class="post-toc-text">@regionservers</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">分发节点与启动集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9"><span class="post-toc-text">@分发节点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">@启动集群</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hbase-Shell"><span class="post-toc-text">Hbase Shell</span></a></li></ol></li></ol>
+        
+        <h2 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h2><p><strong>解压文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/hbase -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export HBASE_HOME=/opt/module/hbase</span><br><span class="line">export PATH=$PATH:$HBASE_HOME/bin</span><br><span class="line">epxort HADOOP_CLASSPATH=$&#123;HADOOP_HOME&#125;/lib/*</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>第三条好像不需要进行配置，实测下来不配第三条也能正常运行</p>
+<hr>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><h4 id="hbase-env-sh"><a href="#hbase-env-sh" class="headerlink" title="@hbase-env.sh"></a>@hbase-env.sh</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/hbase/hbase-env.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/module/jdk</span><br><span class="line">export HBASE_MANAGES_ZK=false</span><br></pre></td></tr></table></figure>
+
+<p>HBASE_MANAGES_ZK含义是不使用<code>hbase</code>自带的<code>zookeeper</code></p>
+<hr>
+<h4 id="hbase-site-xml"><a href="#hbase-site-xml" class="headerlink" title="@hbase-site.xml"></a>@hbase-site.xml</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/hbase/hbase-site.xml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hbase.rootdir&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;hdfs://master:9000/hbase&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hbase.cluster.distributed&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;true&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;master:2181,slave1:2181,slave2:2181&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;/opt/module/hbase/data&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	</span><br><span class="line">	//不配置此条命令会导致HMaster进程无法启动</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;hbase.unsafe.stream.capability.enforce&lt;/name&gt;</span><br><span class="line">		&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>hbase.rootdir中的<code>value</code>值需要和hadoop中<code>core-site.xml</code>中配置的端口号相同，后面的hbase可以自定义；</p>
+<p>hbase.zookeeper.property.dataDir记录的是存储日志文件的路径；</p>
+<p><strong>hbase.unsafe.steam.capability.enforce，注意这条命令，经过多次测试，此版本的hbase如果不配置此条指令，会导致hbase启动后，HMaster自动ban掉，进入hbase-shell后输入指令报错！！！</strong></p>
+<p>hbase.zookeeper.quorum中可以只写<code>master</code>、<code>slave1</code>、<code>slave2</code>三个值，但是如果这么写的话，需要再加一条prot来记录zookeeper的端口号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;hbase.zookeeper.prot&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;2181&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="regionservers"><a href="#regionservers" class="headerlink" title="@regionservers"></a>@regionservers</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/hbase/conf/regionservers</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">master</span><br><span class="line">slave1</span><br><span class="line">slave2</span><br></pre></td></tr></table></figure>
+
+<p>regionservers中三台节点都需要写入，regionservers用于启动HRegionServer进程，所以，不可以只写分节点。如果只写分节点，会导致无法正常启动HRegionServer进程。</p>
+<hr>
+<h3 id="分发节点与启动集群"><a href="#分发节点与启动集群" class="headerlink" title="分发节点与启动集群"></a>分发节点与启动集群</h3><h4 id="分发节点"><a href="#分发节点" class="headerlink" title="@分发节点"></a>@分发节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r /opt/module/hbase slave1:/opt/module</span><br><span class="line">scp -r /opt/module/hbase slave2:/opt/module</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r /etc/profile slave1:/etc/profile</span><br><span class="line">scp -r /etc/profile slave2:/etc/profile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="@启动集群"></a>@启动集群</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start-hbase.sh</span><br></pre></td></tr></table></figure>
+
+<p>在主节点启动即可。</p>
+<hr>
+<h3 id="Hbase-Shell"><a href="#Hbase-Shell" class="headerlink" title="Hbase Shell"></a>Hbase Shell</h3><p><strong>进入hbase</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hbase shell</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看命名空间</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list_namespace</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-19</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>

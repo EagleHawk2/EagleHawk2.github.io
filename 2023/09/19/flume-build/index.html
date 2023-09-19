@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="flume-build  1.0" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fec591; 
+            --waline-color: #fec591; 
+            --waline-border-color: #fec591; 
+            --waline-white: #fec591; 
+            --waline-bgcolor-light: #005454;  
+        }
+        body {
+            color: #fec591;
+            background: #005454;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fec591 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fec591; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fec591;
+            color: #fec591; 
+        }
+        .wl-btn {
+            border: 1px solid #fec591; 
+            color:  #fec591;  
+        }
+        .wl-btn.primary {
+            color: #005454; 
+        }
+        .wl-header label {
+            color: #fec591;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #fec591; 
+        }
+
+        .archive li span {
+            color: #fec591;
+        }
+
+        .post-main-title {
+            color: #fec591;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fec591;
+        }
+
+        [data-waline] p {
+            color: #fec591;
+        }
+        [data-waline] a {
+            color: #fec591;
+        } 
+        .wl-sort li.active {
+            color: #fec591;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #005454;
+        }
+
+        .paper {
+            background: #005454;
+        }
+
+        .index-main {
+            background: #005454;
+        }
+
+        .paper-main {
+            background: #005454;
+        }
+
+        .wl-panel {
+            background: #005454;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #005454;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #005454;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            flume-build  1.0
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Flume%E9%85%8D%E7%BD%AE"><span class="post-toc-text">Flume配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="post-toc-text">@配置环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">@配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#flume-env-sh"><span class="post-toc-text">#flume-env.sh</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#log4j-properties"><span class="post-toc-text">#log4j.properties</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9E%B6%E5%8C%85"><span class="post-toc-text">@架包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#guava-jar"><span class="post-toc-text">#guava.jar</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="post-toc-text">@数据采集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="post-toc-text">#创建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="post-toc-text">#文件配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9Aexec%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">方法一：exec类型</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9ATAILDIR%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">方法二：TAILDIR类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E9%87%87%E9%9B%86"><span class="post-toc-text">#启动采集</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6"><span class="post-toc-text">#查看文件</span></a></li></ol></li></ol></li></ol>
+        
+        <h2 id="Flume配置"><a href="#Flume配置" class="headerlink" title="Flume配置"></a>Flume配置</h2><p><strong>解压文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/apache-flume -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="@配置环境"></a>@配置环境</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export FLUME_HOME=/opt/module/apache-flume</span><br><span class="line">export PATH=$PATH:$FLUME_HOME/bin</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="@配置文件"></a>@配置文件</h3><h4 id="flume-env-sh"><a href="#flume-env-sh" class="headerlink" title="#flume-env.sh"></a>#flume-env.sh</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/flume/conf/flume-env.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/module/jdk</span><br></pre></td></tr></table></figure>
+
+<p>flume-env.sh是temlate模板文件，需要自己进行复制</p>
+<hr>
+<h4 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="#log4j.properties"></a>#log4j.properties</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/flume/conf/log4j.properties</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flume.log.dir=/opt/module/flume/logs</span><br><span class="line">flume.log.file=flume.log</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="架包"><a href="#架包" class="headerlink" title="@架包"></a>@架包</h3><h4 id="guava-jar"><a href="#guava-jar" class="headerlink" title="#guava.jar"></a>#guava.jar</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /opt/module/hadoop/share/hadoop/common/lib/guava2.7.jar /opt/module/apache-flume/lib</span><br></pre></td></tr></table></figure>
+
+<p>和hive一样，guava.jar是hadoop3.1.3新版本中的问题，是apache项目中对应的版本无法和hadoop版本对应导致的问题，所以当前版本报错，需要把hadoop下的2.x版本的架包移动到对应项目的lib文件夹下，并且删除以前的旧版本，即可完成。</p>
+<p><strong>删除guava1.x.jar</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /opt/module/apache-flume/lib/guava.1.x.jar</span><br></pre></td></tr></table></figure>
+
+<p>删除老版本架包再运行。</p>
+<hr>
+<h3 id="数据采集"><a href="#数据采集" class="headerlink" title="@数据采集"></a>@数据采集</h3><p>flume的数据采集，可以在flume根目录下新建一个文件夹来保存数据采集的文件，创建flume采集文件需要用<code>.conf</code>做后缀名</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="#创建"></a>#创建</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/module/apache-flume/job/a1.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/apache-flume/job/a1.conf</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="文件配置"><a href="#文件配置" class="headerlink" title="#文件配置"></a>#文件配置</h4><h5 id="方法一：exec类型"><a href="#方法一：exec类型" class="headerlink" title="方法一：exec类型"></a>方法一：exec类型</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用s1、k1、c1代表<span class="built_in">source</span>、sink、channel</span></span><br><span class="line">a1.sources = s1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">descirbe/configuration the <span class="built_in">source</span></span></span><br><span class="line">a1.source.s1.type = exec</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">采集数据的位置，题目要求一般是namenode或是datanode，如果使用或，则两个都可</span></span><br><span class="line">a1.source.s1.command = tail -F /opt/module/hadoop/logs/hadoop-root-namenode-master.log</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">describe the sink</span></span><br><span class="line">a1.sinks.k1.type = hdfs</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">采集后存储的位置</span></span><br><span class="line">a1.sinks.k1.hdfs.path = hdfs://master:9000/flume1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">use a channel <span class="built_in">which</span> buffers events <span class="keyword">in</span> memory</span></span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="built_in">bind</span> the <span class="built_in">source</span> and sink to the channel</span></span><br><span class="line">a1.sources.s1.channels = c1</span><br><span class="line">a1.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法二：TAILDIR类型"><a href="#方法二：TAILDIR类型" class="headerlink" title="方法二：TAILDIR类型"></a>方法二：TAILDIR类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">q1.sources = s1</span><br><span class="line">q1.sinks = k1</span><br><span class="line">q1.channels = c1</span><br><span class="line"></span><br><span class="line">q1.sources.s1.type = TAILDIR</span><br><span class="line">q1.sources.s1.filegroups = f1</span><br><span class="line">q1.sources.s1.filegroups.f1 = /opt/module/hadoop/logs/.*log</span><br><span class="line"></span><br><span class="line">q1.sinks.k1.type = hdfs</span><br><span class="line">q1.sinks.k1.hdfs.path = hdfs://master:9000/flume2</span><br><span class="line"></span><br><span class="line">q1.channels.c1.type = memory</span><br><span class="line">q1.channels.c1.capacity = 1000</span><br><span class="line">q1.channels.c1.transactionCapacity = 100</span><br><span class="line"></span><br><span class="line">q1.sources.s1.channels = c1</span><br><span class="line">q1.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+
+<p>根据测试，<code>sinks.path</code>后面的地址要和<code>core-site.xml</code>文件中的地址一样，后面的文件名自定义即可</p>
+<p>根据测试，根目录下不创建表也可以进行数据采集。</p>
+<hr>
+<h4 id="启动采集"><a href="#启动采集" class="headerlink" title="#启动采集"></a>#启动采集</h4><p><strong>首先启动hdfs和yarn</strong></p>
+<p><strong>启动采集文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/flume-ng agent --conf conf/ --name a1 --conf-file job/netcat-flume-logger.conf -Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
+
+<p>-Dflume.root.logger&#x3D;INFO,console表示输出采集过程；</p>
+<p>–name后面为agent名字，即配置文件中最前面的<code>a1</code>；</p>
+<p>–conf后面为flume&#x2F;conf的路径地址</p>
+<p>–conf-file后面为项目文件地址</p>
+<hr>
+<h4 id="查看文件"><a href="#查看文件" class="headerlink" title="#查看文件"></a>#查看文件</h4><p><strong>查看采集的数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfs -ls -R /flume1</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建表文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir -p /flume</span><br></pre></td></tr></table></figure>
+
+<p>根据测试，根目录下不创建表也可以进行数据采集。写在这里以防外一需要。</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-19</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>

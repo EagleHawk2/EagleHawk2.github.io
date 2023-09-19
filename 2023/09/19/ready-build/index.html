@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="ready-build  1.0" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #fec591; 
+            --waline-color: #fec591; 
+            --waline-border-color: #fec591; 
+            --waline-white: #fec591; 
+            --waline-bgcolor-light: #005454;  
+        }
+        body {
+            color: #fec591;
+            background: #005454;
+        }
+        .post-md code {
+            background: black;
+            color: white; 
+        }
+        .year-font-color {
+            color: #fec591 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #fec591; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #fec591;
+            color: #fec591; 
+        }
+        .wl-btn {
+            border: 1px solid #fec591; 
+            color:  #fec591;  
+        }
+        .wl-btn.primary {
+            color: #005454; 
+        }
+        .wl-header label {
+            color: #fec591;
+        }
+        a {
+            color: #fec591;
+        }
+
+        .post-md a {
+            color: #fec591;
+        }
+
+        .nav li a {
+            color: #fec591;
+        }
+
+        .archive-main a:link {
+            color: #fec591;
+        }
+        .archive-main a:visited {
+            color: #fec591; 
+        }
+
+        .archive li span {
+            color: #fec591;
+        }
+
+        .post-main-title {
+            color: #fec591;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #fec591;
+        }
+
+        [data-waline] p {
+            color: #fec591;
+        }
+        [data-waline] a {
+            color: #fec591;
+        } 
+        .wl-sort li.active {
+            color: #fec591;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #005454;
+        }
+
+        .paper {
+            background: #005454;
+        }
+
+        .index-main {
+            background: #005454;
+        }
+
+        .paper-main {
+            background: #005454;
+        }
+
+        .wl-panel {
+            background: #005454;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #005454;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #005454;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #005454;
+        }
+    </style>
+
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            ready-build  1.0
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%89%8D%E8%A8%80"><span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%89%8D%E7%BD%AE%E5%AE%89%E8%A3%85"><span class="post-toc-text">前置安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%90%AD%E5%BB%BA%E8%A7%84%E5%88%92"><span class="post-toc-text">搭建规划</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E6%9D%A1%E4%BB%B6"><span class="post-toc-text">环境条件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="post-toc-text">虚拟机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="post-toc-text">防火墙</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SSH"><span class="post-toc-text">SSH</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JDK"><span class="post-toc-text">JDK</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="post-toc-text">结语</span></a></li></ol>
+        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本章讲解的是在搭建Hadoop生态系统前需要的一些思路和条件，内容冗余，多是些吐槽的话，大概看看内容是否都已经配置了即可。</p>
+<p>Hadoop 生态是学习大数据的重中之重，虽然我理解不深，但是关于hadoop所衍生出的apache的顶级开源项目，都是围绕着hadoop而进行使用的，所以要想使用apache的其他顶级项目，首先要理解的就是关于Hadoop的一些知识。</p>
+<p>由于我在学习的时候，是采用实例式学习，于是乎，先是会用，才是理解项目，所以有很多东西，是自己的理解，不能和真正的学院派相媲美，所以此文章更多的是用于自己搭建训练的时候使用，一些问题也是相关与自身问题而撰写，分门别类，各位读者各取所需即可</p>
+<p>（EagleHawk 2023.6.28）</p>
+<h2 id="前置安装"><a href="#前置安装" class="headerlink" title="前置安装"></a>前置安装</h2><h3 id="搭建规划"><a href="#搭建规划" class="headerlink" title="搭建规划"></a>搭建规划</h3><p>写在最前——是因为写到第三点了，结果发现规划应该是坐在所有步骤之前的，好吧只能写在最前了TAT</p>
+<p>如何规划集群搭建：</p>
+<p>首先要了解hadoop的工作原理。</p>
+<p>hadoop有很多子项目，在规划时，我（个人哈o(<em>￣▽￣</em>)ブ）只考虑两个模块，一个是HDFS分布式文件系统，另一个是MapReduce分布式计算框架。这两个子项目是hadoop当中相当吃资源的两个项目，所以一般是需要讲这两个模块部署在不同的节点上面（即，hdfs部署在一台虚拟机上，mapreduce部署在一台虚拟机上）。</p>
+<p>以上，就是简单的搭建规划了，在搭建规划时，我们还需要规划ip名，ip地址等，这里就不赘述了，直接实操就能理解（好吧，因为我也是实操练出来的…拳打百遍，其意自现嘛hhh）以下，是个人的部分理解。</p>
+<hr>
+<p>HDFS存储架构下，有三个进程：NameNode，DataNode，SecondaryNameNode</p>
+<p>MapReduce计算框架下，有两个进程：ResourceManger，NodeManager</p>
+<p>其中SecondaryNameNode和ResourceManger都是占资源的大户，所以一般来说，会将这两个进程部署在不同的节点，作为完全分布式的部署。如果将所有进程都部署在相同节点下，则是伪分布式的安装配置。</p>
+<table>
+<thead>
+<tr>
+<th align="center">节点名称</th>
+<th align="center">IP规划</th>
+<th align="center">分布式规划</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">master</td>
+<td align="center">192.168.xx.xx</td>
+<td align="center">NameNode、DataNode</td>
+</tr>
+<tr>
+<td align="center">slave1</td>
+<td align="center">192.168.xx.xx</td>
+<td align="center">SecondaryNameNode</td>
+</tr>
+<tr>
+<td align="center">slave2</td>
+<td align="center">192.168.xx.xx</td>
+<td align="center">ResourceManager</td>
+</tr>
+</tbody></table>
+<p>分析好了节点分布，那么就可以开始部署环境了——(ง •_•)ง</p>
+<h3 id="环境条件"><a href="#环境条件" class="headerlink" title="环境条件"></a>环境条件</h3><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">媒介</th>
+<th align="center">版本</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Linux</td>
+<td align="center">虚拟机</td>
+<td align="center">CentOS7</td>
+<td align="center">3台（因为搭建的是集群，所以需要三台虚拟机）</td>
+</tr>
+<tr>
+<td align="center">jdk</td>
+<td align="center">tar.gz压缩包</td>
+<td align="center">jdk-8u212-linux-x64.tar.gz</td>
+<td align="center">jdk版本需要对应，可以进apche官网查看</td>
+</tr>
+<tr>
+<td align="center">hadoop</td>
+<td align="center">tar.gz压缩包</td>
+<td align="center">hadoop-3.1.3.tar.gz</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">zookeeper</td>
+<td align="center">tar.gz压缩包</td>
+<td align="center">apache-zookeeper-3.5.7-bin.tar.gz</td>
+<td align="center">zookeeper在配置HadoopHA时需要使用</td>
+</tr>
+</tbody></table>
+<p>在hadoop3.1.3版本之前，我进行过hadoop2.7版本的搭建，相比之下，hadoop版本更改了一些配置文件，同时也增加了一些需要配置的内容，在下文中会详细进行简述，但是大差不差，所有的配置都有内部的核心文件与参数，更改这些核心参数，就是集群搭建的核心。</p>
+<h3 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h3><p>在配置开始前，需要对每一台虚拟机做三个文件的了解或是配置</p>
+<p><strong>hostname</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hostname</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">master</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slave1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slave2</span><br></pre></td></tr></table></figure>
+
+<p>此文件存储着本机的ip名，可以进行修改，修改方式按照规划集群来进行修改，主节点master，分节点slave1，slave2。</p>
+<hr>
+<p><strong>ifcfg-ens33</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-script/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>TYPE&#x3D;”Ethernet”（网络类型：英特网）<br>BOOTPROTO&#x3D;”static”（网络配置参数：静态IP&#x2F;dhcp 动态IP&#x2F;none 无）<br>NAME&#x3D;”ens33”（网络属于网卡：ens33）<br>DEVICE&#x3D;”ens33”（网络名称：ens33）<br>ONBOOT&#x3D;”yes”（开机自启动：yes&#x2F;no）<br>IPADDR&#x3D;”192.168.48.200”（本机IP）<br>PREFIX&#x3D;”24”（子网掩码的位数）<br>GATEWAY&#x3D;”192.168.48.2”（网关）<br>DNS1&#x3D;”192.168.48.2”（域名）</p>
+</blockquote>
+<p>这个文件是存储本机ip地址的文件，在不同的版本中，存储位置也会有变动，目前我见过的存储位置就两个文件，这个文件是OS7当中的存储位置，修改ip即在此文件中进行修改。</p>
+<p>查询ip地址也可以用以下指令。</p>
+<p><strong>查询ip</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>如果第二条指令报错为未安装工具包，安装命令</p>
+<p><strong>安装net-tools工具包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install net-tools</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>hosts</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.xx.xxx master</span><br><span class="line">192.168.xx.xxx slave1</span><br><span class="line">192.168.xx.xxx slave2</span><br></pre></td></tr></table></figure>
+
+<p>存放各个节点映射，ip名为本机ip名，ip地址为本机ip地址。</p>
+<hr>
+<p><strong>注意</strong></p>
+<p>修改完上述文件后，需要重启网络服务，重启机器</p>
+<p><strong>重启网络服务</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+
+<p><strong>重启机器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><p>关于防火墙的问题，在进行集群搭建的时候，防火墙是一定需要关闭的东西。因为搭建的集群都是内网搭建的，对外还有一个服务器，那个服务器有防火墙，由它来访问内网集群，如果内网内开启防火墙，内网集群通讯会出现很多问题。关闭防火墙，一劳永逸！</p>
+<p>这是在测试环境下需要关闭防火墙，在生产环境目前还没有进行过生产，所以只针对与当前测试版本</p>
+<p>另外，以下shell代码都是在CentOS7版本下的shell命令，如果版本不同，请移步baidu.com</p>
+<p><strong>查看防火墙状态</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
+
+<p><strong>暂时关闭防火墙</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+
+<p><strong>永久关闭防火墙</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+
+<p><strong>重启防火墙</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enabled firewalld</span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><p>SSH是一种加密的网络传输协议，可以在不安全的网络中为网络服务提供安全的传输环境。SSH通过在网络中建立安全隧道来实现SSH客户端与服务器之间的连接。SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令。SSH使用频率最高的场合是类Unix系统，但是Windows操作系统也能有限度地使用SSH。2015年，微软宣布将在未来的操作系统中提供原生SSH协议支持，Windows 10 1803版本已提供OpenSSH工具。在设计上，SSH是Telnet和非安全shell的替代品。</p>
+<p>通过SSH Client我们可以连接到运行了SSH Server的远程机器上。</p>
+<p>而每台机器都可以生成自己的安全密钥，而我们在搭建集群时，为了方便ssh的服务切换，会进行ssh的免密登录。以此来快速进行SSH Server切换。</p>
+<p>如果不考虑特殊情况，可以直接看免密登录的方式，其他作为了解即可。</p>
+<hr>
+<p><strong>查看SSH服务是否启动</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status sshd</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>@Action:active(running)SHH运行中</p>
+<p>@Connection refusedSSH未安装</p>
+</blockquote>
+<p><strong>启动SSH服务</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start sshd</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装OpenSSH Server</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>接下来介绍SSH Client公共密钥登录，其中，-p port为监听的端口号，一般为22，如果为22，可省略；user为用户名，ip可以时IP、域名、别名</p>
+<p><strong>查询用户名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
+
+<p><strong>SSH公共钥登录</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 22 user@ip</span><br><span class="line">ssh user@ip -p port</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>直接跳转到重点——<strong>免密登录</strong>，这个是我们搭建集群需要做的一个关键步骤，可以极大的方便我们进行节点的切换、拷贝、部署，所以必须要掌握，也推荐使用。</p>
+<p><strong>生成SSH密钥</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>密钥生成后，存储位置为：</p>
+<blockquote>
+<p>~&#x2F;.ssh&#x2F;id_rsa.pub	公钥存储地址</p>
+<p>~&#x2F;.ssh&#x2F;id_rsa			私钥存储地址</p>
+</blockquote>
+<p><strong>复制密钥到分节点中</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id user@ip -p port</span><br></pre></td></tr></table></figure>
+
+<p><strong>Mac安装ssh-copy-id</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ssh-copy-id</span><br></pre></td></tr></table></figure>
+
+<p>此条用于没有安装ssh-copy-id命令时，使用的安装命令，仅限于Mac（额，和这个搭建没什么关系，就是一个补充的说明）</p>
+<p><strong>Windows手动指令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@ip -p port ‘mkdir -p .ssh&amp;&amp; cat &gt;&gt; .ssh/authorized_keys’ &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>或者手动操作，复制公钥内容，然后登入远程机器，粘贴到</p>
+<blockquote>
+<p>~&#x2F;.ssh&#x2F;id_rsa.pub 公钥存储地址</p>
+<p>.ssh&#x2F;authorized_keys存储其他公钥的位置</p>
+</blockquote>
+<p><strong>SSH配置别名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.ssh/config</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host lab</span><br><span class="line">HostName remote</span><br><span class="line">User user</span><br><span class="line">Port port</span><br></pre></td></tr></table></figure>
+
+<p>个人目前没有使用过，但是在ssh其他服务当中有介绍ssh别名的使用方法，需要的话也可以记一下。</p>
+<hr>
+<p>完成了免密登录，接下来介绍一下<strong>SSH传输文件</strong>服务，使用此命令可以极大的提高文件在集群内传输的效率——前提是需要做好上面的步骤。</p>
+<p><strong>传输文件夹</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r /path/file-titele/file user@ip:/path/file-titele</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用别名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp port /path/to/local/file lab:/path/to/local/file</span><br></pre></td></tr></table></figure>
+
+<p><strong>将远程文件下载到本地</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp lab:port /path/to/local/file /path/to/local/file</span><br></pre></td></tr></table></figure>
+
+<p><strong>将本地文件传输到远程</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P port /path/to/local/file user@ip：/path/to/local/file</span><br></pre></td></tr></table></figure>
+
+<p>其中，port为端口号，path为路径，file为文件名，传输时如果传输同一地址，在被传输的文件夹下，传输路径是传输者的上一级文件（因为文件还没传过去hhh,这句话就是废话）</p>
+<p>以上使用的方法都大差不差，主要的区别就是修改了参数达成不同的效果，如果要详细了解各参数的含义，可以搜索以下，这里我就只贴张图，不做其他说明，需要的自取就好啦。</p>
+<p><img src="/2023/09/19/ready-build/bd1.png" alt="bd1"></p>
+<h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><p>因为Hadoop的生态环境，都是以Java为底层逻辑编写的，所以在配置环境前，需要做的一个必要配置，就是配置JDK。这是配置Hadoop的前置要求，也是Hadoop集群生态圈的底层逻辑。</p>
+<p><strong>解压文件到指定目录</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/jdk.tar.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改环境变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/module/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-19</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
