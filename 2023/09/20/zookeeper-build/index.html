@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="zookeeper-build  1.0" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            zookeeper-build  1.0
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3Zookeeper%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA"><span class="post-toc-text">3	Zookeeper集群搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="post-toc-text">解压文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8D%E5%AD%97"><span class="post-toc-text">修改名字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="post-toc-text">配置环境变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE"><span class="post-toc-text">集群配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BAdata%E6%96%87%E4%BB%B6"><span class="post-toc-text">@新建data文件</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#zoo-cfg"><span class="post-toc-text">@zoo.cfg</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%86%99%E5%85%A5%E8%8A%82%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="post-toc-text">@写入节点信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8B%B7%E8%B4%9D%E7%8E%AF%E5%A2%83"><span class="post-toc-text">拷贝环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">启动集群</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1%E5%85%B3%E4%BA%8Ezookeeper%E7%9A%84%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF"><span class="post-toc-text">3.1	关于zookeeper的报错信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80"><span class="post-toc-text">问题一</span></a></li></ol></li></ol></li></ol>
+        
+        <h2 id="3Zookeeper集群搭建"><a href="#3Zookeeper集群搭建" class="headerlink" title="3	Zookeeper集群搭建"></a>3	Zookeeper集群搭建</h2><h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><p><strong>#tar -zxvf zookeeper-3.4.5.tar.gz -C &#x2F;usr&#x2F;local&#x2F;src&#x2F;</strong></p>
+<p>解压文件到	&#x2F;usr&#x2F;local&#x2F;src&#x2F;	目录下</p>
+<h4 id="修改名字"><a href="#修改名字" class="headerlink" title="修改名字"></a>修改名字</h4><p><strong>#mv zookeeper-3.4.5.tar.gz zookeepper</strong></p>
+<p>修改名字，方便后期配置</p>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p><strong>#vi &#x2F;etc&#x2F;profile</strong></p>
+<pre><code>#zookeeper ENV
+export ZOOKEEPER_HOME=/usr/local/src/zookeeper
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+</code></pre>
+<p><strong>#sourc &#x2F;etc&#x2F;profile</strong></p>
+<p>使文件生效</p>
+<h4 id="集群配置"><a href="#集群配置" class="headerlink" title="集群配置"></a>集群配置</h4><h5 id="新建data文件"><a href="#新建data文件" class="headerlink" title="@新建data文件"></a>@新建data文件</h5><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper</strong></p>
+<p>进入zookeeper文件夹</p>
+<p><strong>#mdkir data</strong></p>
+<p>新建data文件夹</p>
+<h5 id="zoo-cfg"><a href="#zoo-cfg" class="headerlink" title="@zoo.cfg"></a>@zoo.cfg</h5><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper&#x2F;conf</strong></p>
+<p>进入zookeeper下的conf文件夹</p>
+<p><strong>#cp zoo_sample.cfg zoo.cfg</strong></p>
+<p>复制样本文件进行修改</p>
+<p>修改内容如下，注意专注一下五个参数，其中dataDir中的地址为前一步中在zookeeper下建立的</p>
+<pre><code>tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/usr/local/src/zookeeper/data
+clientPort=2181
+server.1=master:2888:3888
+server.2=slave1:2888:3888
+server.3=slave2:2888:3888
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="center">name</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">tickTime</td>
+<td align="center">tick翻译成中文的话就是滴答滴答的意思，连起来就是滴答滴答的时间，寓意心跳间隔，单位是毫秒，系统默认是2000毫秒，也就是间隔两秒心跳一次。客户端与服务器或者服务器与服务器之间维持心跳，也就是每个tickTime时间就会发送一次心跳。通过心跳不仅能够用来监听机器的工作状态，还可以通过心跳来控制Flower跟Leader的通信时间，默认情况下FL的会话时常是心跳间隔的两倍。</td>
+</tr>
+<tr>
+<td align="center">initLimit</td>
+<td align="center">集群中的follower服务器(F)与leader服务器(L)之间初始连接时能容忍的最多心跳数（tickTime的数量）。</td>
+</tr>
+<tr>
+<td align="center">syncLimit</td>
+<td align="center">集群中flower服务器（F）跟leader（L）服务器之间的请求和答应最多能容忍的心跳数。</td>
+</tr>
+<tr>
+<td align="center">dataDir</td>
+<td align="center">该属性对应的目录是用来存放myid信息跟一些版本，日志，跟服务器唯一的ID信息等。</td>
+</tr>
+<tr>
+<td align="center">clientPort</td>
+<td align="center">客户端连接的接口，客户端连接zookeeper服务器的端口，zookeeper会监听这个端口，接收客户端的请求访问！这个端口默认是2181。</td>
+</tr>
+</tbody></table>
+<h5 id="写入节点信息"><a href="#写入节点信息" class="headerlink" title="@写入节点信息"></a>@写入节点信息</h5><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper&#x2F;data</strong></p>
+<p>进入新建的data文件夹中</p>
+<p>（当然这一步最好先复制后再进行，以免在分节点中没有节点信息）</p>
+<p>使用echo语句把节点信息1、2、3分别写入三个节点的data目录中</p>
+<ul>
+<li><p>在master节点中</p>
+<p><strong>#echo 1 &gt; myid</strong></p>
+</li>
+<li><p>在slave1节点中</p>
+<p><strong>#echo 2 &gt; myid</strong></p>
+</li>
+<li><p>在slave2节点中</p>
+<p><strong>#echo 3 &gt; myid</strong></p>
+</li>
+</ul>
+<h4 id="拷贝环境"><a href="#拷贝环境" class="headerlink" title="拷贝环境"></a>拷贝环境</h4><p><strong>#scp -r &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper slave1:&#x2F;usr&#x2F;local&#x2F;src&#x2F;</strong></p>
+<p><strong>#scp -r &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper slave2:&#x2F;usr&#x2F;local&#x2F;src&#x2F;</strong></p>
+<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h4><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper&#x2F;bin</strong></p>
+<p>进入到zookeeper的bin目录下</p>
+<p><strong>#.&#x2F;zkServer.sh start</strong></p>
+<p>启动zookeeper</p>
+<p><strong>#.&#x2F;zkServer.sh status</strong></p>
+<p>查看zookeeper状态</p>
+<p><strong>#.&#x2F;zkCli.sh</strong></p>
+<p>启动Cli，连接到zookeeper服务器</p>
+<p><strong>#.&#x2F;zkServer.sh stop</strong></p>
+<p>停止zookeeper服务器</p>
+<h3 id="3-1关于zookeeper的报错信息"><a href="#3-1关于zookeeper的报错信息" class="headerlink" title="3.1	关于zookeeper的报错信息"></a>3.1	关于zookeeper的报错信息</h3><h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><p>关于zookeeper的配置，由于没有过多的配置因素，在检查报错信息时，只能通过排查日志文件来进行报错的修改，目前出现的问题一是zookeeper无法启动，在输入**#.&#x2F;zkServer.sh start**后，启动失败，此问题现象：</p>
+<ol>
+<li>启动zk失败，但是在启动**#.&#x2F;zkServer.sh start**时，不会报错，正常显示。</li>
+<li>jps查询时，正常显示**#QuorumPeerMain**</li>
+<li><strong>#.&#x2F;zkServer.sh status</strong>查询时，显示报错，报错信息如下：<img src="/2023/09/20/zookeeper-build/image-20230526102810726.png" alt="image-20230526102810726"></li>
+<li><strong>#.&#x2F;zkServer.sh stop</strong>关闭集群时，主节点无法关闭的报错</li>
+</ol>
+<p><strong>解决办法：</strong></p>
+<p>在zoo.cfg文件中，原本版本中，查询到的是zoo.cfg文件中无法识别ip地址，故写法为：</p>
+<pre><code class="shell">server.1=master:2888:3888
+server.2=slave1:2888:3888
+server.3=slave2:2888:3888
+</code></pre>
+<p>查询日志发现，报错信息为：</p>
+<p><img src="/2023/09/20/zookeeper-build/image-20230526105114037.png" alt="image-20230526105114037"></p>
+<p>显示address already in use，那就考虑是否ip名无法识别，需要使用ip地址</p>
+<p>故进行修改zoo.cfg中ip名为ip地址</p>
+<pre><code class="shell">server.1=192.168.100.3:2888:3888
+server.2=192.168.100.4:2888:3888
+server.3=192.168.100.2:2888:3888
+</code></pre>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-20</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/'>
+                            集群搭建
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>兜兜转转，凄凄惨惨戚戚🤯🤯</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
