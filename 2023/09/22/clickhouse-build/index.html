@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="clickhouse-build" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            clickhouse-build
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ClickHouse%E6%90%AD%E5%BB%BA"><span class="post-toc-text">ClickHouse搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Clickhouse%E6%90%AD%E5%BB%BA%E7%AE%80%E8%BF%B0"><span class="post-toc-text">Clickhouse搭建简述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">操作步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="post-toc-text">解压文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="post-toc-text">执行脚本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8Clickhouse"><span class="post-toc-text">启动Clickhouse</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%99%BB%E5%BD%95Clickhouse"><span class="post-toc-text">登录Clickhouse</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9B%B4%E6%94%B9Clickhouse%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="post-toc-text">更改Clickhouse端口号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E7%9B%91%E5%90%AC%E6%96%87%E4%BB%B6"><span class="post-toc-text">删除监听文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text">注意事项</span></a></li></ol></li></ol></li></ol>
+        
+        <h1 id="ClickHouse搭建"><a href="#ClickHouse搭建" class="headerlink" title="ClickHouse搭建"></a>ClickHouse搭建</h1><h3 id="Clickhouse搭建简述"><a href="#Clickhouse搭建简述" class="headerlink" title="Clickhouse搭建简述"></a>Clickhouse搭建简述</h3><p>clickhouse在进行搭建时，是使用clickhouse脚本进行搭建，所以解压clickhouse文件后直接运行文件的脚本即可</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><pre><code>tar -zxvf /opt/software/clickhouse-common-static-dbg-21.9.4.3/ -C /opt/module/
+</code></pre>
+<pre><code>tar -zxvf /opt/software/clickhouse-common-static-21.9.4.35.tgz -C /opt/module/
+</code></pre>
+<pre><code>tar -zxvf /opt/software/clickhouse-server-21.9.4.35.tgz -C /opt/module/
+</code></pre>
+<pre><code>tar -zxvf /opt/software/clickhouse-client-21.9.4.35.tgz -C /opt/module/
+</code></pre>
+<p>clickhouse有以上四个文件需要解压，解压无顺序要求</p>
+<h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><pre><code>./clickhouse-common-static-dbg-21.9.4.3//install/doinst.sh 
+</code></pre>
+<pre><code>./clickhouse-common-static-21.9.4.35/install/doinst.sh 
+</code></pre>
+<pre><code>./clickhouse-client-21.9.4.35/install/doinst.sh
+</code></pre>
+<pre><code>./clickhouse-server-21.9.4.35/install/doinst.sh 
+</code></pre>
+<p>四个脚本文件严格意义上来说没有顺序，一般来说是先执行两个<code>common</code>文件，其次是<code>client</code>客户端文件，最后是<code>server</code>服务文件。</p>
+<p>这样的顺序主要是方便截图。</p>
+<p><code>common</code>与<code>client</code>文件执行后没有结果显示，<code>server</code>文件执行后有结果显示，所以最后使用<code>server</code>文件</p>
+<h4 id="启动Clickhouse"><a href="#启动Clickhouse" class="headerlink" title="启动Clickhouse"></a>启动Clickhouse</h4><p>启动</p>
+<pre><code>systemctl start clickhouse-server
+</code></pre>
+<p>重启</p>
+<pre><code>systemctl restart clickhouse-server
+</code></pre>
+<p>查询状态</p>
+<pre><code>systemctl status clickhouse-server
+</code></pre>
+<blockquote>
+<p>运行状态：</p>
+<p><img src="/2023/09/22/clickhouse-build/image-20230922150135226.png" alt="image-20230922150135226"></p>
+<p>关闭状态：</p>
+<p><img src="/2023/09/22/clickhouse-build/image-20230922150108025.png" alt="image-20230922150108025"></p>
+</blockquote>
+<p>关闭</p>
+<pre><code>systemctl stop clickhouse-server
+</code></pre>
+<h4 id="登录Clickhouse"><a href="#登录Clickhouse" class="headerlink" title="登录Clickhouse"></a>登录Clickhouse</h4><pre><code>clickhouse-client --port 9000 --host master --password 123456
+</code></pre>
+<p>clickhouse的默认端口号为9000，但是hadoop3.x版本中的hadoop默认端口也是9000，所以会出现端口占用的情况，所以我们需要更改clickhouse的默认端口号以此来保证端口不会出现重复占用的情况。</p>
+<h4 id="更改Clickhouse端口号"><a href="#更改Clickhouse端口号" class="headerlink" title="更改Clickhouse端口号"></a>更改Clickhouse端口号</h4><p>搜索<code>test_shard_localhost</code>，其中有8个端口为9000的文件需要修改为9001；</p>
+<p>注意9440端口文件，即<code>test_shard_localhost_secure</code>不需要进行修改；</p>
+<ul>
+<li>以下是修改文件：</li>
+</ul>
+<pre><code>&gt;  590     &lt;remote_servers&gt;
+&gt;  591         &lt;!-- Test only shard config for testing distributed storage --&gt;
+&gt;  592         &lt;test_shard_localhost&gt;
+&gt;  593             &lt;!-- Inter-server per-cluster secret for Distributed queries
+&gt;  594                  default: no secret (no authentication will be performed)
+&gt;  595 
+&gt;  596                  If set, then Distributed queries will be validated on shards, so at least:
+&gt;  597                  - such cluster should exist on the shard,
+&gt;  598                  - such cluster should have the same secret.
+&gt;  599 
+&gt;  600                  And also (and which is more important), the initial_user will
+&gt;  601                  be used as current user for the query.
+&gt;  602 
+&gt;  603                  Right now the protocol is pretty simple and it only takes into account:
+&gt;  604                  - cluster name
+&gt;  605                  - query
+&gt;  606 
+&gt;  607                  Also it will be nice if the following will be implemented:
+&gt;  608                  - source hostname (see interserver_http_host), but then it will depends from DNS,
+&gt;  609                    it can use IP address instead, but then the you need to get correct on the initiator node.
+&gt;  610                  - target hostname / ip address (same notes as for source hostname)
+&gt;  611                  - time-based security tokens
+&gt;  612             --&gt;
+&gt;  613             &lt;!-- &lt;secret&gt;&lt;/secret&gt; --&gt;
+&gt;  614 
+&gt;  615             &lt;shard&gt;
+&gt;  616                 &lt;!-- Optional. Whether to write data to just one of the replicas. Default: false (write data to all replicas). --&gt;
+&gt;  617                 &lt;!-- &lt;internal_replication&gt;false&lt;/internal_replication&gt; --&gt;
+&gt;  618                 &lt;!-- Optional. Shard weight when writing data. Default: 1. --&gt;
+&gt;  619                 &lt;!-- &lt;weight&gt;1&lt;/weight&gt; --&gt;
+&gt;  620                 &lt;replica&gt;
+&gt;  621                     &lt;host&gt;localhost&lt;/host&gt;
+&gt;  622                     &lt;port&gt;9001&lt;/port&gt;
+&gt;  623                     &lt;!-- Optional. Priority of the replica for load_balancing. Default: 1 (less value has more priority). --&gt;
+&gt;  624                     &lt;!-- &lt;priority&gt;1&lt;/priority&gt; --&gt;
+&gt;  625                 &lt;/replica&gt;
+&gt;  626             &lt;/shard&gt;
+&gt;  627         &lt;/test_shard_localhost&gt;
+&gt;  628         &lt;test_cluster_two_shards_localhost&gt;
+&gt;  629              &lt;shard&gt;
+&gt;  630                  &lt;replica&gt;
+&gt;  631                      &lt;host&gt;localhost&lt;/host&gt;
+&gt;  632                      &lt;port&gt;9001&lt;/port&gt;
+&gt;  633                  &lt;/replica&gt;
+&gt;  634              &lt;/shard&gt;
+&gt;  635              &lt;shard&gt;
+&gt;  636                  &lt;replica&gt;
+&gt;  637                      &lt;host&gt;localhost&lt;/host&gt;
+&gt;  638                      &lt;port&gt;9001&lt;/port&gt;
+&gt;  639                  &lt;/replica&gt;
+&gt;  640              &lt;/shard&gt;
+&gt;  641         &lt;/test_cluster_two_shards_localhost&gt;
+&gt;  642         &lt;test_cluster_two_shards&gt;
+&gt;  643             &lt;shard&gt;
+&gt;  644                 &lt;replica&gt;
+&gt;  645                     &lt;host&gt;127.0.0.1&lt;/host&gt;
+&gt;  646                     &lt;port&gt;9001&lt;/port&gt;
+&gt;  647                 &lt;/replica&gt;
+&gt;  648             &lt;/shard&gt;
+&gt;  649             &lt;shard&gt;
+&gt;  650                 &lt;replica&gt;
+&gt;  651                     &lt;host&gt;127.0.0.2&lt;/host&gt;
+&gt;  652                     &lt;port&gt;9001&lt;/port&gt;
+&gt;  653                 &lt;/replica&gt;
+&gt;  654             &lt;/shard&gt;
+&gt;  655         &lt;/test_cluster_two_shards&gt;
+&gt;  656         &lt;test_cluster_two_shards_internal_replication&gt;
+&gt;  657             &lt;shard&gt;
+&gt;  658                 &lt;internal_replication&gt;true&lt;/internal_replication&gt;
+&gt;  659                 &lt;replica&gt;
+&gt;  660                     &lt;host&gt;127.0.0.1&lt;/host&gt;
+&gt;  661                     &lt;port&gt;9001&lt;/port&gt;
+&gt;  662                 &lt;/replica&gt;
+&gt;  663             &lt;/shard&gt;
+&gt;  664             &lt;shard&gt;
+&gt;  665                 &lt;internal_replication&gt;true&lt;/internal_replication&gt;
+&gt;  666                 &lt;replica&gt;
+&gt;  667                     &lt;host&gt;127.0.0.2&lt;/host&gt;
+&gt;  668                     &lt;port&gt;9001&lt;/port&gt;
+&gt;  669                 &lt;/replica&gt;
+&gt;  670             &lt;/shard&gt;
+&gt;  671         &lt;/test_cluster_two_shards_internal_replication&gt;
+&gt;  672         &lt;test_shard_localhost_secure&gt;
+&gt;  673             &lt;shard&gt;
+&gt;  674                 &lt;replica&gt;
+&gt;  675                     &lt;host&gt;localhost&lt;/host&gt;
+&gt;  676                     &lt;port&gt;9440&lt;/port&gt;
+&gt;  677                     &lt;secure&gt;1&lt;/secure&gt;
+&gt;  678                 &lt;/replica&gt;
+&gt;  679             &lt;/shard&gt;
+&gt;  680         &lt;/test_shard_localhost_secure&gt;
+&gt;  681         &lt;test_unavailable_shard&gt;
+&gt;  682             &lt;shard&gt;
+&gt;  683                 &lt;replica&gt;
+&gt;  684                     &lt;host&gt;localhost&lt;/host&gt;
+&gt;  685                     &lt;port&gt;9001&lt;/port&gt;
+&gt;  686                 &lt;/replica&gt;
+&gt;  687             &lt;/shard&gt;
+&gt;  688             &lt;shard&gt;
+&gt;  689                 &lt;replica&gt;
+&gt;  690                     &lt;host&gt;localhost&lt;/host&gt;
+&gt;  691                     &lt;port&gt;1&lt;/port&gt;
+&gt;  692                 &lt;/replica&gt;
+&gt;  693             &lt;/shard&gt;
+&gt;  694         &lt;/test_unavailable_shard&gt;
+&gt;  695     &lt;/remote_servers&gt;
+
+</code></pre>
+<ul>
+<li>需要注意的是，从网上搜索的修改<code>clickhouse</code>端口号是（82行，查找<code>&lt;tcp_port&gt;</code>即可找到）：</li>
+</ul>
+<pre><code>&gt;  82     &lt;tcp_port&gt;9001&lt;/tcp_port&gt;
+</code></pre>
+<h4 id="删除监听文件"><a href="#删除监听文件" class="headerlink" title="删除监听文件"></a>删除监听文件</h4><pre><code>rm -rf /etc/clickhouse-server/config.d/listen.xml
+</code></pre>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>监听文件listen.xml</li>
+</ul>
+<p>在执行<code>./clickhouse-server-21.9.4.35/install/doinst.sh </code>时，会需要输入clickhouse的登陆密码，如果此时不输入密码，就不会出现监听文件。</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-22</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/'>
+                            集群搭建
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>兜兜转转，凄凄惨惨戚戚🤯🤯</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
