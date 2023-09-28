@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="hudi-build   1.0" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            hudi-build   1.0
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hudi%E6%90%AD%E5%BB%BA"><span class="post-toc-text">Hudi搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Maven"><span class="post-toc-text">Maven</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="post-toc-text">解压文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="post-toc-text">配置环境变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F"><span class="post-toc-text">添加阿里镜像</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="post-toc-text">修改本地仓库</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hudi"><span class="post-toc-text">Hudi</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6-1"><span class="post-toc-text">解压文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9POM%E6%96%87%E4%BB%B6"><span class="post-toc-text">修改POM文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E4%BE%9D%E8%B5%96%E7%BB%84%E4%BB%B6%E7%89%88%E6%9C%AC"><span class="post-toc-text">修改依赖组件版本</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E6%BA%90%E7%A0%81%E5%85%BC%E5%AE%B9hadoop3-x"><span class="post-toc-text">修改源码兼容hadoop3.x</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#hudi-spark-bundle"><span class="post-toc-text">hudi-spark-bundle</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#hudi-utilities-bundle"><span class="post-toc-text">hudi-utilities-bundle</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8C%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4"><span class="post-toc-text">执行编译命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B"><span class="post-toc-text">运行案例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%A7%BB%E5%8A%A8jar%E5%8C%85"><span class="post-toc-text">移动jar包</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5spark-shell"><span class="post-toc-text">进入spark-shell</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B-1"><span class="post-toc-text">运行案例</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+        <h2 id="Hudi搭建"><a href="#Hudi搭建" class="headerlink" title="Hudi搭建"></a>Hudi搭建</h2><h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><hr>
+<h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><pre><code>tar -zxvf /opt/software/apache-maven-3.6.1-bin.tar.gz -C /opt/module/
+</code></pre>
+<hr>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><pre><code>vi /etc/profile
+</code></pre>
+<pre><code>#maven
+export MAVEN_HOME=/opt/module/apache-maven-3.6.1-bin
+export PATH=$PATH:$MAVEN_HOME/bin
+</code></pre>
+<hr>
+<h4 id="添加阿里镜像"><a href="#添加阿里镜像" class="headerlink" title="添加阿里镜像"></a>添加阿里镜像</h4><pre><code>vi /opt/module/maven-3.6.1/conf/settings.xml
+</code></pre>
+<pre><code>&lt;mirror&gt;
+        &lt;id&gt;nexus-aliyun&lt;/id&gt;
+        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+        &lt;name&gt;Nexus aliyun&lt;/name&gt;
+        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
+&lt;/mirror&gt;
+</code></pre>
+<hr>
+<h4 id="修改本地仓库"><a href="#修改本地仓库" class="headerlink" title="修改本地仓库"></a>修改本地仓库</h4><pre><code>vi /opt/module/maven-3.6.1/conf/settings.xml
+</code></pre>
+<pre><code>&lt;localRepository&gt;/opt/software/RepMaven&lt;/localRepository&gt;
+</code></pre>
+<h3 id="Hudi"><a href="#Hudi" class="headerlink" title="Hudi"></a>Hudi</h3><hr>
+<h4 id="解压文件-1"><a href="#解压文件-1" class="headerlink" title="解压文件"></a>解压文件</h4><pre><code>tar -zxvf /opt/software/hudi-0.11.0.src.tgz -C /opt/module/
+</code></pre>
+<hr>
+<h4 id="修改POM文件"><a href="#修改POM文件" class="headerlink" title="修改POM文件"></a>修改POM文件</h4><h5 id="修改依赖组件版本"><a href="#修改依赖组件版本" class="headerlink" title="修改依赖组件版本"></a>修改依赖组件版本</h5><pre><code>vim /opt/software/hudi-0.12.0/pom.xml
+</code></pre>
+<pre><code>&lt;hadoop.version&gt;3.1.3&lt;/hadoop.version&gt;
+&lt;hive.version&gt;3.1.2&lt;/hive.version&gt;
+</code></pre>
+<h5 id="修改源码兼容hadoop3-x"><a href="#修改源码兼容hadoop3-x" class="headerlink" title="修改源码兼容hadoop3.x"></a>修改源码兼容hadoop3.x</h5><pre><code>vim /opt/software/hudi-0.12.0/hudi-common/src/main/java/org/apache/hudi/common/table/log/block/HoodieParquetDataBlock.java
+</code></pre>
+<pre><code>try(FSDataOutputStream outputStream) = new FSDataOutputStream(baos)
+</code></pre>
+<p>在括号中加入null，修改后如下</p>
+<pre><code>try(FSDataOutputStream outputStream) = new FSDataOutputStream(baos,null)
+</code></pre>
+<p>位置在文件110行左右，可以直接搜索<code>baos</code>进行操作</p>
+<h5 id="hudi-spark-bundle"><a href="#hudi-spark-bundle" class="headerlink" title="hudi-spark-bundle"></a>hudi-spark-bundle</h5><p>修改了Hive版本为3.1.2，其携带的jetty是0.9.3，hudi本身用的0.9.4，存在依赖冲突。修改hudi-spark-bundle的pom文件，排除低版本jetty，添加hudi指定版本的jetty。</p>
+<pre><code>vim /opt/software/hudi-0.12.0/packaging/hudi-spark-bundle/pom.xml
+</code></pre>
+<pre><code class="java">&lt;!-- Hive --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-service&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;spark.bundle.hive.scope&#125;&lt;/scope&gt;
+      //hive-service添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;artifactId&gt;guava&lt;/artifactId&gt;
+          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.pentaho&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-service-rpc&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;spark.bundle.hive.scope&#125;&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-jdbc&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;spark.bundle.hive.scope&#125;&lt;/scope&gt;
+      //hive-jdbc添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-metastore&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;spark.bundle.hive.scope&#125;&lt;/scope&gt;
+      //hive-metastore添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
+          &lt;artifactId&gt;datanucleus-core&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;artifactId&gt;guava&lt;/artifactId&gt;
+          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-common&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;spark.bundle.hive.scope&#125;&lt;/scope&gt;
+      //hive-common添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty.orbit&lt;/groupId&gt;
+          &lt;artifactId&gt;javax.servlet&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+&lt;/dependency&gt;
+
+    &lt;!-- 增加hudi配置版本的jetty --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-server&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-util&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-webapp&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-http&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
+<h5 id="hudi-utilities-bundle"><a href="#hudi-utilities-bundle" class="headerlink" title="hudi-utilities-bundle"></a>hudi-utilities-bundle</h5><p>修改hudi-utilities-bundle的pom文件，排除低版本jetty，添加hudi指定版本的jetty</p>
+<pre><code>vim /opt/software/hudi-0.12.0/packaging/hudi-utilities-bundle/pom.xml
+</code></pre>
+<pre><code class="java">    &lt;!-- Hoodie --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.hudi&lt;/groupId&gt;
+      &lt;artifactId&gt;hudi-common&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;project.version&#125;&lt;/version&gt;
+      //hudi-common添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.hudi&lt;/groupId&gt;
+      &lt;artifactId&gt;hudi-client-common&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;project.version&#125;&lt;/version&gt;
+      //hudi-client-common添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+
+&lt;!-- Hive --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-service&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;utilities.bundle.hive.scope&#125;&lt;/scope&gt;
+      //hive-service添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;artifactId&gt;guava&lt;/artifactId&gt;
+          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.pentaho&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-service-rpc&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;utilities.bundle.hive.scope&#125;&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-jdbc&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;utilities.bundle.hive.scope&#125;&lt;/scope&gt;
+      //hive-jdbc添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-metastore&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;utilities.bundle.hive.scope&#125;&lt;/scope&gt;
+      //hive-metastore添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;
+          &lt;artifactId&gt;datanucleus-core&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;artifactId&gt;guava&lt;/artifactId&gt;
+          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;$&#123;hive.groupid&#125;&lt;/groupId&gt;
+      &lt;artifactId&gt;hive-common&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;hive.version&#125;&lt;/version&gt;
+      &lt;scope&gt;$&#123;utilities.bundle.hive.scope&#125;&lt;/scope&gt;、
+      //hive-common添加内容
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty.orbit&lt;/groupId&gt;
+          &lt;artifactId&gt;javax.servlet&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+          &lt;artifactId&gt;*&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- 增加hudi配置版本的jetty --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-server&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-util&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-webapp&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+      &lt;artifactId&gt;jetty-http&lt;/artifactId&gt;
+      &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
+<hr>
+<h4 id="执行编译命令"><a href="#执行编译命令" class="headerlink" title="执行编译命令"></a>执行编译命令</h4><ul>
+<li><strong>打包命令</strong></li>
+</ul>
+<pre><code>mvn clean package
+</code></pre>
+<pre><code>-DskipTests -Dspark3.1 -Dflink1.14 -Dscala-2.12 -Dhadoop.version=3.1.3 -Pflink-bundle-shade-hive3
+</code></pre>
+<p>-DskipTests，不执行测试用例，但编译测试用例类生成相应的class文件至target&#x2F;test-classes下。</p>
+<p>-Dmaven.test.skip&#x3D;true，不执行测试用例，也不编译测试用例类。</p>
+<p>-Dspark	-Dflink	-Dscala	为对应组件的版本</p>
+<p>-Pflink-bundle-shade-hive3	如果不指定此条，会在hudi编译时对flink-bundle的架包报错</p>
+<blockquote>
+<p>需要注意的是，hudi的编译命令需要在hudi的根目录下进行执行</p>
+</blockquote>
+<hr>
+<h4 id="运行案例"><a href="#运行案例" class="headerlink" title="运行案例"></a>运行案例</h4><h5 id="移动jar包"><a href="#移动jar包" class="headerlink" title="移动jar包"></a>移动jar包</h5><p>我们编译好的jar包存储在hudi根目录下的packaging中，我们需要进入packaging文件夹找到hudi-spark3.1-bundle_2.12-0.11.0.jar架包即可。</p>
+<pre><code>cd /opt/module/hudi-0.11.0/packaging/hudi-spark-bundle/targe
+</code></pre>
+<p>随后移动架包到spark目录下的jars文件夹中</p>
+<pre><code>cp /opt/module/hudi-0.11.0/packaging/hudi-spark-bundle/target/hudi-spark3.1-bundle_2.12-0.11.0 /opt/module/spark-3.1.1-bin-hadoop3.2/jars/
+</code></pre>
+<h5 id="进入spark-shell"><a href="#进入spark-shell" class="headerlink" title="进入spark-shell"></a>进入spark-shell</h5><pre><code>spark-shell \
+--conf &#39;spark.serializer=org.apache.spark.serializer.KryoSerializer&#39; \
+--conf &#39;spark.sql.extensions=org.apache.spark.sql.hudi.HoodieSparkSessionExtension&#39; \
+</code></pre>
+<p>–conf ‘spark.serializer&#x3D;org.apache.spark.serializer.KryoSerializer’	序列化</p>
+<p>–conf ‘spark.sql.extensions&#x3D;org.apache.spark.sql.hudi.HoodieSparkSessionExtension’	集成spark</p>
+<h5 id="运行案例-1"><a href="#运行案例-1" class="headerlink" title="运行案例"></a>运行案例</h5><pre><code>import org.apache.hudi.QuickstartUtils._
+import scala.collection.JavaConversions._
+import org.apache.spark.sql.SaveMode._
+import org.apache.hudi.DataSourceReadOptions._
+import org.apache.hudi.DataSourceWriteOptions._
+import org.apache.hudi.config.HoodieWriteConfig._
+import org.apache.hudi.common.model.HoodieRecord
+
+val tableName = &quot;hudi_trips_cow&quot;
+val basePath = &quot;file:///tmp/hudi_trips_cow&quot;
+val dataGen = new DataGenerator
+
+val inserts = convertToStringList(dataGen.generateInserts(10))
+val df = spark.read.json(spark.sparkContext.parallelize(inserts, 2))
+df.write.format(&quot;hudi&quot;).
+  options(getQuickstartWriteConfigs).
+  option(PRECOMBINE_FIELD_OPT_KEY, &quot;ts&quot;).
+  option(RECORDKEY_FIELD_OPT_KEY, &quot;uuid&quot;).
+  option(PARTITIONPATH_FIELD_OPT_KEY, &quot;partitionpath&quot;).
+  option(TABLE_NAME, tableName).
+  mode(Overwrite).
+  save(basePath)
+
+val tripsSnapshotDF = spark.read.format(&quot;hudi&quot;).load(basePath + &quot;/*/*/*/*&quot;)
+tripsSnapshotDF.createOrReplaceTempView(&quot;hudi_trips_snapshot&quot;)
+spark.sql(&quot;select fare, begin_lon, begin_lat, ts from  hudi_trips_snapshot where fare &gt; 20.0&quot;).show()
+</code></pre>
+<blockquote>
+<p>结果</p>
+<p><img src="/2023/09/28/hudi-build/image-20230928141916344.png" alt="image-20230928141916344"></p>
+</blockquote>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-28</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/'>
+                            集群搭建
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2023 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>兜兜转转，凄凄惨惨戚戚🤯🤯</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
