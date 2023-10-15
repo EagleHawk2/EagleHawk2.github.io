@@ -151,8 +151,9 @@ scp -r /etc/profile slave2:/etc
 <p><strong>解决方法：</strong></p>
 <p>可以使用配置”classloader.check-leaked-classloader“禁用此检查</p>
 <p>编辑flink-conf.yaml</p>
-<pre><code>classloader.leaked-classloader:false
+<pre><code>classloader.check-leaked-classloader: false
 </code></pre>
+<p>需要注意的是，false前需要有一个空格键占位符，否则无法生效</p>
 
     </div>
 
