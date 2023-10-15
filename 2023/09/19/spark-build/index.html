@@ -86,9 +86,45 @@
 
     <div class="post-md">
         
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spark%E9%85%8D%E7%BD%AE"><span class="post-toc-text">Spark配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="post-toc-text">@配置环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">@配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#spark-config-sh-sbin"><span class="post-toc-text">#spark-config.sh(sbin)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#spark-env-sh"><span class="post-toc-text">#spark-env.sh</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#workers"><span class="post-toc-text">#workers</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#yarn-site-xml"><span class="post-toc-text">#yarn-site.xml</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">@分发节点与启动集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9"><span class="post-toc-text">#分发节点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">#启动集群</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spark-Shell"><span class="post-toc-text">@Spark Shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5shell"><span class="post-toc-text">#进入shell</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C%E6%9E%B6%E5%8C%85"><span class="post-toc-text">#运行架包</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Spark"><span class="post-toc-text">Spark</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spark-Local"><span class="post-toc-text">Spark Local</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spark-Standalone"><span class="post-toc-text">Spark Standalone</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spark-on-Yarn"><span class="post-toc-text">Spark on Yarn</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="post-toc-text">@配置环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">@配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#spark-config-sh-sbin"><span class="post-toc-text">#spark-config.sh(sbin)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#spark-env-sh"><span class="post-toc-text">#spark-env.sh</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#workers"><span class="post-toc-text">#workers</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#yarn-site-xml"><span class="post-toc-text">#yarn-site.xml</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="post-toc-text">启动与使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">@分发节点与启动集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9"><span class="post-toc-text">#分发节点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="post-toc-text">#启动集群</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spark-Shell"><span class="post-toc-text">@Spark Shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5shell"><span class="post-toc-text">#进入shell</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C%E6%9E%B6%E5%8C%85"><span class="post-toc-text">#运行架包</span></a></li></ol></li></ol></li></ol></li></ol>
         
-        <h2 id="Spark配置"><a href="#Spark配置" class="headerlink" title="Spark配置"></a>Spark配置</h2><p><strong>解压文件</strong></p>
+        <h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><h2 id="Spark-Local"><a href="#Spark-Local" class="headerlink" title="Spark Local"></a>Spark Local</h2><pre><code>tar -zxvf /opt/software/spark.tar.gz -C /opt/module
+</code></pre>
+<p>直接解压即可使用</p>
+<pre><code>bin/run-example SparkPi 10
+</code></pre>
+<p>执行SparkPi案例，使用bin内置的run-example方法</p>
+<hr>
+<h2 id="Spark-Standalone"><a href="#Spark-Standalone" class="headerlink" title="Spark Standalone"></a>Spark Standalone</h2><pre><code>vi spark-env.sh
+</code></pre>
+<pre><code>export SPARK_MASTER_IP=master
+export SPARK_MASTER_PORT=7077
+export SPARK_WORKER_CORES=1
+export SPARK_WORKER_MEMORY=3g
+</code></pre>
+<p>可以根据文件中的提示来自行配置所需内容</p>
+<hr>
+<pre><code>vi workers
+</code></pre>
+<pre><code>master
+slave1
+slave2
+</code></pre>
+<hr>
+<pre><code>vi sbin/spark-config.sh
+</code></pre>
+<pre><code>export JAVA_HOME=/opt/module/jdk
+</code></pre>
+<p>在sbin目录下要加入jdk路径，防止JAVA相关报错</p>
+<hr>
+<pre><code>bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master spark://master:7077 \
+example/jars/spark-examles_2.12-3.3.0.jar 10
+</code></pre>
+<p>执行案例</p>
+<hr>
+<h2 id="Spark-on-Yarn"><a href="#Spark-on-Yarn" class="headerlink" title="Spark on Yarn"></a>Spark on Yarn</h2><p><strong>解压文件</strong></p>
 <pre><code>tar -zxvf /opt/software/spark -C /opt/module/
 </code></pre>
 <hr>
@@ -141,7 +177,7 @@ slave2
 &lt;/configuration&gt;
 </code></pre>
 <hr>
-<h3 id="分发节点与启动集群"><a href="#分发节点与启动集群" class="headerlink" title="@分发节点与启动集群"></a>@分发节点与启动集群</h3><h4 id="分发节点"><a href="#分发节点" class="headerlink" title="#分发节点"></a>#分发节点</h4><pre><code>scp -r /opt/module/spark slave1:/opt/module
+<h2 id="启动与使用"><a href="#启动与使用" class="headerlink" title="启动与使用"></a>启动与使用</h2><h3 id="分发节点与启动集群"><a href="#分发节点与启动集群" class="headerlink" title="@分发节点与启动集群"></a>@分发节点与启动集群</h3><h4 id="分发节点"><a href="#分发节点" class="headerlink" title="#分发节点"></a>#分发节点</h4><pre><code>scp -r /opt/module/spark slave1:/opt/module
 scp -r /opt/module/spark slave2:/opt/module
 </code></pre>
 <pre><code>scp -r /etc/profile slave1:/etc/
