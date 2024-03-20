@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Zookeeper集群搭建解压文件#tar -zxvf zookeeper-3.4.5.tar.gz -C &#x2F;usr&#x2F;local&#x2F;src&#x2F; 解压文件到	&#x2F;usr&#x2F;local&#x2F;src&#x2F;	目录下 修改名字#mv zookeeper-3.4.5.tar.gz zookeepper 修改名字，方便后期配置 配置环境变量#vi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zookeeper搭建">
+<meta property="og:url" content="http://example.com/2024/03/20/zookeeper-build/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Zookeeper集群搭建解压文件#tar -zxvf zookeeper-3.4.5.tar.gz -C &#x2F;usr&#x2F;local&#x2F;src&#x2F; 解压文件到	&#x2F;usr&#x2F;local&#x2F;src&#x2F;	目录下 修改名字#mv zookeeper-3.4.5.tar.gz zookeepper 修改名字，方便后期配置 配置环境变量#vi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-03-20T09:59:43.272Z">
+<meta property="article:modified_time" content="2024-03-20T10:00:40.396Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+
+<title >Zookeeper搭建</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Have fun & Good luck"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"gusu32x32.png","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"谷素Home","hideText":"加载中......"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 18:00:40"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/gusu32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            Hawk<span>Eagle</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/books/" target="">
+                            
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            This is my notebook😁
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Zookeeper搭建
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/138x138%E7%94%BB%E5%83%8F.png">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        谷素
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:2294446012@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            17:59
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="Zookeeper集群搭建"><a href="#Zookeeper集群搭建" class="headerlink" title="Zookeeper集群搭建"></a>Zookeeper集群搭建</h2><h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><p><strong>#tar -zxvf zookeeper-3.4.5.tar.gz -C &#x2F;usr&#x2F;local&#x2F;src&#x2F;</strong></p>
+<p>解压文件到	&#x2F;usr&#x2F;local&#x2F;src&#x2F;	目录下</p>
+<h4 id="修改名字"><a href="#修改名字" class="headerlink" title="修改名字"></a>修改名字</h4><p><strong>#mv zookeeper-3.4.5.tar.gz zookeepper</strong></p>
+<p>修改名字，方便后期配置</p>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p><strong>#vi &#x2F;etc&#x2F;profile</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#zookeeper ENV</span></span><br><span class="line"><span class="built_in">export</span> ZOOKEEPER_HOME=/usr/local/src/zookeeper</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ZOOKEEPER_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<p><strong>#sourc &#x2F;etc&#x2F;profile</strong></p>
+<p>使文件生效</p>
+<h4 id="集群配置"><a href="#集群配置" class="headerlink" title="集群配置"></a>集群配置</h4><h5 id="新建data文件"><a href="#新建data文件" class="headerlink" title="@新建data文件"></a>@新建data文件</h5><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper</strong></p>
+<p>进入zookeeper文件夹</p>
+<p><strong>#mdkir data</strong></p>
+<p>新建data文件夹</p>
+<h5 id="zoo-cfg"><a href="#zoo-cfg" class="headerlink" title="@zoo.cfg"></a>@zoo.cfg</h5><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper&#x2F;conf</strong></p>
+<p>进入zookeeper下的conf文件夹</p>
+<p><strong>#cp zoo_sample.cfg zoo.cfg</strong></p>
+<p>复制样本文件进行修改</p>
+<p>修改内容如下，注意专注一下五个参数，其中dataDir中的地址为前一步中在zookeeper下建立的</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tickTime</span>=<span class="number">2000</span></span><br><span class="line"><span class="attr">initLimit</span>=<span class="number">10</span></span><br><span class="line"><span class="attr">syncLimit</span>=<span class="number">5</span></span><br><span class="line"><span class="attr">dataDir</span>=/usr/local/src/zookeeper/data</span><br><span class="line"><span class="attr">clientPort</span>=<span class="number">2181</span></span><br><span class="line"><span class="attr">server.1</span>=master:<span class="number">2888</span>:<span class="number">3888</span></span><br><span class="line"><span class="attr">server.2</span>=slave1:<span class="number">2888</span>:<span class="number">3888</span></span><br><span class="line"><span class="attr">server.3</span>=slave2:<span class="number">2888</span>:<span class="number">3888</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tickTime</td>
+<td>tick翻译成中文的话就是滴答滴答的意思，连起来就是滴答滴答的时间，寓意心跳间隔，单位是毫秒，系统默认是2000毫秒，也就是间隔两秒心跳一次。客户端与服务器或者服务器与服务器之间维持心跳，也就是每个tickTime时间就会发送一次心跳。通过心跳不仅能够用来监听机器的工作状态，还可以通过心跳来控制Flower跟Leader的通信时间，默认情况下FL的会话时常是心跳间隔的两倍。</td>
+</tr>
+<tr>
+<td>initLimit</td>
+<td>集群中的follower服务器(F)与leader服务器(L)之间初始连接时能容忍的最多心跳数（tickTime的数量）。</td>
+</tr>
+<tr>
+<td>syncLimit</td>
+<td>集群中flower服务器（F）跟leader（L）服务器之间的请求和答应最多能容忍的心跳数。</td>
+</tr>
+<tr>
+<td>dataDir</td>
+<td>该属性对应的目录是用来存放myid信息跟一些版本，日志，跟服务器唯一的ID信息等。</td>
+</tr>
+<tr>
+<td>clientPort</td>
+<td>客户端连接的接口，客户端连接zookeeper服务器的端口，zookeeper会监听这个端口，接收客户端的请求访问！这个端口默认是2181。</td>
+</tr>
+</tbody></table>
+<h5 id="写入节点信息"><a href="#写入节点信息" class="headerlink" title="@写入节点信息"></a>@写入节点信息</h5><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper&#x2F;data</strong></p>
+<p>进入新建的data文件夹中</p>
+<p>（当然这一步最好先复制后再进行，以免在分节点中没有节点信息）</p>
+<p>使用echo语句把节点信息1、2、3分别写入三个节点的data目录中</p>
+<ul>
+<li><p>在master节点中</p>
+<p><strong>#echo 1 &gt; myid</strong></p>
+</li>
+<li><p>在slave1节点中</p>
+<p><strong>#echo 2 &gt; myid</strong></p>
+</li>
+<li><p>在slave2节点中</p>
+<p><strong>#echo 3 &gt; myid</strong></p>
+</li>
+</ul>
+<h4 id="拷贝环境"><a href="#拷贝环境" class="headerlink" title="拷贝环境"></a>拷贝环境</h4><p><strong>#scp -r &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper slave1:&#x2F;usr&#x2F;local&#x2F;src&#x2F;</strong></p>
+<p><strong>#scp -r &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper slave2:&#x2F;usr&#x2F;local&#x2F;src&#x2F;</strong></p>
+<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h4><p><strong>#cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;zookeeper&#x2F;bin</strong></p>
+<p>进入到zookeeper的bin目录下</p>
+<p><strong>#.&#x2F;zkServer.sh start</strong></p>
+<p>启动zookeeper</p>
+<p><strong>#.&#x2F;zkServer.sh status</strong></p>
+<p>查看zookeeper状态</p>
+<p><strong>#.&#x2F;zkCli.sh</strong></p>
+<p>启动Cli，连接到zookeeper服务器</p>
+<p><strong>#.&#x2F;zkServer.sh stop</strong></p>
+<p>停止zookeeper服务器</p>
+<h3 id="3-1-关于zookeeper的报错信息"><a href="#3-1-关于zookeeper的报错信息" class="headerlink" title="3.1 关于zookeeper的报错信息"></a>3.1 关于zookeeper的报错信息</h3><h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><p>关于zookeeper的配置，由于没有过多的配置因素，在检查报错信息时，只能通过排查日志文件来进行报错的修改，目前出现的问题一是zookeeper无法启动，在输入**#.&#x2F;zkServer.sh start**后，启动失败，此问题现象：</p>
+<ol>
+<li>启动zk失败，但是在启动**#.&#x2F;zkServer.sh start**时，不会报错，正常显示。</li>
+<li>jps查询时，正常显示**#QuorumPeerMain**</li>
+<li><strong>#.&#x2F;zkServer.sh status</strong>查询时，显示报错，报错信息如下：</li>
+</ol>
+<p><img src="/2024/03/20/zookeeper-build/bd1.png" alt="bd1" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ol>
+<li><strong>#.&#x2F;zkServer.sh stop</strong>关闭集群时，主节点无法关闭的报错</li>
+</ol>
+<p><strong>解决办法：</strong></p>
+<p>在zoo.cfg文件中，原本版本中，查询到的是zoo.cfg文件中无法识别ip地址，故写法为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.1=master:2888:3888</span><br><span class="line">server.2=slave1:2888:3888</span><br><span class="line">server.3=slave2:2888:3888</span><br></pre></td></tr></table></figure>
+
+<p>查询日志发现，报错信息为：</p>
+<p><img src="/2024/03/20/zookeeper-build/bd2.png" alt="bd2" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>显示address already in use，那就考虑是否ip名无法识别，需要使用ip地址</p>
+<p>故进行修改zoo.cfg中ip名为ip地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.1=192.168.100.3:2888:3888</span><br><span class="line">server.2=192.168.100.4:2888:3888</span><br><span class="line">server.3=192.168.100.2:2888:3888</span><br></pre></td></tr></table></figure>
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/spark-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Spark/">
+                    Spark
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/spark-build/" class="trm-anima-link">
+                    Spark搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:12</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/hadoop-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Zookeeper/">
+                    Zookeeper
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/hadoop-build/" class="trm-anima-link">
+                    Hadoop搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>17:57</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Zookeeper集群搭建"><a rel="nofollow" class="trm-toc-link" href="#Zookeeper集群搭建"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Zookeeper集群搭建</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="解压文件"><a rel="nofollow" class="trm-toc-link" href="#解压文件"><span class="trm-toc-number">1.0.1.</span> <span class="trm-toc-text">解压文件</span></a></li><li class="trm-toc-item trm-toc-level-4" title="修改名字"><a rel="nofollow" class="trm-toc-link" href="#修改名字"><span class="trm-toc-number">1.0.2.</span> <span class="trm-toc-text">修改名字</span></a></li><li class="trm-toc-item trm-toc-level-4" title="配置环境变量"><a rel="nofollow" class="trm-toc-link" href="#配置环境变量"><span class="trm-toc-number">1.0.3.</span> <span class="trm-toc-text">配置环境变量</span></a></li><li class="trm-toc-item trm-toc-level-4" title="集群配置"><a rel="nofollow" class="trm-toc-link" href="#集群配置"><span class="trm-toc-number">1.0.4.</span> <span class="trm-toc-text">集群配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="@新建data文件"><a rel="nofollow" class="trm-toc-link" href="#新建data文件"><span class="trm-toc-number">1.0.4.1.</span> <span class="trm-toc-text">@新建data文件</span></a></li><li class="trm-toc-item trm-toc-level-5" title="@zoo.cfg"><a rel="nofollow" class="trm-toc-link" href="#zoo-cfg"><span class="trm-toc-number">1.0.4.2.</span> <span class="trm-toc-text">@zoo.cfg</span></a></li><li class="trm-toc-item trm-toc-level-5" title="@写入节点信息"><a rel="nofollow" class="trm-toc-link" href="#写入节点信息"><span class="trm-toc-number">1.0.4.3.</span> <span class="trm-toc-text">@写入节点信息</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-4" title="拷贝环境"><a rel="nofollow" class="trm-toc-link" href="#拷贝环境"><span class="trm-toc-number">1.0.5.</span> <span class="trm-toc-text">拷贝环境</span></a></li><li class="trm-toc-item trm-toc-level-4" title="启动集群"><a rel="nofollow" class="trm-toc-link" href="#启动集群"><span class="trm-toc-number">1.0.6.</span> <span class="trm-toc-text">启动集群</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="3.1 关于zookeeper的报错信息"><a rel="nofollow" class="trm-toc-link" href="#3-1-关于zookeeper的报错信息"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">3.1 关于zookeeper的报错信息</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="问题一"><a rel="nofollow" class="trm-toc-link" href="#问题一"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">问题一</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>

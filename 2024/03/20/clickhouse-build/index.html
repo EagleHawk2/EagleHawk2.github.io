@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="ClickHouse搭建Clickhouse搭建简述clickhouse在进行搭建时，是使用clickhouse脚本进行搭建，所以解压clickhouse文件后直接运行文件的脚本即可 操作步骤解压文件1234tar -zxvf &#x2F;opt&#x2F;software&#x2F;clickhouse-common-static-dbg-21.9.4.3&#x2F; -C &#x2F;opt&#x2F;module&#x2F;tar -zxvf &#x2F;opt&#x2F;sof">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clickhouse搭建">
+<meta property="og:url" content="http://example.com/2024/03/20/clickhouse-build/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ClickHouse搭建Clickhouse搭建简述clickhouse在进行搭建时，是使用clickhouse脚本进行搭建，所以解压clickhouse文件后直接运行文件的脚本即可 操作步骤解压文件1234tar -zxvf &#x2F;opt&#x2F;software&#x2F;clickhouse-common-static-dbg-21.9.4.3&#x2F; -C &#x2F;opt&#x2F;module&#x2F;tar -zxvf &#x2F;opt&#x2F;sof">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-03-20T10:19:15.410Z">
+<meta property="article:modified_time" content="2024-03-20T10:19:38.509Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+
+<title >Clickhouse搭建</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Have fun & Good luck"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"gusu32x32.png","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"谷素Home","hideText":"加载中......"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 18:19:38"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/gusu32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            Hawk<span>Eagle</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/books/" target="">
+                            
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            This is my notebook😁
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Clickhouse搭建
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/138x138%E7%94%BB%E5%83%8F.png">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        谷素
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:2294446012@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            18:19
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="ClickHouse搭建"><a href="#ClickHouse搭建" class="headerlink" title="ClickHouse搭建"></a>ClickHouse搭建</h1><h3 id="Clickhouse搭建简述"><a href="#Clickhouse搭建简述" class="headerlink" title="Clickhouse搭建简述"></a>Clickhouse搭建简述</h3><p>clickhouse在进行搭建时，是使用clickhouse脚本进行搭建，所以解压clickhouse文件后直接运行文件的脚本即可</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/clickhouse-common-static-dbg-21.9.4.3/ -C /opt/module/</span><br><span class="line">tar -zxvf /opt/software/clickhouse-common-static-21.9.4.35.tgz -C /opt/module/</span><br><span class="line">tar -zxvf /opt/software/clickhouse-server-21.9.4.35.tgz -C /opt/module/</span><br><span class="line">tar -zxvf /opt/software/clickhouse-client-21.9.4.35.tgz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<p>clickhouse有以上四个文件需要解压，解压无顺序要求</p>
+<h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./clickhouse-common-static-dbg-21.9.4.3//install/doinst.sh </span><br><span class="line">./clickhouse-common-static-21.9.4.35/install/doinst.sh </span><br><span class="line">./clickhouse-client-21.9.4.35/install/doinst.sh</span><br><span class="line">./clickhouse-server-21.9.4.35/install/doinst.sh </span><br></pre></td></tr></table></figure>
+
+<p>四个脚本文件严格意义上来说没有顺序，一般来说是先执行两个<code>common</code>文件，其次是<code>client</code>客户端文件，最后是<code>server</code>服务文件。</p>
+<p>这样的顺序主要是方便截图。</p>
+<p><code>common</code>与<code>client</code>文件执行后没有结果显示，<code>server</code>文件执行后有结果显示，所以最后使用<code>server</code>文件</p>
+<h4 id="启动Clickhouse"><a href="#启动Clickhouse" class="headerlink" title="启动Clickhouse"></a>启动Clickhouse</h4><p>启动</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">start</span> clickhouse<span class="operator">-</span>server</span><br></pre></td></tr></table></figure>
+
+<p>重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart clickhouse-server</span><br></pre></td></tr></table></figure>
+
+<p>查询状态</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">status</span> clickhouse-server</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运行状态：</p>
+<p><img src="/2024/03/20/clickhouse-build/bd1.png" alt="bd1" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>关闭状态：</p>
+<p><img src="/2024/03/20/clickhouse-build/bd2.png" alt="bd2" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+</blockquote>
+<p>关闭</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">stop</span> clickhouse-server</span><br></pre></td></tr></table></figure>
+
+<h4 id="登录Clickhouse"><a href="#登录Clickhouse" class="headerlink" title="登录Clickhouse"></a>登录Clickhouse</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clickhouse-client <span class="attr">--port</span> <span class="number">9000</span> <span class="attr">--host</span> master <span class="attr">--password</span> <span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
+<p>clickhouse的默认端口号为9000，但是hadoop3.x版本中的hadoop默认端口也是9000，所以会出现端口占用的情况，所以我们需要更改clickhouse的默认端口号以此来保证端口不会出现重复占用的情况。</p>
+<h4 id="更改Clickhouse端口号"><a href="#更改Clickhouse端口号" class="headerlink" title="更改Clickhouse端口号"></a>更改Clickhouse端口号</h4><p>搜索<code>test_shard_localhost</code>，其中有8个端口为9000的文件需要修改为9001；</p>
+<p>注意9440端口文件，即<code>test_shard_localhost_secure</code>不需要进行修改；</p>
+<ul>
+<li>以下是修改文件：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">&gt;  590     <span class="tag">&lt;<span class="name">remote_servers</span>&gt;</span></span><br><span class="line">&gt;  591         <span class="comment">&lt;!-- Test only shard config for testing distributed storage --&gt;</span></span><br><span class="line">&gt;  592         <span class="tag">&lt;<span class="name">test_shard_localhost</span>&gt;</span></span><br><span class="line">&gt;  593             <span class="comment">&lt;!-- Inter-server per-cluster secret for Distributed queries</span></span><br><span class="line"><span class="comment">&gt;  594                  default: no secret (no authentication will be performed)</span></span><br><span class="line"><span class="comment">&gt;  595 </span></span><br><span class="line"><span class="comment">&gt;  596                  If set, then Distributed queries will be validated on shards, so at least:</span></span><br><span class="line"><span class="comment">&gt;  597                  - such cluster should exist on the shard,</span></span><br><span class="line"><span class="comment">&gt;  598                  - such cluster should have the same secret.</span></span><br><span class="line"><span class="comment">&gt;  599 </span></span><br><span class="line"><span class="comment">&gt;  600                  And also (and which is more important), the initial_user will</span></span><br><span class="line"><span class="comment">&gt;  601                  be used as current user for the query.</span></span><br><span class="line"><span class="comment">&gt;  602 </span></span><br><span class="line"><span class="comment">&gt;  603                  Right now the protocol is pretty simple and it only takes into account:</span></span><br><span class="line"><span class="comment">&gt;  604                  - cluster name</span></span><br><span class="line"><span class="comment">&gt;  605                  - query</span></span><br><span class="line"><span class="comment">&gt;  606 </span></span><br><span class="line"><span class="comment">&gt;  607                  Also it will be nice if the following will be implemented:</span></span><br><span class="line"><span class="comment">&gt;  608                  - source hostname (see interserver_http_host), but then it will depends from DNS,</span></span><br><span class="line"><span class="comment">&gt;  609                    it can use IP address instead, but then the you need to get correct on the initiator node.</span></span><br><span class="line"><span class="comment">&gt;  610                  - target hostname / ip address (same notes as for source hostname)</span></span><br><span class="line"><span class="comment">&gt;  611                  - time-based security tokens</span></span><br><span class="line"><span class="comment">&gt;  612             --&gt;</span></span><br><span class="line">&gt;  613             <span class="comment">&lt;!-- &lt;secret&gt;&lt;/secret&gt; --&gt;</span></span><br><span class="line">&gt;  614 </span><br><span class="line">&gt;  615             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  616                 <span class="comment">&lt;!-- Optional. Whether to write data to just one of the replicas. Default: false (write data to all replicas). --&gt;</span></span><br><span class="line">&gt;  617                 <span class="comment">&lt;!-- &lt;internal_replication&gt;false&lt;/internal_replication&gt; --&gt;</span></span><br><span class="line">&gt;  618                 <span class="comment">&lt;!-- Optional. Shard weight when writing data. Default: 1. --&gt;</span></span><br><span class="line">&gt;  619                 <span class="comment">&lt;!-- &lt;weight&gt;1&lt;/weight&gt; --&gt;</span></span><br><span class="line">&gt;  620                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  621                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  622                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  623                     <span class="comment">&lt;!-- Optional. Priority of the replica for load_balancing. Default: 1 (less value has more priority). --&gt;</span></span><br><span class="line">&gt;  624                     <span class="comment">&lt;!-- &lt;priority&gt;1&lt;/priority&gt; --&gt;</span></span><br><span class="line">&gt;  625                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  626             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  627         <span class="tag">&lt;/<span class="name">test_shard_localhost</span>&gt;</span></span><br><span class="line">&gt;  628         <span class="tag">&lt;<span class="name">test_cluster_two_shards_localhost</span>&gt;</span></span><br><span class="line">&gt;  629              <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  630                  <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  631                      <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  632                      <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  633                  <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  634              <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  635              <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  636                  <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  637                      <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  638                      <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  639                  <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  640              <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  641         <span class="tag">&lt;/<span class="name">test_cluster_two_shards_localhost</span>&gt;</span></span><br><span class="line">&gt;  642         <span class="tag">&lt;<span class="name">test_cluster_two_shards</span>&gt;</span></span><br><span class="line">&gt;  643             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  644                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  645                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.1<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  646                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  647                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  648             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  649             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  650                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  651                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.2<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  652                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  653                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  654             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  655         <span class="tag">&lt;/<span class="name">test_cluster_two_shards</span>&gt;</span></span><br><span class="line">&gt;  656         <span class="tag">&lt;<span class="name">test_cluster_two_shards_internal_replication</span>&gt;</span></span><br><span class="line">&gt;  657             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  658                 <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">&gt;  659                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  660                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.1<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  661                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  662                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  663             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  664             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  665                 <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">&gt;  666                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  667                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.2<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  668                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  669                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  670             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  671         <span class="tag">&lt;/<span class="name">test_cluster_two_shards_internal_replication</span>&gt;</span></span><br><span class="line">&gt;  672         <span class="tag">&lt;<span class="name">test_shard_localhost_secure</span>&gt;</span></span><br><span class="line">&gt;  673             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  674                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  675                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  676                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9440<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  677                     <span class="tag">&lt;<span class="name">secure</span>&gt;</span>1<span class="tag">&lt;/<span class="name">secure</span>&gt;</span></span><br><span class="line">&gt;  678                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  679             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  680         <span class="tag">&lt;/<span class="name">test_shard_localhost_secure</span>&gt;</span></span><br><span class="line">&gt;  681         <span class="tag">&lt;<span class="name">test_unavailable_shard</span>&gt;</span></span><br><span class="line">&gt;  682             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  683                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  684                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  685                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  686                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  687             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  688             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  689                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  690                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  691                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>1<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  692                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  693             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  694         <span class="tag">&lt;/<span class="name">test_unavailable_shard</span>&gt;</span></span><br><span class="line">&gt;  695     <span class="tag">&lt;/<span class="name">remote_servers</span>&gt;</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>需要注意的是，从网上搜索的修改<code>clickhouse</code>端口号是（82行，查找<code>&lt;tcp_port&gt;</code>即可找到）：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;  82     <span class="tag">&lt;<span class="name">tcp_port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">tcp_port</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除监听文件"><a href="#删除监听文件" class="headerlink" title="删除监听文件"></a>删除监听文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /etc/clickhouse-server/config.d/listen.xml</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>监听文件listen.xml</li>
+</ul>
+<p>在执行<code>./clickhouse-server-21.9.4.35/install/doinst.sh </code>时，会需要输入clickhouse的登陆密码，如果此时不输入密码，就不会出现监听文件。</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/flink-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Flink/">
+                    Flink
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/flink-build/" class="trm-anima-link">
+                    Flink搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:18</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="ClickHouse搭建"><a rel="nofollow" class="trm-toc-link" href="#ClickHouse搭建"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">ClickHouse搭建</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Clickhouse搭建简述"><a rel="nofollow" class="trm-toc-link" href="#Clickhouse搭建简述"><span class="trm-toc-number">1.0.1.</span> <span class="trm-toc-text">Clickhouse搭建简述</span></a></li><li class="trm-toc-item trm-toc-level-3" title="操作步骤"><a rel="nofollow" class="trm-toc-link" href="#操作步骤"><span class="trm-toc-number">1.0.2.</span> <span class="trm-toc-text">操作步骤</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="解压文件"><a rel="nofollow" class="trm-toc-link" href="#解压文件"><span class="trm-toc-number">1.0.2.1.</span> <span class="trm-toc-text">解压文件</span></a></li><li class="trm-toc-item trm-toc-level-4" title="执行脚本"><a rel="nofollow" class="trm-toc-link" href="#执行脚本"><span class="trm-toc-number">1.0.2.2.</span> <span class="trm-toc-text">执行脚本</span></a></li><li class="trm-toc-item trm-toc-level-4" title="启动Clickhouse"><a rel="nofollow" class="trm-toc-link" href="#启动Clickhouse"><span class="trm-toc-number">1.0.2.3.</span> <span class="trm-toc-text">启动Clickhouse</span></a></li><li class="trm-toc-item trm-toc-level-4" title="登录Clickhouse"><a rel="nofollow" class="trm-toc-link" href="#登录Clickhouse"><span class="trm-toc-number">1.0.2.4.</span> <span class="trm-toc-text">登录Clickhouse</span></a></li><li class="trm-toc-item trm-toc-level-4" title="更改Clickhouse端口号"><a rel="nofollow" class="trm-toc-link" href="#更改Clickhouse端口号"><span class="trm-toc-number">1.0.2.5.</span> <span class="trm-toc-text">更改Clickhouse端口号</span></a></li><li class="trm-toc-item trm-toc-level-4" title="删除监听文件"><a rel="nofollow" class="trm-toc-link" href="#删除监听文件"><span class="trm-toc-number">1.0.2.6.</span> <span class="trm-toc-text">删除监听文件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="注意事项"><a rel="nofollow" class="trm-toc-link" href="#注意事项"><span class="trm-toc-number">1.0.3.</span> <span class="trm-toc-text">注意事项</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>

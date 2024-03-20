@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Hive配置MySQL配置mysql的配置比较复杂和麻烦，建议单独配置好了再进行下一步（虚拟机配置mysql成功后记得多拷贝几份！！！） Hive配置解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;apache-hive -C &#x2F;opt&#x2F;module   @配置环境1234vi &#x2F;etc&#x2F;profileexport HIVE_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-hiveex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive搭建">
+<meta property="og:url" content="http://example.com/2024/03/20/hive-build/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hive配置MySQL配置mysql的配置比较复杂和麻烦，建议单独配置好了再进行下一步（虚拟机配置mysql成功后记得多拷贝几份！！！） Hive配置解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;apache-hive -C &#x2F;opt&#x2F;module   @配置环境1234vi &#x2F;etc&#x2F;profileexport HIVE_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-hiveex">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-20T10:16:15.969Z">
+<meta property="article:modified_time" content="2024-03-20T10:16:39.402Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<title >Hive搭建</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Have fun & Good luck"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"gusu32x32.png","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"谷素Home","hideText":"加载中......"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 18:16:39"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/gusu32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            Hawk<span>Eagle</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/books/" target="">
+                            
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            This is my notebook😁
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Hive搭建
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/138x138%E7%94%BB%E5%83%8F.png">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        谷素
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:2294446012@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            18:16
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="Hive配置"><a href="#Hive配置" class="headerlink" title="Hive配置"></a>Hive配置</h2><h3 id="MySQL配置"><a href="#MySQL配置" class="headerlink" title="MySQL配置"></a>MySQL配置</h3><p>mysql的配置比较复杂和麻烦，建议单独配置好了再进行下一步（虚拟机配置mysql成功后记得多拷贝几份！！！）</p>
+<h3 id="Hive配置-1"><a href="#Hive配置-1" class="headerlink" title="Hive配置"></a>Hive配置</h3><p><strong>解压文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/apache-hive -C /opt/module</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置环境"><a href="#配置环境" class="headerlink" title="@配置环境"></a>@配置环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"><span class="built_in">export</span> HIVE_HOME=/opt/module/apache-hive</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HIVE_HOME</span>/bin</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="@配置文件"></a>@配置文件</h4><h5 id="hive-site-xml"><a href="#hive-site-xml" class="headerlink" title="#hive-site.xml"></a>#hive-site.xml</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/apache-hive/conf/hive-site.xml</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;jdbc:mysql://localhost/hive?createDatabaseIfNotExist=<span class="literal">true</span>&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;root&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;123456&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>hive-site.xml配置文件可以由hive-default.xml.tamplate模板文件复制而来，也可以直接使用 <code>vi</code>来进行书写创建。基础的hive配置只需要完成上述四条的配置即可。</p>
+<p>ConnectionURL，mysql数据库的访问路径，没有路径则总动创建；</p>
+<p>ConnectionDriverName，连接mysql数据库的驱动；</p>
+<p>ConnectionUserName，连接mysql数据库的用户名；</p>
+<p>ConnectionPassword，连接mysql数据库的秘密。</p>
+<hr>
+<h5 id="hive-env-sh"><a href="#hive-env-sh" class="headerlink" title="#hive-env.sh"></a>#hive-env.sh</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/apache-hive/conf/hive-env.sh</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span></span><br><span class="line"><span class="built_in">export</span> HIVE_HOME=<span class="variable">$&#123;HIVE_HOME&#125;</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=<span class="variable">$&#123;HADOOP_HOME&#125;</span></span><br><span class="line"><span class="built_in">export</span> HIVE_CONF_DIR=<span class="variable">$&#123;HIVE_HOME&#125;</span>/conf</span><br></pre></td></tr></table></figure>
+
+<p>这里需要配置 <code>jdk</code>、<code>hadoop</code>、<code>hive</code>、<code>hive/conf</code>四条路径信息</p>
+<hr>
+<h4 id="架包"><a href="#架包" class="headerlink" title="@架包"></a>@架包</h4><h5 id="mysql-connect-jar-gz"><a href="#mysql-connect-jar-gz" class="headerlink" title="#mysql-connect.jar.gz"></a>#mysql-connect.jar.gz</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /opt/software/mysql-connection.jar.gz /opt/module/apache-hive/lib</span><br></pre></td></tr></table></figure>
+
+<p>mysql的连接架包，在老版本中，给出的mysql架包是一个压缩包，其中有两个架包需要移动；</p>
+<p>而在新版本中，只需要移动这一个架包即可。</p>
+<hr>
+<h5 id="guava-jar"><a href="#guava-jar" class="headerlink" title="#guava.jar"></a>#guava.jar</h5><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /opt/<span class="keyword">module</span>/hadoop/share/hadoop/common/<span class="keyword">lib</span>/guava2.<span class="number">7</span>.jar /opt/<span class="keyword">module</span>/apache-hive/<span class="keyword">lib</span></span><br></pre></td></tr></table></figure>
+
+<p>guava.jar是hadoop3.1.3新版本中的问题，是apache项目中对应的版本无法和hadoop版本对应导致的问题，所以当前版本报错，需要把hadoop下的2.x版本的架包移动到对应项目的lib文件夹下，并且删除以前的旧版本，即可完成。</p>
+<p><strong>删除guava1.x.jar</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /opt/module/apache-hive/lib/guava.1.x.jar</span><br></pre></td></tr></table></figure>
+
+<p>删除老版本架包再运行。</p>
+<hr>
+<h4 id="初始化与启动"><a href="#初始化与启动" class="headerlink" title="@初始化与启动"></a>@初始化与启动</h4><h5 id="初始化"><a href="#初始化" class="headerlink" title="#初始化"></a>#初始化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schematool -dbType mysql -initSchema</span><br></pre></td></tr></table></figure>
+
+<p>这个版本的hive初始化时，会出现大片空白，经过咨询，是正常情况。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schematool -dbType mysql -initSchema <span class="attr">--verbose</span></span><br></pre></td></tr></table></figure>
+
+<p>补充，使用以上指令时候，即加上<code>--verbose</code>则正常显示，不会出现空白bug。</p>
+<hr>
+<h5 id="启动"><a href="#启动" class="headerlink" title="#启动"></a>#启动</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive <span class="attr">--service</span> metaservice &amp;</span><br></pre></td></tr></table></figure>
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/hbase-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Hbase/">
+                    Hbase
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/hbase-build/" class="trm-anima-link">
+                    Hbase搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:16</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/hudi-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Hudi/">
+                    Hudi
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/hudi-build/" class="trm-anima-link">
+                    Hudi搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:14</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Hive配置"><a rel="nofollow" class="trm-toc-link" href="#Hive配置"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Hive配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="MySQL配置"><a rel="nofollow" class="trm-toc-link" href="#MySQL配置"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">MySQL配置</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Hive配置"><a rel="nofollow" class="trm-toc-link" href="#Hive配置-1"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">Hive配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="@配置环境"><a rel="nofollow" class="trm-toc-link" href="#配置环境"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">@配置环境</span></a></li><li class="trm-toc-item trm-toc-level-4" title="@配置文件"><a rel="nofollow" class="trm-toc-link" href="#配置文件"><span class="trm-toc-number">1.2.2.</span> <span class="trm-toc-text">@配置文件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="#hive-site.xml"><a rel="nofollow" class="trm-toc-link" href="#hive-site-xml"><span class="trm-toc-number">1.2.2.1.</span> <span class="trm-toc-text">#hive-site.xml</span></a></li><li class="trm-toc-item trm-toc-level-5" title="#hive-env.sh"><a rel="nofollow" class="trm-toc-link" href="#hive-env-sh"><span class="trm-toc-number">1.2.2.2.</span> <span class="trm-toc-text">#hive-env.sh</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-4" title="@架包"><a rel="nofollow" class="trm-toc-link" href="#架包"><span class="trm-toc-number">1.2.3.</span> <span class="trm-toc-text">@架包</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="#mysql-connect.jar.gz"><a rel="nofollow" class="trm-toc-link" href="#mysql-connect-jar-gz"><span class="trm-toc-number">1.2.3.1.</span> <span class="trm-toc-text">#mysql-connect.jar.gz</span></a></li><li class="trm-toc-item trm-toc-level-5" title="#guava.jar"><a rel="nofollow" class="trm-toc-link" href="#guava-jar"><span class="trm-toc-number">1.2.3.2.</span> <span class="trm-toc-text">#guava.jar</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-4" title="@初始化与启动"><a rel="nofollow" class="trm-toc-link" href="#初始化与启动"><span class="trm-toc-number">1.2.4.</span> <span class="trm-toc-text">@初始化与启动</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="#初始化"><a rel="nofollow" class="trm-toc-link" href="#初始化"><span class="trm-toc-number">1.2.4.1.</span> <span class="trm-toc-text">#初始化</span></a></li><li class="trm-toc-item trm-toc-level-5" title="#启动"><a rel="nofollow" class="trm-toc-link" href="#启动"><span class="trm-toc-number">1.2.4.2.</span> <span class="trm-toc-text">#启动</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>

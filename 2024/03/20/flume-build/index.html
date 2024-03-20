@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Flume配置解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;apache-flume -C &#x2F;opt&#x2F;module&#x2F;   @配置环境123vi &#x2F;etc&#x2F;profileexport FLUME_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-flumeexport PATH&#x3D;$PATH:$FLUME_HOME&#x2F;bin   @配置文件#flume-env.sh12vi &#x2F;opt&#x2F;mod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flume搭建">
+<meta property="og:url" content="http://example.com/2024/03/20/flume-build/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Flume配置解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;apache-flume -C &#x2F;opt&#x2F;module&#x2F;   @配置环境123vi &#x2F;etc&#x2F;profileexport FLUME_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-flumeexport PATH&#x3D;$PATH:$FLUME_HOME&#x2F;bin   @配置文件#flume-env.sh12vi &#x2F;opt&#x2F;mod">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-20T10:17:29.082Z">
+<meta property="article:modified_time" content="2024-03-20T10:17:50.036Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<title >Flume搭建</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Have fun & Good luck"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"gusu32x32.png","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"谷素Home","hideText":"加载中......"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 18:17:50"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/gusu32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            Hawk<span>Eagle</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/books/" target="">
+                            
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            This is my notebook😁
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Flume搭建
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/138x138%E7%94%BB%E5%83%8F.png">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        谷素
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:2294446012@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            18:17
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="Flume配置"><a href="#Flume配置" class="headerlink" title="Flume配置"></a>Flume配置</h2><p><strong>解压文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/apache-flume -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="@配置环境"></a>@配置环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"><span class="built_in">export</span> FLUME_HOME=/opt/module/apache-flume</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$FLUME_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="@配置文件"></a>@配置文件</h3><h4 id="flume-env-sh"><a href="#flume-env-sh" class="headerlink" title="#flume-env.sh"></a>#flume-env.sh</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/flume/conf/flume-env.sh</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/module/jdk</span><br></pre></td></tr></table></figure>
+
+<p>flume-env.sh是temlate模板文件，需要自己进行复制</p>
+<hr>
+<h4 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="#log4j.properties"></a>#log4j.properties</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/flume/conf/log4j.properties</span><br><span class="line">flume.log.dir=/opt/module/flume/logs</span><br><span class="line">flume.log.file=flume.log</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="架包"><a href="#架包" class="headerlink" title="@架包"></a>@架包</h3><h4 id="guava-jar"><a href="#guava-jar" class="headerlink" title="#guava.jar"></a>#guava.jar</h4><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /opt/<span class="keyword">module</span>/hadoop/share/hadoop/common/<span class="keyword">lib</span>/guava2.<span class="number">7</span>.jar /opt/<span class="keyword">module</span>/apache-flume/<span class="keyword">lib</span></span><br></pre></td></tr></table></figure>
+
+<p>和hive一样，guava.jar是hadoop3.1.3新版本中的问题，是apache项目中对应的版本无法和hadoop版本对应导致的问题，所以当前版本报错，需要把hadoop下的2.x版本的架包移动到对应项目的lib文件夹下，并且删除以前的旧版本，即可完成。</p>
+<p><strong>删除guava1.x.jar</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /opt/module/apache-flume/lib/guava.1.x.jar</span><br></pre></td></tr></table></figure>
+
+<p>删除老版本架包再运行。</p>
+<hr>
+<h3 id="数据采集"><a href="#数据采集" class="headerlink" title="@数据采集"></a>@数据采集</h3><p>flume的数据采集，可以在flume根目录下新建一个文件夹来保存数据采集的文件，创建flume采集文件需要用<code>.conf</code>做后缀名</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="#创建"></a>#创建</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /opt/module/apache-flume/job/a1.conf</span><br><span class="line">vi /opt/module/apache-flume/job/a1.conf</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="文件配置"><a href="#文件配置" class="headerlink" title="#文件配置"></a>#文件配置</h4><h5 id="方法一：exec类型"><a href="#方法一：exec类型" class="headerlink" title="方法一：exec类型"></a>方法一：exec类型</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用s1、k1、c1代表<span class="built_in">source</span>、sink、channel</span></span><br><span class="line">a1.sources = s1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">descirbe/configuration the <span class="built_in">source</span></span></span><br><span class="line">a1.source.s1.type = exec</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">采集数据的位置，题目要求一般是namenode或是datanode，如果使用或，则两个都可</span></span><br><span class="line">a1.source.s1.command = tail -F /opt/module/hadoop/logs/hadoop-root-namenode-master.log</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">describe the sink</span></span><br><span class="line">a1.sinks.k1.type = hdfs</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">采集后存储的位置</span></span><br><span class="line">a1.sinks.k1.hdfs.path = hdfs://master:9000/flume1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">use a channel <span class="built_in">which</span> buffers events <span class="keyword">in</span> memory</span></span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="built_in">bind</span> the <span class="built_in">source</span> and sink to the channel</span></span><br><span class="line">a1.sources.s1.channels = c1</span><br><span class="line">a1.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法二：TAILDIR类型"><a href="#方法二：TAILDIR类型" class="headerlink" title="方法二：TAILDIR类型"></a>方法二：TAILDIR类型</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">q1.sources</span> = s1</span><br><span class="line"><span class="attr">q1.sinks</span> = k1</span><br><span class="line"><span class="attr">q1.channels</span> = c1</span><br><span class="line"> </span><br><span class="line"><span class="attr">q1.sources.s1.type</span> = TAILDIR</span><br><span class="line"><span class="attr">q1.sources.s1.filegroups</span> = f1</span><br><span class="line"><span class="attr">q1.sources.s1.filegroups.f1</span> = /opt/module/hadoop/logs/.*log</span><br><span class="line"> </span><br><span class="line"><span class="attr">q1.sinks.k1.type</span> = hdfs</span><br><span class="line"><span class="attr">q1.sinks.k1.hdfs.path</span> = hdfs://master:<span class="number">9000</span>/flume2</span><br><span class="line"> </span><br><span class="line"><span class="attr">q1.channels.c1.type</span> = memory</span><br><span class="line"><span class="attr">q1.channels.c1.capacity</span> = <span class="number">1000</span></span><br><span class="line"><span class="attr">q1.channels.c1.transactionCapacity</span> = <span class="number">100</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">q1.sources.s1.channels</span> = c1</span><br><span class="line"><span class="attr">q1.sinks.k1.channel</span> = c1</span><br></pre></td></tr></table></figure>
+
+<p>根据测试，<code>sinks.path</code>后面的地址要和<code>core-site.xml</code>文件中的地址一样，后面的文件名自定义即可</p>
+<p>根据测试，根目录下不创建表也可以进行数据采集。</p>
+<hr>
+<h4 id="启动采集"><a href="#启动采集" class="headerlink" title="#启动采集"></a>#启动采集</h4><p><strong>首先启动hdfs和yarn</strong></p>
+<p><strong>启动采集文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/flume-ng agent --conf conf/ --name a1 --conf-file job/netcat-flume-logger.conf -Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
+
+<p>-Dflume.root.logger&#x3D;INFO,console表示输出采集过程；</p>
+<p>–name后面为agent名字，即配置文件中最前面的<code>a1</code>；</p>
+<p>–conf后面为flume&#x2F;conf的路径地址</p>
+<p>–conf-file后面为项目文件地址</p>
+<hr>
+<h4 id="查看文件"><a href="#查看文件" class="headerlink" title="#查看文件"></a>#查看文件</h4><p><strong>查看采集的数据</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfs -<span class="built_in">ls</span> -R /flume1</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建表文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -<span class="built_in">mkdir</span> -p /flume</span><br></pre></td></tr></table></figure>
+
+<p>根据测试，根目录下不创建表也可以进行数据采集。写在这里以防外一需要。</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/flink-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Flink/">
+                    Flink
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/flink-build/" class="trm-anima-link">
+                    Flink搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:18</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/hbase-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Hbase/">
+                    Hbase
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/hbase-build/" class="trm-anima-link">
+                    Hbase搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:16</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Flume配置"><a rel="nofollow" class="trm-toc-link" href="#Flume配置"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Flume配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="@配置环境"><a rel="nofollow" class="trm-toc-link" href="#配置环境"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">@配置环境</span></a></li><li class="trm-toc-item trm-toc-level-3" title="@配置文件"><a rel="nofollow" class="trm-toc-link" href="#配置文件"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">@配置文件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="#flume-env.sh"><a rel="nofollow" class="trm-toc-link" href="#flume-env-sh"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">#flume-env.sh</span></a></li><li class="trm-toc-item trm-toc-level-4" title="#log4j.properties"><a rel="nofollow" class="trm-toc-link" href="#log4j-properties"><span class="trm-toc-number">1.2.2.</span> <span class="trm-toc-text">#log4j.properties</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="@架包"><a rel="nofollow" class="trm-toc-link" href="#架包"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">@架包</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="#guava.jar"><a rel="nofollow" class="trm-toc-link" href="#guava-jar"><span class="trm-toc-number">1.3.1.</span> <span class="trm-toc-text">#guava.jar</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="@数据采集"><a rel="nofollow" class="trm-toc-link" href="#数据采集"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">@数据采集</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="#创建"><a rel="nofollow" class="trm-toc-link" href="#创建"><span class="trm-toc-number">1.4.1.</span> <span class="trm-toc-text">#创建</span></a></li><li class="trm-toc-item trm-toc-level-4" title="#文件配置"><a rel="nofollow" class="trm-toc-link" href="#文件配置"><span class="trm-toc-number">1.4.2.</span> <span class="trm-toc-text">#文件配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="方法一：exec类型"><a rel="nofollow" class="trm-toc-link" href="#方法一：exec类型"><span class="trm-toc-number">1.4.2.1.</span> <span class="trm-toc-text">方法一：exec类型</span></a></li><li class="trm-toc-item trm-toc-level-5" title="方法二：TAILDIR类型"><a rel="nofollow" class="trm-toc-link" href="#方法二：TAILDIR类型"><span class="trm-toc-number">1.4.2.2.</span> <span class="trm-toc-text">方法二：TAILDIR类型</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-4" title="#启动采集"><a rel="nofollow" class="trm-toc-link" href="#启动采集"><span class="trm-toc-number">1.4.3.</span> <span class="trm-toc-text">#启动采集</span></a></li><li class="trm-toc-item trm-toc-level-4" title="#查看文件"><a rel="nofollow" class="trm-toc-link" href="#查看文件"><span class="trm-toc-number">1.4.4.</span> <span class="trm-toc-text">#查看文件</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>

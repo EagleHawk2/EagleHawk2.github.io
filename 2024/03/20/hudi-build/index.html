@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Hudi搭建Maven 解压文件1tar -zxvf &#x2F;opt&#x2F;software&#x2F;apache-maven-3.6.1-bin.tar.gz -C &#x2F;opt&#x2F;module&#x2F;   配置环境变量1234vi &#x2F;etc&#x2F;profile#mavenexport MAVEN_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-maven-3.6.1-binexport PATH&#x3D;$PATH:$MAVEN_HOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hudi搭建">
+<meta property="og:url" content="http://example.com/2024/03/20/hudi-build/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hudi搭建Maven 解压文件1tar -zxvf &#x2F;opt&#x2F;software&#x2F;apache-maven-3.6.1-bin.tar.gz -C &#x2F;opt&#x2F;module&#x2F;   配置环境变量1234vi &#x2F;etc&#x2F;profile#mavenexport MAVEN_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-maven-3.6.1-binexport PATH&#x3D;$PATH:$MAVEN_HOM">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/404.jpg">
+<meta property="article:published_time" content="2024-03-20T10:14:33.840Z">
+<meta property="article:modified_time" content="2024-03-20T10:15:04.659Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/404.jpg">
+
+
+<title >Hudi搭建</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Have fun & Good luck"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"gusu32x32.png","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"谷素Home","hideText":"加载中......"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 18:15:04"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/gusu32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            Hawk<span>Eagle</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/books/" target="">
+                            
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            This is my notebook😁
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Hudi搭建
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/138x138%E7%94%BB%E5%83%8F.png">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        谷素
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:2294446012@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            18:14
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="Hudi搭建"><a href="#Hudi搭建" class="headerlink" title="Hudi搭建"></a>Hudi搭建</h2><h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><hr>
+<h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/apache-maven-3.6.1-bin.tar.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"><span class="comment">#maven</span></span><br><span class="line"><span class="built_in">export</span> MAVEN_HOME=/opt/module/apache-maven-3.6.1-bin</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="添加阿里镜像"><a href="#添加阿里镜像" class="headerlink" title="添加阿里镜像"></a>添加阿里镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/maven-3.6.1/conf/settings.xml</span><br><span class="line">&lt;mirror&gt;</span><br><span class="line">        &lt;<span class="built_in">id</span>&gt;nexus-aliyun&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;Nexus aliyun&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="修改本地仓库"><a href="#修改本地仓库" class="headerlink" title="修改本地仓库"></a>修改本地仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/maven-3.6.1/conf/settings.xml</span><br><span class="line">&lt;localRepository&gt;/opt/software/RepMaven&lt;/localRepository&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hudi"><a href="#Hudi" class="headerlink" title="Hudi"></a>Hudi</h3><hr>
+<h4 id="解压文件-1"><a href="#解压文件-1" class="headerlink" title="解压文件"></a>解压文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/hudi-0.11.0.src.tgz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="修改POM文件"><a href="#修改POM文件" class="headerlink" title="修改POM文件"></a>修改POM文件</h4><h5 id="修改依赖组件版本"><a href="#修改依赖组件版本" class="headerlink" title="修改依赖组件版本"></a>修改依赖组件版本</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/software/hudi-0.12.0/pom.xml</span><br><span class="line">&lt;hadoop.version&gt;3.1.3&lt;/hadoop.version&gt;</span><br><span class="line">&lt;hive.version&gt;3.1.2&lt;/hive.version&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="修改源码兼容hadoop3-x"><a href="#修改源码兼容hadoop3-x" class="headerlink" title="修改源码兼容hadoop3.x"></a>修改源码兼容hadoop3.x</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/software/hudi-<span class="number">0.12</span>.<span class="number">0</span>/hudi-common/<span class="attribute">src</span>/<span class="selector-tag">main</span>/java/org/apache/hudi/common/<span class="selector-tag">table</span>/log/block/HoodieParquetDataBlock<span class="selector-class">.java</span></span><br><span class="line">try(FSDataOutputStream outputStream) = new FSDataOutputStream(baos)</span><br></pre></td></tr></table></figure>
+
+<p>在括号中加入null，修改后如下</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>(FSDataOutputStream outputStream) = <span class="keyword">new</span> FSDataOutputStream(baos,<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+
+<p>位置在文件110行左右，可以直接搜索<code>baos</code>进行操作</p>
+<h5 id="hudi-spark-bundle"><a href="#hudi-spark-bundle" class="headerlink" title="hudi-spark-bundle"></a>hudi-spark-bundle</h5><p>修改了Hive版本为3.1.2，其携带的jetty是0.9.3，hudi本身用的0.9.4，存在依赖冲突。修改hudi-spark-bundle的pom文件，排除低版本jetty，添加hudi指定版本的jetty。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/software/hudi-0.12.0/packaging/hudi-spark-bundle/pom.xml</span><br><span class="line">&lt;!-- Hive --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-service&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;spark.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">      //hive-service添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;artifactId&gt;guava&lt;/artifactId&gt;</span><br><span class="line">          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.pentaho&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-service-rpc&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;spark.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-jdbc&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;spark.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">      //hive-jdbc添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-metastore&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;spark.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">      //hive-metastore添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;datanucleus-core&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;artifactId&gt;guava&lt;/artifactId&gt;</span><br><span class="line">          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-common&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;spark.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">      //hive-common添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty.orbit&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;javax.servlet&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- 增加hudi配置版本的jetty --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-server&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-util&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-webapp&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-http&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="hudi-utilities-bundle"><a href="#hudi-utilities-bundle" class="headerlink" title="hudi-utilities-bundle"></a>hudi-utilities-bundle</h5><p>修改hudi-utilities-bundle的pom文件，排除低版本jetty，添加hudi指定版本的jetty</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line">vim /opt/software/hudi-0.12.0/packaging/hudi-utilities-bundle/pom.xml</span><br><span class="line">    &lt;!-- Hoodie --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.apache.hudi&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hudi-common&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;project.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      //hudi-common添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.apache.hudi&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hudi-client-common&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;project.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      //hudi-client-common添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&lt;!-- Hive --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-service&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;utilities.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">      //hive-service添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;artifactId&gt;guava&lt;/artifactId&gt;</span><br><span class="line">          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.pentaho&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-service-rpc&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;utilities.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-jdbc&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;utilities.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">      //hive-jdbc添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-metastore&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;utilities.bundle.hive.scope&#125;</span>&lt;/scope&gt;</span><br><span class="line">      //hive-metastore添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.datanucleus&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;datanucleus-core&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;artifactId&gt;guava&lt;/artifactId&gt;</span><br><span class="line">          &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;<span class="variable">$&#123;hive.groupid&#125;</span>&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;hive-common&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;hive.version&#125;</span>&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;<span class="variable">$&#123;utilities.bundle.hive.scope&#125;</span>&lt;/scope&gt;、</span><br><span class="line">      //hive-common添加内容</span><br><span class="line">      &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty.orbit&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;javax.servlet&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">          &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;*&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">      &lt;/exclusions&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- 增加hudi配置版本的jetty --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-server&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-util&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-webapp&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-http&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;<span class="variable">$&#123;jetty.version&#125;</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="执行编译命令"><a href="#执行编译命令" class="headerlink" title="执行编译命令"></a>执行编译命令</h4><ul>
+<li><strong>打包命令</strong></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn clean <span class="keyword">package</span></span><br><span class="line">-DskipTests -Dspark3<span class="number">.1</span> -Dflink1<span class="number">.14</span> -Dscala<span class="number">-2.12</span> -Dhadoop.version=<span class="number">3.1</span><span class="number">.3</span> -Pflink-bundle-shade-hive3</span><br></pre></td></tr></table></figure>
+
+<p>-DskipTests，不执行测试用例，但编译测试用例类生成相应的class文件至target&#x2F;test-classes下。</p>
+<p>-Dmaven.test.skip&#x3D;true，不执行测试用例，也不编译测试用例类。</p>
+<p>-Dspark	-Dflink	-Dscala	为对应组件的版本</p>
+<p>-Pflink-bundle-shade-hive3	如果不指定此条，会在hudi编译时对flink-bundle的架包报错</p>
+<blockquote>
+<p>需要注意的是，hudi的编译命令需要在hudi的根目录下进行执行</p>
+</blockquote>
+<hr>
+<h4 id="运行案例"><a href="#运行案例" class="headerlink" title="运行案例"></a>运行案例</h4><h5 id="移动jar包"><a href="#移动jar包" class="headerlink" title="移动jar包"></a>移动jar包</h5><p>我们编译好的jar包存储在hudi根目录下的packaging中，我们需要进入packaging文件夹找到hudi-spark3.1-bundle_2.12-0.11.0.jar架包即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/hudi-0.11.0/packaging/hudi-spark-bundle/targe</span><br></pre></td></tr></table></figure>
+
+<p>随后移动架包到spark目录下的jars文件夹中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /opt/module/hudi-0.11.0/packaging/hudi-spark-bundle/target/hudi-spark3.1-bundle_2.12-0.11.0 /opt/module/spark-3.1.1-bin-hadoop3.2/jars/</span><br></pre></td></tr></table></figure>
+
+<h5 id="进入spark-shell"><a href="#进入spark-shell" class="headerlink" title="进入spark-shell"></a>进入spark-shell</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spark-shell \</span><br><span class="line">--conf <span class="string">&#x27;spark.serializer=org.apache.spark.serializer.KryoSerializer&#x27;</span> \</span><br><span class="line">--conf <span class="string">&#x27;spark.sql.extensions=org.apache.spark.sql.hudi.HoodieSparkSessionExtension&#x27;</span> \</span><br></pre></td></tr></table></figure>
+
+<p>–conf ‘spark.serializer&#x3D;org.apache.spark.serializer.KryoSerializer’	序列化</p>
+<p>–conf ‘spark.sql.extensions&#x3D;org.apache.spark.sql.hudi.HoodieSparkSessionExtension’	集成spark</p>
+<h5 id="运行案例-1"><a href="#运行案例-1" class="headerlink" title="运行案例"></a>运行案例</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.hudi.QuickstartUtils._</span><br><span class="line"><span class="keyword">import</span> scala.collection.JavaConversions._</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.sql.SaveMode._</span><br><span class="line"><span class="keyword">import</span> org.apache.hudi.DataSourceReadOptions._</span><br><span class="line"><span class="keyword">import</span> org.apache.hudi.DataSourceWriteOptions._</span><br><span class="line"><span class="keyword">import</span> org.apache.hudi.config.HoodieWriteConfig._</span><br><span class="line"><span class="keyword">import</span> org.apache.hudi.common.model.HoodieRecord</span><br><span class="line"> </span><br><span class="line"><span class="type">val</span> <span class="variable">tableName</span> <span class="operator">=</span> <span class="string">&quot;hudi_trips_cow&quot;</span></span><br><span class="line"><span class="type">val</span> <span class="variable">basePath</span> <span class="operator">=</span> <span class="string">&quot;file:///tmp/hudi_trips_cow&quot;</span></span><br><span class="line"><span class="type">val</span> <span class="variable">dataGen</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DataGenerator</span></span><br><span class="line"> </span><br><span class="line"><span class="type">val</span> <span class="variable">inserts</span> <span class="operator">=</span> convertToStringList(dataGen.generateInserts(<span class="number">10</span>))</span><br><span class="line"><span class="type">val</span> <span class="variable">df</span> <span class="operator">=</span> spark.read.json(spark.sparkContext.parallelize(inserts, <span class="number">2</span>))</span><br><span class="line">df.write.format(<span class="string">&quot;hudi&quot;</span>).</span><br><span class="line">  options(getQuickstartWriteConfigs).</span><br><span class="line">  option(PRECOMBINE_FIELD_OPT_KEY, <span class="string">&quot;ts&quot;</span>).</span><br><span class="line">  option(RECORDKEY_FIELD_OPT_KEY, <span class="string">&quot;uuid&quot;</span>).</span><br><span class="line">  option(PARTITIONPATH_FIELD_OPT_KEY, <span class="string">&quot;partitionpath&quot;</span>).</span><br><span class="line">  option(TABLE_NAME, tableName).</span><br><span class="line">  mode(Overwrite).</span><br><span class="line">  save(basePath)</span><br><span class="line"> </span><br><span class="line"><span class="type">val</span> <span class="variable">tripsSnapshotDF</span> <span class="operator">=</span> spark.read.format(<span class="string">&quot;hudi&quot;</span>).load(basePath + <span class="string">&quot;/*/*/*/*&quot;</span>)</span><br><span class="line">tripsSnapshotDF.createOrReplaceTempView(<span class="string">&quot;hudi_trips_snapshot&quot;</span>)</span><br><span class="line">spark.sql(<span class="string">&quot;select fare, begin_lon, begin_lat, ts from  hudi_trips_snapshot where fare &gt; 20.0&quot;</span>).show()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>结果</p>
+<p><img src="/2024/03/20/hudi-build/bd1.png" alt="bd1" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+</blockquote>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/hive-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Hive/">
+                    Hive
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/hive-build/" class="trm-anima-link">
+                    Hive搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:16</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/kafka-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Kafka/">
+                    Kafka
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/kafka-build/" class="trm-anima-link">
+                    Kafka搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:13</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Hudi搭建"><a rel="nofollow" class="trm-toc-link" href="#Hudi搭建"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Hudi搭建</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Maven"><a rel="nofollow" class="trm-toc-link" href="#Maven"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">Maven</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="解压文件"><a rel="nofollow" class="trm-toc-link" href="#解压文件"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">解压文件</span></a></li><li class="trm-toc-item trm-toc-level-4" title="配置环境变量"><a rel="nofollow" class="trm-toc-link" href="#配置环境变量"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">配置环境变量</span></a></li><li class="trm-toc-item trm-toc-level-4" title="添加阿里镜像"><a rel="nofollow" class="trm-toc-link" href="#添加阿里镜像"><span class="trm-toc-number">1.1.3.</span> <span class="trm-toc-text">添加阿里镜像</span></a></li><li class="trm-toc-item trm-toc-level-4" title="修改本地仓库"><a rel="nofollow" class="trm-toc-link" href="#修改本地仓库"><span class="trm-toc-number">1.1.4.</span> <span class="trm-toc-text">修改本地仓库</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="Hudi"><a rel="nofollow" class="trm-toc-link" href="#Hudi"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">Hudi</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="解压文件"><a rel="nofollow" class="trm-toc-link" href="#解压文件-1"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">解压文件</span></a></li><li class="trm-toc-item trm-toc-level-4" title="修改POM文件"><a rel="nofollow" class="trm-toc-link" href="#修改POM文件"><span class="trm-toc-number">1.2.2.</span> <span class="trm-toc-text">修改POM文件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="修改依赖组件版本"><a rel="nofollow" class="trm-toc-link" href="#修改依赖组件版本"><span class="trm-toc-number">1.2.2.1.</span> <span class="trm-toc-text">修改依赖组件版本</span></a></li><li class="trm-toc-item trm-toc-level-5" title="修改源码兼容hadoop3.x"><a rel="nofollow" class="trm-toc-link" href="#修改源码兼容hadoop3-x"><span class="trm-toc-number">1.2.2.2.</span> <span class="trm-toc-text">修改源码兼容hadoop3.x</span></a></li><li class="trm-toc-item trm-toc-level-5" title="hudi-spark-bundle"><a rel="nofollow" class="trm-toc-link" href="#hudi-spark-bundle"><span class="trm-toc-number">1.2.2.3.</span> <span class="trm-toc-text">hudi-spark-bundle</span></a></li><li class="trm-toc-item trm-toc-level-5" title="hudi-utilities-bundle"><a rel="nofollow" class="trm-toc-link" href="#hudi-utilities-bundle"><span class="trm-toc-number">1.2.2.4.</span> <span class="trm-toc-text">hudi-utilities-bundle</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-4" title="执行编译命令"><a rel="nofollow" class="trm-toc-link" href="#执行编译命令"><span class="trm-toc-number">1.2.3.</span> <span class="trm-toc-text">执行编译命令</span></a></li><li class="trm-toc-item trm-toc-level-4" title="运行案例"><a rel="nofollow" class="trm-toc-link" href="#运行案例"><span class="trm-toc-number">1.2.4.</span> <span class="trm-toc-text">运行案例</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="移动jar包"><a rel="nofollow" class="trm-toc-link" href="#移动jar包"><span class="trm-toc-number">1.2.4.1.</span> <span class="trm-toc-text">移动jar包</span></a></li><li class="trm-toc-item trm-toc-level-5" title="进入spark-shell"><a rel="nofollow" class="trm-toc-link" href="#进入spark-shell"><span class="trm-toc-number">1.2.4.2.</span> <span class="trm-toc-text">进入spark-shell</span></a></li><li class="trm-toc-item trm-toc-level-5" title="运行案例"><a rel="nofollow" class="trm-toc-link" href="#运行案例-1"><span class="trm-toc-number">1.2.4.3.</span> <span class="trm-toc-text">运行案例</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>

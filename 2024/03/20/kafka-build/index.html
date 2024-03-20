@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Kafka安装配置Zookeeper安装配置在配置Kafka之前，需要安装zookeeper 解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;zookeeper.tar.gz -C &#x2F;opt&#x2F;module&#x2F;   @配置环境变量1234vi &#x2F;etc&#x2F;profileexport ZOOKEEPER_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-zookeeperexport PATH&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka搭建">
+<meta property="og:url" content="http://example.com/2024/03/20/kafka-build/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Kafka安装配置Zookeeper安装配置在配置Kafka之前，需要安装zookeeper 解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;zookeeper.tar.gz -C &#x2F;opt&#x2F;module&#x2F;   @配置环境变量1234vi &#x2F;etc&#x2F;profileexport ZOOKEEPER_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;apache-zookeeperexport PATH&#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-20T10:13:40.791Z">
+<meta property="article:modified_time" content="2024-03-20T10:14:04.958Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<title >Kafka搭建</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.11' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"John Doe","root":"/","typed_text":["Have fun & Good luck"],"theme_version":"2.1.11","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"gusu32x32.png","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"谷素Home","hideText":"加载中......"},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated.","copy_success":"Copied","copy_failure":"Copy failed","open_read_mode":"Enter reading mode","exit_read_mode":"Exit reading mode","notice_outdate_message":"It has been undefined days since the last update, the content of the article may be outdated.","sticky":"TOP","just":"Just","min":"minutes ago","hour":"hours ago","day":"days ago","month":"months ago"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"The blog has been lovely to run undefined day"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-20 18:14:04"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.11" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/gusu32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            Hawk<span>Eagle</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/books/" target="">
+                            
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            This is my notebook😁
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Kafka搭建
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/138x138%E7%94%BB%E5%83%8F.png">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        谷素
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:2294446012@qq.com" class="trm-btn">
+            Contact Me
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            03/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            18:13
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            John Doe
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="Kafka安装配置"><a href="#Kafka安装配置" class="headerlink" title="Kafka安装配置"></a>Kafka安装配置</h2><h3 id="Zookeeper安装配置"><a href="#Zookeeper安装配置" class="headerlink" title="Zookeeper安装配置"></a>Zookeeper安装配置</h3><p>在配置Kafka之前，需要安装zookeeper</p>
+<p><strong>解压文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/zookeeper.tar.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="@配置环境变量"></a>@配置环境变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"><span class="built_in">export</span> ZOOKEEPER_HOME=/opt/module/apache-zookeeper</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ZOOKEEPER_HOME</span>/bin</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="@配置文件"></a>@配置文件</h4><h5 id="myid"><a href="#myid" class="headerlink" title="#myid"></a>#myid</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/apache-zookeeper</span><br><span class="line"><span class="built_in">mkdir</span> data</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; data/myid</span><br></pre></td></tr></table></figure>
+
+<h5 id="zoo-cfg"><a href="#zoo-cfg" class="headerlink" title="#zoo.cfg"></a>#zoo.cfg</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/apche-zookeeper/conf</span><br><span class="line"><span class="built_in">cp</span> zoo_sample.cfg zoo.cfg</span><br><span class="line">vi /opt/module/apache-zookeeper/zoo.cfg</span><br><span class="line">dataDir=/opt/module/apache-zookeeper/data</span><br><span class="line">server.1=master:2888:3888</span><br><span class="line">server.2=slave1:2888:3888</span><br><span class="line">server.3=slave2:2888:3888</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="@启动集群"></a>@启动集群</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/apache-zookeeper/bin</span><br><span class="line">zkServer.sh start</span><br><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询状态</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh <span class="built_in">status</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>启动完成后jps查询</p>
+<table>
+<thead>
+<tr>
+<th>节点名称</th>
+<th>进程状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>master</td>
+<td>Mode：follower</td>
+</tr>
+<tr>
+<td>slave1</td>
+<td>Mode：leader</td>
+</tr>
+<tr>
+<td>slave2</td>
+<td>Mode：follower</td>
+</tr>
+</tbody></table>
+<p>zookeeper正常启动后进程状态如上表所示，注意：jps查询不会有结果</p>
+</blockquote>
+<h3 id="Kafka安装配置-1"><a href="#Kafka安装配置-1" class="headerlink" title="Kafka安装配置"></a>Kafka安装配置</h3><p>当zookeeper配置完成后，即可开始配置kafka</p>
+<h4 id="配置环境变量-1"><a href="#配置环境变量-1" class="headerlink" title="@配置环境变量"></a>@配置环境变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"><span class="built_in">export</span> KAFKA_HOME=/opt/module/kafka</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$KAFKA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="@配置文件"></a>@配置文件</h4><p>在配置文件时，有两个思路，一个 是启用kafka自带的zookeeper，另一个是启动zookeeper后单独启动kafka。在这里我使用的是第二种方法，第一种方法的配置内容在文末再进行说明。</p>
+<h5 id="server-properties"><a href="#server-properties" class="headerlink" title="#server.properties"></a>#server.properties</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">broker.id</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">listeners</span>=PLAINTEXT://<span class="number">192.168</span>.<span class="number">100.3</span>.<span class="number">9092</span></span><br><span class="line"><span class="attr">log.dirs</span>=/opt/module/kafka/kafka-logs</span><br><span class="line"><span class="attr">zookeeper.connect</span>=master:<span class="number">2181</span>,slave1:<span class="number">2181</span>,slave2:<span class="number">2181</span></span><br></pre></td></tr></table></figure>
+
+<p>broker.id为自定义的数字，可以自己设定，但是需要注意的是，kafka集群中每台节点的id值不可以相等。</p>
+<p>listeners为监听地址，配置主节点的ip地址即可。</p>
+<p>log.dirs为kafka的日志文件路径，路径自定义即可，日志文件夹会自动创建。</p>
+<p>zookeeper.connect配置为三台节点的zookeeper端口和ip名称即可。</p>
+<hr>
+<p>如果不适用自带的zookeeper，上述命令即可完成kafka搭建。</p>
+<p>下面的内容是使用自带的zookeeper需要配置的。</p>
+<h5 id="data-zk"><a href="#data-zk" class="headerlink" title="#data&#x2F;zk"></a>#data&#x2F;zk</h5><p>这里的配置方法和zookeeper中的相同，也是在根目录下新建文件夹，然后在文件夹中写入myid，注意各节点的myid值需要对应server后面的值。同时，后面dataDir对应的路径名也是myid对应的路径名。</p>
+<h5 id="zookeeper-properties"><a href="#zookeeper-properties" class="headerlink" title="#zookeeper.properties"></a>#zookeeper.properties</h5><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/<span class="built_in">module</span>/kafka/<span class="built_in">config</span>/zookeeper.properties</span><br><span class="line">tickTime=<span class="number">2000</span></span><br><span class="line">initLimit=<span class="number">10</span></span><br><span class="line">syncLimit=<span class="number">5</span></span><br><span class="line">clientPort=<span class="number">2181</span></span><br><span class="line">dataDir=/opt/moduele/kafka/data/zk</span><br><span class="line">server<span class="number">.1</span>=<span class="number">192.168</span><span class="number">.100</span><span class="number">.3</span>:<span class="number">2888</span>:<span class="number">3888</span></span><br><span class="line">server<span class="number">.2</span>=<span class="number">192.168</span><span class="number">.100</span><span class="number">.4</span>:<span class="number">2888</span>:<span class="number">3888</span></span><br><span class="line">server<span class="number">.3</span>=<span class="number">192.168</span><span class="number">.100</span><span class="number">.2</span>:<span class="number">2888</span>:<span class="number">3888</span></span><br></pre></td></tr></table></figure>
+
+<p>此文件的配置内容和zookeeper中zoo.cfg内容相同，唯一需要注意的是zoo.cfg的模板文件会添加好前几条内容作为默认配置，但是zookeeper.properties中需要自己手动添加。</p>
+<h4 id="启动集群-1"><a href="#启动集群-1" class="headerlink" title="@启动集群"></a>@启动集群</h4><p><strong>拷贝集群</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scp -r /opt/module/kafka slave1:/opt/module/</span><br><span class="line">scp -r /opt/module/kafka slave1:/opt/module/</span><br><span class="line">scp -r /etc/profile slave1:/etc/</span><br><span class="line">scp -r /etc/profile slave2:etc/</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p><strong>更改配置</strong></p>
+<p>记得在从节点上更改broker.id和listeners监听端口的ip地址（虽然我之前好行忘记改ip地址也正常启动了，但是不知道不配置会不会有什么影响，还是配上吧哈哈。）</p>
+<hr>
+<p><strong>启动Zookeeper（内置）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/zookeeper-server-start.sh config/zookeeper.properties &amp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动Kafka</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-server.start.sh config/server.properties &amp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>停止zk&#x2F;kafka</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./kafka-server-stop.sh</span><br><span class="line">./zookeeper-server.stop.sh</span><br></pre></td></tr></table></figure>
+
+<p>再开其实要先开启zk再开启kafka，同理关闭的时候也应该先关闭kafka再关闭zk（应该用不着）</p>
+<hr>
+<h4 id="JPS"><a href="#JPS" class="headerlink" title="@JPS"></a>@JPS</h4><p>启动完成后，需要进行查询状态进程来确认是否成功启动了zk和kafka</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>节点名称</th>
+<th>进程状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>master</td>
+<td>QuorumPeerMain、kafka</td>
+</tr>
+<tr>
+<td>slave1</td>
+<td>QuorumPeerMain、kafka</td>
+</tr>
+<tr>
+<td>slave2</td>
+<td>QuorumPeerMain、kafka</td>
+</tr>
+</tbody></table>
+<p>QuorumPeerMain进程为zookeeper成功启动后的进程</p>
+<p>kafka为kafka成功启动后的进程</p>
+</blockquote>
+<p><strong>需要强调的是，如果创建kafka-topic中replication-facor（副本数）大于1的话，需要启动分节点的kafka进程，如果不启动分节点的kafka，则无法创建，会报错broker值小于副本数。</strong></p>
+<hr>
+<h3 id="Kafka-shell"><a href="#Kafka-shell" class="headerlink" title="Kafka-shell"></a>Kafka-shell</h3><p>简单的创建topic</p>
+<h4 id="kafka-topic"><a href="#kafka-topic" class="headerlink" title="kafka-topic"></a>kafka-topic</h4><p>创建方法有两个</p>
+<p><strong>需要强调的是，如果创建kafka-topic中replication-facor（副本数）大于1的话，需要启动分节点的kafka进程，如果不启动分节点的kafka，则无法创建，会报错broker值小于副本数。</strong></p>
+<h5 id="bootstrap"><a href="#bootstrap" class="headerlink" title="bootstrap"></a>bootstrap</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="selector-tag">bin</span>/<span class="selector-tag">kafka-topics</span><span class="selector-class">.sh</span>  <span class="selector-tag">--bootstrap-server</span> <span class="selector-tag">localhost</span>:<span class="number">9092</span>(,<span class="attribute">loclalhost1</span>:<span class="number">9092</span>,<span class="attribute">localhost2</span>:<span class="number">9092</span>) <span class="selector-tag">--list</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–list	查询集群中是否有topic</li>
+<li>–bootstrap-server localhost:9092	连接服务器，<strong>localhost为本集群名称</strong>，9092为端口号，测试环境下写一个即可，生产环境则2-3个</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic name --create --partitions 1 --replication-factor 3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–topic name 选中topic，name为topic名字，name可自定义更改</li>
+<li>–create 创建topic</li>
+<li>–partitions 1 设置分区，1可以改为自定义分区</li>
+<li>–replication-factor 3 设置副本数，3可以改为自定义副本数</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic name --describe</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-topic name	选中topic，name为topic名字，name可自定义更改</li>
+<li>–describe	查询name topic的详细信息</li>
+</ul>
+<h5 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --zookeeper localhost:2181 --topic name --create --partitions 1 --replication-factor 3</span><br></pre></td></tr></table></figure>
+
+<p>两个方法不一样的地方是再topic后面使用的指令，我现在使用的是<code>--zookeeper</code>，没有使用<code>--bootstrap-server</code>的原因是后者创建topic成功没有提示（……但是我就是要那个提示）</p>
+<hr>
+<h5 id="bootstrap和zookeeper的区别"><a href="#bootstrap和zookeeper的区别" class="headerlink" title="bootstrap和zookeeper的区别"></a>bootstrap和zookeeper的区别</h5><p>我们使用的kafka版本为2.x版本，而**#–bootstrap-server**为kafka3.x版本的指令</p>
+<p>Kafka开发团队重写了ZooKeeper的Quorum控制器代码并嵌入到Kafka中。所以从v2.8版本开始，Kafka不再依赖ZooKeeper。</p>
+<p>所以，</p>
+<p>旧版：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">--zookeeper</span> localhost:<span class="number">2181</span></span><br></pre></td></tr></table></figure>
+
+<p>新版：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">--bootstrap-server</span> localhost:<span class="number">9092</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，2181是ZooKeeper的监听端口，9092是Kafka的监听端口。</p>
+<p>旧版用–zookeeper参数，主机名（或IP）和端口用ZooKeeper的，也就是server.properties文件中zookeeper.connect属性的配置值</p>
+<p>新版用–bootstrap-server参数，主机名（或IP）和端口用某个节点的即可，即主机名（或主机IP）:9092。</p>
+<hr>
+<p>附表（需要的自取）：</p>
+<table>
+<thead>
+<tr>
+<th>kafka shell order</th>
+<th>explain</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–alter</td>
+<td>Alter the number of partitions,replication assignment,and&#x2F;or configuration for the topic.</td>
+<td>改</td>
+</tr>
+<tr>
+<td>–bootstrap-server&lt;String: server to connect to&gt;</td>
+<td>REQUIRED:The Kafka server to connect to.</td>
+<td>连接</td>
+</tr>
+<tr>
+<td>–topic&lt;String: topic&gt;</td>
+<td>The topic to create, alter,describe or delete.It also accepts a regular expresstion,except for –create option.Put topic name in double quotes and use the ‘ \ ‘ prefix to escape regular expression symbols; e.g.”test \ .topic”.</td>
+<td>topic</td>
+</tr>
+<tr>
+<td>–create</td>
+<td>Create a new topic.</td>
+<td>增</td>
+</tr>
+<tr>
+<td>–delete</td>
+<td>Delete a topic</td>
+<td>删</td>
+</tr>
+<tr>
+<td>–list</td>
+<td>List all available topics</td>
+<td>查</td>
+</tr>
+<tr>
+<td>–describe</td>
+<td>List details for the given topics</td>
+<td>查</td>
+</tr>
+<tr>
+<td>–partitions&lt;Integer: # of partitions&gt;</td>
+<td>The number of partitions for the topic being created or altered(WARNING:If partitions are increased for a topic that has a key,the partition logic or ordering).If not supplied for create,defalts to the cluster default.</td>
+<td>分区</td>
+</tr>
+<tr>
+<td>–repliction-factor&lt;Integer:replication factor&gt;</td>
+<td>The replication factor for each partition in the topic being created.If not supplied,defaults to the cluster default.</td>
+<td>副本</td>
+</tr>
+</tbody></table>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/hudi-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Hudi/">
+                    Hudi
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/hudi-build/" class="trm-anima-link">
+                    Hudi搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:14</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/20/redis-build/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="https://www.logosc.cn/uploads/resources/2018/11/29/1543459457_thumb.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Redis/">
+                    Redis
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/20/redis-build/" class="trm-anima-link">
+                    Redis搭建
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/20</li>
+                <li>18:13</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.11
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        Article table of contents
+				<span id="post-toc-top">
+					TOP
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Kafka安装配置"><a rel="nofollow" class="trm-toc-link" href="#Kafka安装配置"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Kafka安装配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Zookeeper安装配置"><a rel="nofollow" class="trm-toc-link" href="#Zookeeper安装配置"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">Zookeeper安装配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="@配置环境变量"><a rel="nofollow" class="trm-toc-link" href="#配置环境变量"><span class="trm-toc-number">1.1.1.</span> <span class="trm-toc-text">@配置环境变量</span></a></li><li class="trm-toc-item trm-toc-level-4" title="@配置文件"><a rel="nofollow" class="trm-toc-link" href="#配置文件"><span class="trm-toc-number">1.1.2.</span> <span class="trm-toc-text">@配置文件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="#myid"><a rel="nofollow" class="trm-toc-link" href="#myid"><span class="trm-toc-number">1.1.2.1.</span> <span class="trm-toc-text">#myid</span></a></li><li class="trm-toc-item trm-toc-level-5" title="#zoo.cfg"><a rel="nofollow" class="trm-toc-link" href="#zoo-cfg"><span class="trm-toc-number">1.1.2.2.</span> <span class="trm-toc-text">#zoo.cfg</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-4" title="@启动集群"><a rel="nofollow" class="trm-toc-link" href="#启动集群"><span class="trm-toc-number">1.1.3.</span> <span class="trm-toc-text">@启动集群</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="Kafka安装配置"><a rel="nofollow" class="trm-toc-link" href="#Kafka安装配置-1"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">Kafka安装配置</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="@配置环境变量"><a rel="nofollow" class="trm-toc-link" href="#配置环境变量-1"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">@配置环境变量</span></a></li><li class="trm-toc-item trm-toc-level-4" title="@配置文件"><a rel="nofollow" class="trm-toc-link" href="#配置文件-1"><span class="trm-toc-number">1.2.2.</span> <span class="trm-toc-text">@配置文件</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="#server.properties"><a rel="nofollow" class="trm-toc-link" href="#server-properties"><span class="trm-toc-number">1.2.2.1.</span> <span class="trm-toc-text">#server.properties</span></a></li><li class="trm-toc-item trm-toc-level-5" title="#data&#x2F;zk"><a rel="nofollow" class="trm-toc-link" href="#data-zk"><span class="trm-toc-number">1.2.2.2.</span> <span class="trm-toc-text">#data&#x2F;zk</span></a></li><li class="trm-toc-item trm-toc-level-5" title="#zookeeper.properties"><a rel="nofollow" class="trm-toc-link" href="#zookeeper-properties"><span class="trm-toc-number">1.2.2.3.</span> <span class="trm-toc-text">#zookeeper.properties</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-4" title="@启动集群"><a rel="nofollow" class="trm-toc-link" href="#启动集群-1"><span class="trm-toc-number">1.2.3.</span> <span class="trm-toc-text">@启动集群</span></a></li><li class="trm-toc-item trm-toc-level-4" title="@JPS"><a rel="nofollow" class="trm-toc-link" href="#JPS"><span class="trm-toc-number">1.2.4.</span> <span class="trm-toc-text">@JPS</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-3" title="Kafka-shell"><a rel="nofollow" class="trm-toc-link" href="#Kafka-shell"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">Kafka-shell</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-4" title="kafka-topic"><a rel="nofollow" class="trm-toc-link" href="#kafka-topic"><span class="trm-toc-number">1.3.1.</span> <span class="trm-toc-text">kafka-topic</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-5" title="bootstrap"><a rel="nofollow" class="trm-toc-link" href="#bootstrap"><span class="trm-toc-number">1.3.1.1.</span> <span class="trm-toc-text">bootstrap</span></a></li><li class="trm-toc-item trm-toc-level-5" title="zookeeper"><a rel="nofollow" class="trm-toc-link" href="#zookeeper"><span class="trm-toc-number">1.3.1.2.</span> <span class="trm-toc-text">zookeeper</span></a></li><li class="trm-toc-item trm-toc-level-5" title="bootstrap和zookeeper的区别"><a rel="nofollow" class="trm-toc-link" href="#bootstrap和zookeeper的区别"><span class="trm-toc-number">1.3.1.3.</span> <span class="trm-toc-text">bootstrap和zookeeper的区别</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="Open toc">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="Read Mode" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="Back To Top">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.11"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.11"></script>
+
+</body>
+
+</html>
