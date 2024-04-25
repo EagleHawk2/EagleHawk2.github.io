@@ -1,0 +1,542 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.0" theme-name="Stellar" theme-version="1.28.0">
+  
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  
+  <title>Clickhouse搭建 - 为之</title>
+
+  
+    <meta name="description" content="ClickHouse搭建Clickhouse搭建简述clickhouse在进行搭建时，是使用clickhouse脚本进行搭建，所以解压clickhouse文件后直接运行文件的脚本即可 操作步骤解压文件1234tar -zxvf &#x2F;opt&#x2F;software&#x2F;clickhouse-common-static-dbg-21.9.4.3&#x2F; -C &#x2F;opt&#x2F;module&#x2F;tar -zxvf &#x2F;opt&#x2F;sof">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clickhouse搭建">
+<meta property="og:url" content="http://example.com/2024/04/25/clickhouse-build/index.html">
+<meta property="og:site_name" content="为之">
+<meta property="og:description" content="ClickHouse搭建Clickhouse搭建简述clickhouse在进行搭建时，是使用clickhouse脚本进行搭建，所以解压clickhouse文件后直接运行文件的脚本即可 操作步骤解压文件1234tar -zxvf &#x2F;opt&#x2F;software&#x2F;clickhouse-common-static-dbg-21.9.4.3&#x2F; -C &#x2F;opt&#x2F;module&#x2F;tar -zxvf &#x2F;opt&#x2F;sof">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/04/25/clickhouse-build/bd1.png">
+<meta property="og:image" content="http://example.com/2024/04/25/clickhouse-build/bd2.png">
+<meta property="article:published_time" content="2024-04-25T07:17:09.448Z">
+<meta property="article:modified_time" content="2024-04-25T07:18:09.460Z">
+<meta property="article:author" content="谷素">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/04/25/clickhouse-build/bd1.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.28.0">
+
+  
+    <link rel="shortcut icon" href="/ico.ico">
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/ico.ico" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">为之</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item" title="关于" href="/about"><span>关于</span></a><a class="nav-item" title="分类" href="/categories"><span>分类</span></a><a class="nav-item" title="归档" href="/archives"><span>归档</span></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/04/25/zookeeper-build/"><span class="title">Zookeeper搭建</span></a><a class="item title" href="/2024/04/25/linux-build/"><span class="title">CentOS与大数据集群搭建思路</span></a><a class="item title" href="/2024/04/25/flink-build/"><span class="title">Flink搭建</span></a><a class="item title" href="/2024/04/25/clickhouse-build/"><span class="title">Clickhouse搭建</span></a><a class="item title" href="/2024/04/25/hudi-build/"><span class="title">Hudi搭建</span></a><a class="item title" href="/2024/04/25/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88JS%EF%BC%89/"><span class="title">数据可视化（JavaScipt）</span></a><a class="item title" href="/2024/04/25/spark-build/"><span class="title">Spark搭建</span></a><a class="item title" href="/2024/04/25/redis-build/"><span class="title">Redis搭建</span></a><a class="item title" href="/2024/04/25/kafka-build/"><span class="title">Kafka搭建</span></a><a class="item title" href="/2024/04/25/hive-build/"><span class="title">Hive搭建</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Clickhouse/">Clickhouse</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-04-25T07:17:09.448Z">2024-04-25</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-04-25T07:18:09.460Z">2024-04-25</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Clickhouse搭建</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="ClickHouse搭建"><a href="#ClickHouse搭建" class="headerlink" title="ClickHouse搭建"></a>ClickHouse搭建</h1><h3 id="Clickhouse搭建简述"><a href="#Clickhouse搭建简述" class="headerlink" title="Clickhouse搭建简述"></a>Clickhouse搭建简述</h3><p>clickhouse在进行搭建时，是使用clickhouse脚本进行搭建，所以解压clickhouse文件后直接运行文件的脚本即可</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><h4 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/clickhouse-common-static-dbg-21.9.4.3/ -C /opt/module/</span><br><span class="line">tar -zxvf /opt/software/clickhouse-common-static-21.9.4.35.tgz -C /opt/module/</span><br><span class="line">tar -zxvf /opt/software/clickhouse-server-21.9.4.35.tgz -C /opt/module/</span><br><span class="line">tar -zxvf /opt/software/clickhouse-client-21.9.4.35.tgz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+<p>clickhouse有以上四个文件需要解压，解压无顺序要求</p>
+<h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./clickhouse-common-static-dbg-21.9.4.3//install/doinst.sh </span><br><span class="line">./clickhouse-common-static-21.9.4.35/install/doinst.sh </span><br><span class="line">./clickhouse-client-21.9.4.35/install/doinst.sh</span><br><span class="line">./clickhouse-server-21.9.4.35/install/doinst.sh </span><br></pre></td></tr></table></figure>
+
+<p>四个脚本文件严格意义上来说没有顺序，一般来说是先执行两个<code>common</code>文件，其次是<code>client</code>客户端文件，最后是<code>server</code>服务文件。</p>
+<p>这样的顺序主要是方便截图。</p>
+<p><code>common</code>与<code>client</code>文件执行后没有结果显示，<code>server</code>文件执行后有结果显示，所以最后使用<code>server</code>文件</p>
+<h4 id="启动Clickhouse"><a href="#启动Clickhouse" class="headerlink" title="启动Clickhouse"></a>启动Clickhouse</h4><p>启动</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">start</span> clickhouse<span class="operator">-</span>server</span><br></pre></td></tr></table></figure>
+
+<p>重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart clickhouse-server</span><br></pre></td></tr></table></figure>
+
+<p>查询状态</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">status</span> clickhouse-server</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运行状态：</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="bd1.png" alt="运行状态示例"/></div><div class="image-meta"><span class="image-caption center">运行状态示例</span></div></div>
+
+<p>关闭状态：</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="bd2.png" alt="关闭状态示例"/></div><div class="image-meta"><span class="image-caption center">关闭状态示例</span></div></div>
+</blockquote>
+<p>关闭</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">stop</span> clickhouse-server</span><br></pre></td></tr></table></figure>
+
+<h4 id="登录Clickhouse"><a href="#登录Clickhouse" class="headerlink" title="登录Clickhouse"></a>登录Clickhouse</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clickhouse-client <span class="attr">--port</span> <span class="number">9000</span> <span class="attr">--host</span> master <span class="attr">--password</span> <span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
+<p>clickhouse的默认端口号为9000，但是hadoop3.x版本中的hadoop默认端口也是9000，所以会出现端口占用的情况，所以我们需要更改clickhouse的默认端口号以此来保证端口不会出现重复占用的情况。</p>
+<h4 id="更改Clickhouse端口号"><a href="#更改Clickhouse端口号" class="headerlink" title="更改Clickhouse端口号"></a>更改Clickhouse端口号</h4><p>搜索<code>test_shard_localhost</code>，其中有8个端口为9000的文件需要修改为9001；</p>
+<p>注意9440端口文件，即<code>test_shard_localhost_secure</code>不需要进行修改；</p>
+<ul>
+<li>以下是修改文件：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">&gt;  590     <span class="tag">&lt;<span class="name">remote_servers</span>&gt;</span></span><br><span class="line">&gt;  591         <span class="comment">&lt;!-- Test only shard config for testing distributed storage --&gt;</span></span><br><span class="line">&gt;  592         <span class="tag">&lt;<span class="name">test_shard_localhost</span>&gt;</span></span><br><span class="line">&gt;  593             <span class="comment">&lt;!-- Inter-server per-cluster secret for Distributed queries</span></span><br><span class="line"><span class="comment">&gt;  594                  default: no secret (no authentication will be performed)</span></span><br><span class="line"><span class="comment">&gt;  595 </span></span><br><span class="line"><span class="comment">&gt;  596                  If set, then Distributed queries will be validated on shards, so at least:</span></span><br><span class="line"><span class="comment">&gt;  597                  - such cluster should exist on the shard,</span></span><br><span class="line"><span class="comment">&gt;  598                  - such cluster should have the same secret.</span></span><br><span class="line"><span class="comment">&gt;  599 </span></span><br><span class="line"><span class="comment">&gt;  600                  And also (and which is more important), the initial_user will</span></span><br><span class="line"><span class="comment">&gt;  601                  be used as current user for the query.</span></span><br><span class="line"><span class="comment">&gt;  602 </span></span><br><span class="line"><span class="comment">&gt;  603                  Right now the protocol is pretty simple and it only takes into account:</span></span><br><span class="line"><span class="comment">&gt;  604                  - cluster name</span></span><br><span class="line"><span class="comment">&gt;  605                  - query</span></span><br><span class="line"><span class="comment">&gt;  606 </span></span><br><span class="line"><span class="comment">&gt;  607                  Also it will be nice if the following will be implemented:</span></span><br><span class="line"><span class="comment">&gt;  608                  - source hostname (see interserver_http_host), but then it will depends from DNS,</span></span><br><span class="line"><span class="comment">&gt;  609                    it can use IP address instead, but then the you need to get correct on the initiator node.</span></span><br><span class="line"><span class="comment">&gt;  610                  - target hostname / ip address (same notes as for source hostname)</span></span><br><span class="line"><span class="comment">&gt;  611                  - time-based security tokens</span></span><br><span class="line"><span class="comment">&gt;  612             --&gt;</span></span><br><span class="line">&gt;  613             <span class="comment">&lt;!-- &lt;secret&gt;&lt;/secret&gt; --&gt;</span></span><br><span class="line">&gt;  614 </span><br><span class="line">&gt;  615             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  616                 <span class="comment">&lt;!-- Optional. Whether to write data to just one of the replicas. Default: false (write data to all replicas). --&gt;</span></span><br><span class="line">&gt;  617                 <span class="comment">&lt;!-- &lt;internal_replication&gt;false&lt;/internal_replication&gt; --&gt;</span></span><br><span class="line">&gt;  618                 <span class="comment">&lt;!-- Optional. Shard weight when writing data. Default: 1. --&gt;</span></span><br><span class="line">&gt;  619                 <span class="comment">&lt;!-- &lt;weight&gt;1&lt;/weight&gt; --&gt;</span></span><br><span class="line">&gt;  620                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  621                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  622                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  623                     <span class="comment">&lt;!-- Optional. Priority of the replica for load_balancing. Default: 1 (less value has more priority). --&gt;</span></span><br><span class="line">&gt;  624                     <span class="comment">&lt;!-- &lt;priority&gt;1&lt;/priority&gt; --&gt;</span></span><br><span class="line">&gt;  625                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  626             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  627         <span class="tag">&lt;/<span class="name">test_shard_localhost</span>&gt;</span></span><br><span class="line">&gt;  628         <span class="tag">&lt;<span class="name">test_cluster_two_shards_localhost</span>&gt;</span></span><br><span class="line">&gt;  629              <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  630                  <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  631                      <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  632                      <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  633                  <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  634              <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  635              <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  636                  <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  637                      <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  638                      <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  639                  <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  640              <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  641         <span class="tag">&lt;/<span class="name">test_cluster_two_shards_localhost</span>&gt;</span></span><br><span class="line">&gt;  642         <span class="tag">&lt;<span class="name">test_cluster_two_shards</span>&gt;</span></span><br><span class="line">&gt;  643             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  644                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  645                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.1<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  646                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  647                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  648             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  649             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  650                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  651                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.2<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  652                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  653                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  654             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  655         <span class="tag">&lt;/<span class="name">test_cluster_two_shards</span>&gt;</span></span><br><span class="line">&gt;  656         <span class="tag">&lt;<span class="name">test_cluster_two_shards_internal_replication</span>&gt;</span></span><br><span class="line">&gt;  657             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  658                 <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">&gt;  659                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  660                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.1<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  661                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  662                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  663             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  664             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  665                 <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">&gt;  666                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  667                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>127.0.0.2<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  668                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  669                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  670             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  671         <span class="tag">&lt;/<span class="name">test_cluster_two_shards_internal_replication</span>&gt;</span></span><br><span class="line">&gt;  672         <span class="tag">&lt;<span class="name">test_shard_localhost_secure</span>&gt;</span></span><br><span class="line">&gt;  673             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  674                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  675                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  676                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9440<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  677                     <span class="tag">&lt;<span class="name">secure</span>&gt;</span>1<span class="tag">&lt;/<span class="name">secure</span>&gt;</span></span><br><span class="line">&gt;  678                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  679             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  680         <span class="tag">&lt;/<span class="name">test_shard_localhost_secure</span>&gt;</span></span><br><span class="line">&gt;  681         <span class="tag">&lt;<span class="name">test_unavailable_shard</span>&gt;</span></span><br><span class="line">&gt;  682             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  683                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  684                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  685                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  686                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  687             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  688             <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  689                 <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  690                     <span class="tag">&lt;<span class="name">host</span>&gt;</span>localhost<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">&gt;  691                     <span class="tag">&lt;<span class="name">port</span>&gt;</span>1<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">&gt;  692                 <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">&gt;  693             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">&gt;  694         <span class="tag">&lt;/<span class="name">test_unavailable_shard</span>&gt;</span></span><br><span class="line">&gt;  695     <span class="tag">&lt;/<span class="name">remote_servers</span>&gt;</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>需要注意的是，从网上搜索的修改<code>clickhouse</code>端口号是（82行，查找<code>&lt;tcp_port&gt;</code>即可找到）：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;  82     <span class="tag">&lt;<span class="name">tcp_port</span>&gt;</span>9001<span class="tag">&lt;/<span class="name">tcp_port</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除监听文件"><a href="#删除监听文件" class="headerlink" title="删除监听文件"></a>删除监听文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /etc/clickhouse-server/config.d/listen.xml</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>监听文件listen.xml</li>
+</ul>
+<p>在执行<code>./clickhouse-server-21.9.4.35/install/doinst.sh </code>时，会需要输入clickhouse的登陆密码，如果此时不输入密码，就不会出现监听文件。</p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/04/25/flink-build/">Flink搭建</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/04/25/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88JS%EF%BC%89/">数据可视化（JavaScipt）</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">谷素</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.0">Stellar 1.28.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ClickHouse%E6%90%AD%E5%BB%BA"><span class="toc-text">ClickHouse搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Clickhouse%E6%90%AD%E5%BB%BA%E7%AE%80%E8%BF%B0"><span class="toc-text">Clickhouse搭建简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">操作步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="toc-text">解压文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-text">执行脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Clickhouse"><span class="toc-text">启动Clickhouse</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%BD%95Clickhouse"><span class="toc-text">登录Clickhouse</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9Clickhouse%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-text">更改Clickhouse端口号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%9B%91%E5%90%AC%E6%96%87%E4%BB%B6"><span class="toc-text">删除监听文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.28.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

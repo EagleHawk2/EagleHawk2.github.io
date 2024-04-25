@@ -1,0 +1,782 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.0" theme-name="Stellar" theme-version="1.28.0">
+  
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  
+  <title>数据可视化（JavaScipt） - 为之</title>
+
+  
+    <meta name="description" content="一些关于自己学习的内容，希望能对你有帮助~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据可视化（JavaScipt）">
+<meta property="og:url" content="http://example.com/2024/04/25/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88JS%EF%BC%89/index.html">
+<meta property="og:site_name" content="为之">
+<meta property="og:description" content="一些关于自己学习的内容，希望能对你有帮助~">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-25T07:16:53.898Z">
+<meta property="article:modified_time" content="2024-04-24T10:22:08.706Z">
+<meta property="article:author" content="谷素">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="数据可视化,JavaScipt">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.28.0">
+
+  
+    <link rel="shortcut icon" href="/ico.ico">
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/ico.ico" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">为之</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item" title="关于" href="/about"><span>关于</span></a><a class="nav-item" title="分类" href="/categories"><span>分类</span></a><a class="nav-item" title="归档" href="/archives"><span>归档</span></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/04/25/zookeeper-build/"><span class="title">Zookeeper搭建</span></a><a class="item title" href="/2024/04/25/linux-build/"><span class="title">CentOS与大数据集群搭建思路</span></a><a class="item title" href="/2024/04/25/flink-build/"><span class="title">Flink搭建</span></a><a class="item title" href="/2024/04/25/clickhouse-build/"><span class="title">Clickhouse搭建</span></a><a class="item title" href="/2024/04/25/hudi-build/"><span class="title">Hudi搭建</span></a><a class="item title" href="/2024/04/25/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88JS%EF%BC%89/"><span class="title">数据可视化（JavaScipt）</span></a><a class="item title" href="/2024/04/25/spark-build/"><span class="title">Spark搭建</span></a><a class="item title" href="/2024/04/25/redis-build/"><span class="title">Redis搭建</span></a><a class="item title" href="/2024/04/25/kafka-build/"><span class="title">Kafka搭建</span></a><a class="item title" href="/2024/04/25/hive-build/"><span class="title">Hive搭建</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/JavaScript/">JavaScript</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-04-25T07:16:53.898Z">2024-04-25</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-04-24T10:22:08.706Z">2024-04-24</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>数据可视化（JavaScipt）</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>一些关于自己学习的内容，希望能对你有帮助~</p>
+<span id="more"></span>
+
+<h1 id="💯赛前整理"><a href="#💯赛前整理" class="headerlink" title="💯赛前整理"></a>💯赛前整理</h1><h2 id="🥇数据可视化"><a href="#🥇数据可视化" class="headerlink" title="🥇数据可视化"></a>🥇数据可视化</h2><h3 id="🕐前置配置"><a href="#🕐前置配置" class="headerlink" title="🕐前置配置"></a>🕐前置配置</h3><hr>
+<hr>
+<h4 id="🚩vue-config-js"><a href="#🚩vue-config-js" class="headerlink" title="🚩vue.config.js"></a>🚩vue.config.js</h4><hr>
+<h5 id="🤐关闭语法检测"><a href="#🤐关闭语法检测" class="headerlink" title="🤐关闭语法检测"></a>🤐关闭语法检测</h5><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">lintOnSave:</span><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>没有关闭语法检测会导致<code>echarts</code>引用时出现报错，所以首先需要配置的信息是关闭语法检测</p>
+<hr>
+<h5 id="😁跨域"><a href="#😁跨域" class="headerlink" title="😁跨域"></a>😁跨域</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>:&#123;</span><br><span class="line">    <span class="attr">proxy</span>:&#123;</span><br><span class="line">        <span class="string">&quot;/api&quot;</span>:&#123;</span><br><span class="line">            <span class="attr">target</span>:<span class="string">&quot;接口地址&quot;</span>,</span><br><span class="line">            <span class="attr">ws</span>:<span class="literal">true</span>,</span><br><span class="line">            <span class="attr">changeOrigin</span>:<span class="literal">true</span>,</span><br><span class="line">            pathRewrite;&#123;</span><br><span class="line">                <span class="string">&quot;^/api&quot;</span>:<span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>target</code>：接口的地址，会给定数据接口。</p>
+<p><code>ws</code>：webstocket协议，双向通道，在传输速度上优于http协议。</p>
+<p><code>changeOrigin</code>：devServer中，proxy的changeOrigin是false：changeOrigin请求头中host仍然是浏览器发送过来的host；如果设置成true：发送请求头中host会设置成target。在vue-cli3中，默认changeOrigin的值是true,意味着host设置成target，这与cue-cli2不一致，vue-cli2这个默认值是false。</p>
+<p><code>pathRewrite</code>：重写策略，在target后会存在其他参数，以&#x2F;api去添加，但是添加到具体的接口中没有&#x2F;api这几个字符，所以需要添加一个空字符串在传入参数的时候代替&#x2F;api。</p>
+<hr>
+<hr>
+<h4 id="🚩全局配置"><a href="#🚩全局配置" class="headerlink" title="🚩全局配置"></a>🚩全局配置</h4><hr>
+<h5 id="🤔数据请求"><a href="#🤔数据请求" class="headerlink" title="🤔数据请求"></a>🤔数据请求</h5><p>post请求和get请求，两个请求方式的请求方法大致相同，在请求时，<code>method</code>参数内根据填入的参数不同来进行不同的请求。</p>
+<p>post请求有请求体，在安全方面要高于get请求</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">axios:(&#123;</span><br><span class="line">    method:<span class="string">&quot;get&quot;</span>,</span><br><span class="line">    url:<span class="string">&quot;/api/参数api&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用axios进行数据请求，在请求前，可以利用postman工具进行数据接口的调用，检查无误后使用axios进行数据请求。get请求需要配置参数<code>method</code>和参数<code>url</code>。前者是请求类型，后者是api参数。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios:(&#123;</span><br><span class="line">    method:<span class="string">&quot;post&quot;</span>,</span><br><span class="line">    url:<span class="string">&quot;/api/参数api&quot;</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        startTime: yyyy.MM.dd,</span><br><span class="line">        endTime: yyyy.MM.dd</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>post请求相对于get请求多了一个body请求体的内容，该内容存放在<code>data</code>参数中，也就是需要额外加入的内容。</p>
+<p>在postman中，需要根据题目来进行设置，一般body中，传入的参数类型为<code>json</code>类型，返回类型也为<code>json</code>类型。</p>
+<hr>
+<h3 id="🕑电商"><a href="#🕑电商" class="headerlink" title="🕑电商"></a>🕑电商</h3><hr>
+<hr>
+<h4 id="🚩柱状图"><a href="#🚩柱状图" class="headerlink" title="🚩柱状图"></a>🚩柱状图</h4><hr>
+<h5 id="😏数据处理"><a href="#😏数据处理" class="headerlink" title="😏数据处理"></a>😏数据处理</h5><ul>
+<li><strong>🤑消费额最高&#x2F;最低的省份&#x2F;地区</strong></li>
+</ul>
+<p><strong>需求分析：</strong>字段选择消费额、省份&#x2F;地区。求消费额的最大和最小值的总和，单一累加处理，考虑使用Map对象的get和set方法来拿到消费额总额。累加后需要进行排序，map没有内置的排序方法，将map对象转为数组后进行排序处理，取前几位或后几位使用splice方法进行筛选。</p>
+<p><strong>累加处理：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//累加处理 利用map对象的set和get方法</span></span><br><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">data.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//判断对象中是否含有省份字段，如果有，则进行累加，如果没有，则传入第一个参数</span></span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">proviceName</span>))&#123;</span><br><span class="line">        <span class="keyword">var</span> tmp = map1.<span class="title function_">get</span>(e.<span class="property">proviceName</span>) + e.<span class="property">consumptionAmount</span></span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">proviceName</span> , tmp)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">proviceName</span> , e.<span class="property">consumptionAmount</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>排序筛选处理：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象转为数组</span></span><br><span class="line">map1 = <span class="title class_">Array</span>.<span class="title function_">from</span>(map1)</span><br><span class="line">map1.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//降序，升序写法则相反，因为为二维数组，处理数据为第二位，所以返回下标为1</span></span><br><span class="line">    <span class="comment">//sort()方法写法必须是return返回，否则不会进行处理</span></span><br><span class="line">    <span class="keyword">return</span> b[<span class="number">1</span>] - a[<span class="number">1</span>]</span><br><span class="line">&#125;).<span class="title function_">splice</span>(<span class="number">5</span>)</span><br><span class="line"><span class="comment">//继续使用splice()方法筛选出前五的数据</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li><strong>😐各个省份&#x2F;地区消费额的平均数</strong></li>
+</ul>
+<p><strong>需求分析：</strong>选择字段省份&#x2F;地区、消费额。需要求平均的消费额，只需要使用map方法提取到对应消费额的每一条数据，然后将所有数据累加再除以数据条数，同时在这一步可以进行保留小数点的操作，即可算出此省份&#x2F;地区的平均消费额。</p>
+<p><strong>提取数据到数组中：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">data.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">proviceName</span>))&#123;</span><br><span class="line">        <span class="comment">//和累加类似，只是此时传入的map对象中，对应的value值是一个数组。</span></span><br><span class="line">        <span class="keyword">var</span> tmp1 = []</span><br><span class="line">        tmp1 = map1.<span class="title function_">get</span>(e.<span class="property">proviceName</span>)</span><br><span class="line">        tmp1.<span class="title function_">push</span>(e.<span class="property">consumptionAmount</span>)</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">proviceName</span> , tmp1)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//这里如果第二位不用[]包裹，tmp1无法push任何数据</span></span><br><span class="line">        <span class="comment">//如果这里不用[]包裹，则需要定义一个数组来接收[e.consumptionAount]</span></span><br><span class="line">        map.<span class="title function_">set</span>(e.<span class="property">proviceName</span> , [e.<span class="property">consumptionAmount</span>])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>求平均数处理：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个数组来收集求平均值后的数据</span></span><br><span class="line"><span class="keyword">var</span> compare = []</span><br><span class="line"> </span><br><span class="line">map1.<span class="title function_">forEach</span>(<span class="params">(v,k)</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">    v.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//求总数</span></span><br><span class="line">        sum += e</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//求平均数，同时保留两位小数</span></span><br><span class="line">    <span class="keyword">var</span> avgNum = (sum / v.<span class="property">length</span>).<span class="title function_">toFixed</span>(<span class="number">2</span>)</span><br><span class="line">    compare.<span class="title function_">push</span>(&#123;<span class="attr">provice</span>:k , <span class="attr">avg</span>:avgNum&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>forEach</code>：forEach有三个参数，（value，key，item），默认传参为value。其中，value代表的是元素，key代表的是元素索引，即下标，item代表的是整个数组或者对象。当传一个参数是，代表的就是其本身；当传两个参数时，第一个参数代表其元素本身，第二个参数代表下标，当传参对象是一个对象时，需要注意的是，key对应key，value对应value，所以传参中第一个参数为值，第二个参数为键。</p>
+<p><strong>排序筛选处理：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">compare.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//根据avg字段进行排序</span></span><br><span class="line">    <span class="keyword">return</span> b.<span class="property">avg</span> - a.<span class="property">avg</span></span><br><span class="line">&#125;).<span class="title function_">splice</span>(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li><strong>🤨各个省份&#x2F;地区消费额的中位数</strong></li>
+</ul>
+<p><strong>需求分析：</strong>选择字段省份&#x2F;地区、消费额。中位数需要用map提取到所有的消费额数据，然后再对数组进行二次处理，首先先对数组进行排序，然后再取到中位数。</p>
+<p><strong>提取数据到数组中：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">data.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">proviceName</span>))&#123;  </span><br><span class="line">        <span class="comment">//和累加类似，只是此时传入的map对象中，对应的value值是一个数组。</span></span><br><span class="line">        <span class="keyword">var</span> tmp1 = []</span><br><span class="line">        tmp1 = map1.<span class="title function_">get</span>(e.<span class="property">proviceName</span>)</span><br><span class="line">        tmp1.<span class="title function_">push</span>(e.<span class="property">consumptionAmount</span>)</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">proviceName</span> , tmp1)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//这里如果第二位不用[]包裹，tmp1无法push任何数据</span></span><br><span class="line">        <span class="comment">//如果这里不用[]包裹，则需要定义一个数组来接收[e.consumptionAount]</span></span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">proviceName</span> , [e.<span class="property">consumptionAmount</span>])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>排序并求中位数：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tmp1数组用来拿到前五省份的中位数</span></span><br><span class="line"><span class="keyword">var</span> tmp1 = []</span><br><span class="line">map1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">v,k</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//排序操作</span></span><br><span class="line">    v.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b - a</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//求中位数</span></span><br><span class="line">    v.<span class="title function_">every</span>(<span class="function">() =&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//如果是取余为偶数，则中位数为取商和商小一位的数值相加求平均值</span></span><br><span class="line">        <span class="keyword">if</span>(v.<span class="property">length</span> % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> tmp2 = ((v[v.<span class="property">length</span> / <span class="number">2</span>] + v[v.<span class="property">length</span> / <span class="number">2</span> - <span class="number">1</span>]) / <span class="number">2</span>).<span class="title function_">toFixed</span>(<span class="number">2</span>)</span><br><span class="line">            tmp1.<span class="title function_">push</span>(&#123;<span class="attr">province</span>:k , <span class="attr">mid</span>:tmp2&#125;)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> tmp2 = v[<span class="title class_">Math</span>.<span class="title function_">floor</span>(v.<span class="property">length</span> / <span class="number">2</span>).<span class="title function_">toFixed</span>(<span class="number">2</span>)]</span><br><span class="line">            tmp1.<span class="title function_">push</span>(&#123;<span class="attr">province</span>:k , <span class="attr">mid</span>:tmp2&#125;)</span><br><span class="line">            <span class="comment">//forEach遍历没有break和continue，可以使用every进行代替，return false返回false，等效于break</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>break</code>：forEach遍历方法中不支持break和continue，如果需要使用continue时，可以采用return false或return true代替，如果要使用break时，可以使用try catch或every或some代替。实测return false可以达到break要求。</p>
+<p><strong>排序筛选处理：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmp1.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b.<span class="property">mid</span> - a.<span class="property">mid</span></span><br><span class="line">&#125;).<span class="title function_">splice</span>(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="😎全局样式"><a href="#😎全局样式" class="headerlink" title="😎全局样式"></a>😎全局样式</h5><ul>
+<li><strong>xAxis</strong></li>
+</ul>
+<p><code>type</code>：category &#x2F; value</p>
+<p><code>data</code>：xdata &#x2F; ❌</p>
+<p><code>axisLabel</code>：rotate:50 &#x2F; fontSize:18 </p>
+<ul>
+<li><strong>yAxis</strong></li>
+</ul>
+<p><code>type</code>：category &#x2F; value</p>
+<p><code>data</code>：xdata &#x2F; ❌</p>
+<p><code>scale</code>：true</p>
+<ul>
+<li><strong>series</strong></li>
+</ul>
+<p><code>type</code>：bar</p>
+<p><code>data</code>：ydata</p>
+<p><code>label</code>：show:true &#x2F; position:direction</p>
+<hr>
+<hr>
+<h4 id="🚩折线图"><a href="#🚩折线图" class="headerlink" title="🚩折线图"></a>🚩折线图</h4><hr>
+<h5 id="😂数据处理"><a href="#😂数据处理" class="headerlink" title="😂数据处理"></a>😂数据处理</h5><ul>
+<li><strong>😌每年上架商品数量变化</strong></li>
+</ul>
+<p><strong>数据分析：</strong>字段选择年份、商品名等任意字段。相对于使用计数的方法，其实通过map对象中get方法统计出现次数，然后统计map对象中数组的长度，即可达到统计上架商品数量的变化。</p>
+<p><strong>统计各年份数据：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">data.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">year</span>))&#123;</span><br><span class="line">        <span class="keyword">var</span> tmp1 = []</span><br><span class="line">        tmp1 = map1.<span class="title function_">get</span>(e.<span class="property">year</span>)</span><br><span class="line">        tmp1.<span class="title function_">push</span>(e.<span class="property">id</span>)</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">year</span> , tmp1)</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">year</span> , [e.<span class="property">id</span>])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>统计长度：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xdata = []</span><br><span class="line"><span class="keyword">var</span> ydata = []</span><br><span class="line">map.<span class="title function_">forEach</span>(<span class="function">(<span class="params">v,k</span>) =&gt;</span>&#123;</span><br><span class="line">    xdata.<span class="title function_">push</span>(k)</span><br><span class="line">    ydata.<span class="title function_">push</span>(v.<span class="property">length</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="🤪全局样式"><a href="#🤪全局样式" class="headerlink" title="🤪全局样式"></a>🤪全局样式</h5><ul>
+<li><strong>xAxis</strong></li>
+</ul>
+<p><code>type</code>：category </p>
+<p><code>data</code>：xdata </p>
+<p><code>axisLabel</code>：rotate:50 &#x2F; fontSize:18 </p>
+<ul>
+<li><strong>yAxis</strong></li>
+</ul>
+<p><code>type</code>： value</p>
+<p><code>data</code>：xdata</p>
+<p><code>scale</code>：true</p>
+<ul>
+<li><strong>series</strong></li>
+</ul>
+<p><code>type</code>：line</p>
+<p><code>data</code>：ydata</p>
+<p><code>label</code>：show:true &#x2F; position:direction</p>
+<hr>
+<hr>
+<h4 id="🚩折柱混合图"><a href="#🚩折柱混合图" class="headerlink" title="🚩折柱混合图"></a>🚩折柱混合图</h4><hr>
+<h5 id="😝数据处理"><a href="#😝数据处理" class="headerlink" title="😝数据处理"></a>😝数据处理</h5><ul>
+<li><strong>🤯柱状图表示前五省份平均消费额，折线图表示对应地区的平均消费额</strong></li>
+</ul>
+<p><strong>需求分析：</strong>字段选择省份、地区、消费额。本题难点为如何对应省份和地区，因为对应（主键）字段为省份字段，所以根据省份来进行筛选。map1:{省份 &#x3D;&gt; 省份总额}，map2:{地区 &#x3D;&gt; 地区总额}，map3:{地区 &#x3D;&gt; 地区内省份个数}。用map1对象进行遍历，目标值是拿到每一个省份的名字，再次对元数据进行遍历，如果省份id和元数据中的省份id相等时，那么对省份计数，同时提取出元数据中的地区名称。将地区放入map2和map3中进行对应计算平均消费额，根据省份计数和map1中的省份总销售额进行计算平均消费额。</p>
+<p><strong>map1：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">tmp1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">province</span>))&#123;</span><br><span class="line">        tmp1.<span class="title function_">set</span>(e.<span class="property">province</span> , tmp1.<span class="title function_">get</span>(e.<span class="property">province</span>) + e.<span class="property">finalTotalAmount</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        tmp1.<span class="title function_">set</span>(e.<span class="property">province</span> , e.<span class="property">finalTotalAmount</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>map2和map3：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">tmp1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">regionName</span>))&#123;</span><br><span class="line">        tmp2.<span class="title function_">set</span>(e.<span class="property">regionName</span> , tmp2.<span class="title function_">get</span>(e.<span class="property">regionName</span>) + e.<span class="property">finalTotalAmount</span>)</span><br><span class="line">        tmp3.<span class="title function_">set</span>(e.<span class="property">regionName</span> , tmp3.<span class="title function_">get</span>(e.<span class="property">regionName</span>) + <span class="number">1</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        tmp2.<span class="title function_">set</span>(e.<span class="property">regionName</span> , e.<span class="property">finalTotalAmount</span>)</span><br><span class="line">        tmp3.<span class="title function_">set</span>(e.<span class="property">regionName</span> , <span class="title class_">Number</span>(<span class="number">1</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>对应省份和地区并求平均消费额：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res = []</span><br><span class="line">map1.<span class="title function_">for</span>(<span class="function">(<span class="params">v,k</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//第一步是提取需要的数据</span></span><br><span class="line">    <span class="comment">//提取省份</span></span><br><span class="line">    <span class="keyword">var</span> pro = k</span><br><span class="line">    <span class="comment">//定义计数器</span></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line">    <span class="comment">//定义一个地区值用于接收“省份对应地区”</span></span><br><span class="line">    <span class="keyword">var</span> reg_compare</span><br><span class="line">    <span class="comment">//提取省份对应消费总额，计算需要使用</span></span><br><span class="line">    <span class="keyword">var</span> pro_v = v</span><br><span class="line">    <span class="comment">//进入元数据开始判断</span></span><br><span class="line">       tmp1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(e.<span class="property">provinceName</span> == pro)&#123;</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">            reg_compare = e.<span class="property">regionName</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//计算</span></span><br><span class="line">    <span class="keyword">var</span> pro_avg = (pro_v / count).<span class="title function_">toFixed</span>(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">var</span> reg_avg = (map2.<span class="title function_">get</span>(reg_compare) / map3.<span class="title function_">get</span>(reg_compare)).<span class="title function_">toFixed</span>(<span class="number">2</span>)</span><br><span class="line">    res.<span class="title function_">push</span>(&#123;<span class="attr">pro</span>:pro , <span class="attr">reg</span>:reg_compare , <span class="attr">pro_avg</span>:pro_avg , <span class="attr">reg_avg</span>:reg_avg&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>排序筛选处理：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b.<span class="property">pro_avg</span> - a.<span class="property">pro_avg</span></span><br><span class="line">&#125;).<span class="title function_">splice</span>(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="🥴全局样式"><a href="#🥴全局样式" class="headerlink" title="🥴全局样式"></a>🥴全局样式</h5><ul>
+<li><strong>xAxis</strong></li>
+</ul>
+<p><code>type</code>：category </p>
+<p><code>data</code>：xdata </p>
+<p><code>axisLabel</code>：rotate:50 &#x2F; fontSize:18 </p>
+<ul>
+<li><strong>yAxis</strong></li>
+</ul>
+<p><code>type</code>： value</p>
+<p><code>data</code>：xdata</p>
+<p><code>scale</code>：true</p>
+<ul>
+<li><strong>legend</strong></li>
+</ul>
+<p><code>data</code>：[] &#x2F; ❌</p>
+<ul>
+<li><strong>series</strong></li>
+</ul>
+<p><code>type</code>：line ＆ bar</p>
+<p><code>data</code>：ydata</p>
+<p><code>label</code>：show:true &#x2F; position:direction</p>
+<p><code>name</code>：[“图例”]</p>
+<hr>
+<hr>
+<h4 id="🚩饼状图"><a href="#🚩饼状图" class="headerlink" title="🚩饼状图"></a>🚩饼状图</h4><hr>
+<h5 id="😜数据处理"><a href="#😜数据处理" class="headerlink" title="😜数据处理"></a>😜数据处理</h5><ul>
+<li><strong>😴饼状图展示各地区消费能力</strong></li>
+</ul>
+<p><strong>需求分析：</strong>求各地区的消费能力，即以地区为主键字段，统计此地区所有的消费金额&#x2F;</p>
+<p><strong>统计：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">tmp1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">regionName</span>))&#123;</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">regionName</span> , map1.<span class="title function_">get</span>(e.<span class="property">regionName</span>) + e.<span class="property">finalTotalAmount</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">regionName</span> , e.<span class="property">finalTotalAmount</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li><strong>🥱玫瑰图展示各地区平均消费能力</strong></li>
+</ul>
+<p><strong>需求分析：</strong>求各地区的消费能力，即以地区为主键字段，统计此地区所有的消费金额的平均额</p>
+<p><strong>求各地区的消费数组：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map1 = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">tmp1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(map1.<span class="title function_">has</span>(e.<span class="property">regionName</span>))&#123;</span><br><span class="line">        <span class="keyword">var</span> tmp2 = []</span><br><span class="line">        tmp2 = map1.<span class="title function_">get</span>(e.<span class="property">regionName</span>)</span><br><span class="line">        tmp2.<span class="title function_">push</span>(e.<span class="property">finalTotalAmount</span>)</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">regionName</span> , tmp2)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        map1.<span class="title function_">set</span>(e.<span class="property">regionName</span> , [e.<span class="property">finalTotalAmount</span>])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>求平均额：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res = []</span><br><span class="line">map1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">v,k</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">    v.<span class="title function_">forEach</span>(<span class="function">() =&gt;</span>&#123;</span><br><span class="line">        sum += <span class="number">1</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">var</span> avg = (sum / v.<span class="property">length</span>).<span class="title function_">toFixed</span>(<span class="number">2</span>)</span><br><span class="line">    res.<span class="title function_">push</span>(&#123;<span class="attr">value</span>:k , <span class="attr">name</span>:avg&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="🤤全局样式"><a href="#🤤全局样式" class="headerlink" title="🤤全局样式"></a>🤤全局样式</h5><ul>
+<li><strong>series</strong></li>
+</ul>
+<p><code>data</code>：[{value：xx，name：xx}]</p>
+<p><code>itemStyle</code>：normal：{label：{show：true ， formatter：” {a} {b} {c} {d}%”}}</p>
+<p><code>roseType</code>：radius &#x2F; area</p>
+<ul>
+<li><strong>legend</strong></li>
+</ul>
+<p><code>data</code>：[] &#x2F; ❌</p>
+<hr>
+<hr>
+<h4 id="🚩散点图"><a href="#🚩散点图" class="headerlink" title="🚩散点图"></a>🚩散点图</h4><hr>
+<h5 id="😤数据处理"><a href="#😤数据处理" class="headerlink" title="😤数据处理"></a>😤数据处理</h5><ul>
+<li><strong>👹散点图展示每年上架商品数量的变化</strong></li>
+<li><strong>👺散点图展示省份平均消费额</strong></li>
+</ul>
+<h5 id="😬全局样式"><a href="#😬全局样式" class="headerlink" title="😬全局样式"></a>😬全局样式</h5><ul>
+<li><strong>xAxis</strong></li>
+</ul>
+<p><code>type</code>：category &#x2F; value</p>
+<p><code>data</code>：xdata </p>
+<p><code>axisLabel</code>：rotate:50 &#x2F; fontSize:18 </p>
+<ul>
+<li><strong>yAxis</strong></li>
+</ul>
+<p><code>type</code>： value &#x2F; category</p>
+<p><code>data</code>：xdata</p>
+<p><code>scale</code>：true</p>
+<ul>
+<li><strong>series</strong></li>
+</ul>
+<p><code>type</code>：scatter</p>
+<p><code>label</code>：show：true，position：direction</p>
+<hr>
+<h3 id="🕒工业"><a href="#🕒工业" class="headerlink" title="🕒工业"></a>🕒工业</h3><hr>
+<hr>
+<h4 id="😮‍💨数据处理方法"><a href="#😮‍💨数据处理方法" class="headerlink" title="😮‍💨数据处理方法"></a>😮‍💨数据处理方法</h4><hr>
+<h5 id="🚩元数据筛选"><a href="#🚩元数据筛选" class="headerlink" title="🚩元数据筛选"></a>🚩元数据筛选</h5><p><strong>.filter()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dataOrigin = arr.<span class="property">data</span>.<span class="title function_">filter</span>(<span class="function">(<span class="params">e</span>) =&gt;</span></span><br><span class="line">    (i.<span class="property">ChangeStartTime</span>.<span class="title function_">split</span>(<span class="string">&quot;T&quot;</span>)[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&quot;-&quot;</span>)[<span class="number">0</span>]) == <span class="number">2021</span> &amp;&amp;</span><br><span class="line">    (i.<span class="property">ChangeStartTime</span>.<span class="title function_">split</span>(<span class="string">&quot;T&quot;</span>)[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&quot;-&quot;</span>)[<span class="number">1</span>]) == <span class="number">10</span> &amp;&amp;</span><br><span class="line">    (i.<span class="property">ChangeStartTime</span>.<span class="title function_">split</span>(<span class="string">&quot;T&quot;</span>)[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&quot;-&quot;</span>)[<span class="number">2</span>]) == <span class="number">12</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>筛选数据：在元数据中，ChangeStartTime字段，年份为2021年，月份为10月，日期为12日的所有数据。</p>
+<p><code>filter</code>：方法用于过滤元素，filter的用法和map相似，但是不同的是，filter会把传入的函数依次用于每一个元素，根据返回值是true或是false来进行判断是保留或是丢弃该元素。</p>
+<hr>
+<h5 id="🚩数据去重"><a href="#🚩数据去重" class="headerlink" title="🚩数据去重"></a>🚩数据去重</h5><p><strong>.map()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> deduplication = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">dataOrigin.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!deduplication.<span class="title function_">has</span>(e.<span class="property">ChangeID</span>))&#123;</span><br><span class="line">        deduplication.<span class="title function_">set</span>(e.<span class="property">ChangeID</span> , <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>通过.map()来进行数据的去重，定义一个map对象，遍历元数据，对map对象进行判断，如果不存在ChangID（去重依据），那么就将这一条数据存入map对象中，同时完成数据的记录，完成数据的去重。</p>
+<hr>
+<h5 id="🚩时间戳转换与计算"><a href="#🚩时间戳转换与计算" class="headerlink" title="🚩时间戳转换与计算"></a>🚩时间戳转换与计算</h5><blockquote>
+<p>中国标准时间：Thu Feb 28 2019 17:11:43 GMT+0800</p>
+<p>JS默认中国标准时间是 GMT时间.由于我们国家采用的是东八区时间,因此是GMT +0800</p>
+</blockquote>
+<blockquote>
+<p>ISO8601标准时间：2019-02-28T09:51:45.540Z</p>
+<p>其中T表示合并,Z表示UTC时间</p>
+</blockquote>
+<blockquote>
+<p>时间戳是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。<br>java的date默认精度是毫秒，也就是说生成的时间戳就是13位的，而像c++或者php生成的时间戳默认就是10位的，因为其精度是秒。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dataOrigin.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="title class_">Date</span>(e.<span class="property">ChangeStartTime</span>).<span class="title function_">getTime</span>()</span><br><span class="line">    <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="title class_">Date</span>(e.<span class="property">ChangeEndTime</span>).<span class="title function_">getTime</span>()</span><br><span class="line">    <span class="keyword">var</span> tim = <span class="built_in">parseFloat</span>(end - start) / <span class="number">1000</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>new Date()：获取时间，Date对象用于处理日期和时间;</p>
+<p>getTime()：方法返回从1970 年 1 月 1 日午夜到指定日期之间的毫秒数；</p>
+<p>parseFloat()：函数解析字符串并返回浮点数</p>
+<blockquote>
+<p>描述：</p>
+<p>（图片找不到了额……等我修一下）</p>
+<p>此函数确定指定字符串中的第一个字符是否为数字。如果是，它会解析字符串直到到达数字的末尾，并将数字作为数字而不是字符串返回。</p>
+<p><strong>注意：</strong>只返回字符串中的第一个数字！</p>
+<p><strong>注释：</strong>允许前导和尾随空格。</p>
+<p><strong>注释：</strong>如果第一个字符不能转换为数字，<code>parseFloat()</code> 返回 NaN。</p>
+</blockquote>
+<hr>
+<h5 id="🚩数据key如何赋值为空"><a href="#🚩数据key如何赋值为空" class="headerlink" title="🚩数据key如何赋值为空"></a>🚩数据key如何赋值为空</h5><p>在进行数据处理时，会出现不同的对象对应的值不一样。</p>
+<p>比如求某个设备各个状态下的持续时长，可能就会出现某台设备没有某个状态，那么通过map对象set到的方法，就不会显示这一个状态的任何数据。</p>
+<p>那么，通过提前存入map(key &#x3D;&gt; value)，就可以避免此问题，如果出现了对应数据，那么则会显示你存入的数据value。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> run = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line"><span class="keyword">var</span> stand = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line"><span class="keyword">var</span> stop = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">tmp1.<span class="title function_">forEach</span>(<span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">    run.<span class="title function_">set</span>(e.<span class="property">machine</span> , <span class="number">0</span>)</span><br><span class="line">    stand.<span class="title function_">set</span>(e.<span class="property">machine</span> , <span class="number">0</span>)</span><br><span class="line">    stop.<span class="title function_">set</span>(e.<span class="property">machine</span> , <span class="number">0</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>通过set提前存入数据，map则会如以下形式，这样即使在后续处理中，某台设备没有此状态的任何数据，也不会忽略此条数据，而是存入了（key &#x3D;&gt; 0）此条数据，避免了后续手动插入数据的麻烦。</p>
+<p>map(</p>
+<p>{machine1 &#x3D;&gt; 0}，</p>
+<p>{machine2 &#x3D;&gt; 0}，</p>
+<p>{machine3 &#x3D;&gt; 0})</p>
+<hr>
+<h5 id="🚩dataset数据集使用情况"><a href="#🚩dataset数据集使用情况" class="headerlink" title="🚩dataset数据集使用情况"></a>🚩dataset数据集使用情况</h5><p>目前来说，唯一推荐使用数据集的地方是多条数据、数据成表的格式数据。其他暂时不考虑使用<code>dataset</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dataset:&#123;</span><br><span class="line">    source:[data1,data2,data3]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数据集：</p>
+<p>（图片找不到了额……等我修一下）</p>
+<p>data1为数据头，数据头在生成图表后为图例，读取数据方式为从上到下；</p>
+<p>data2为数据集，数据集中的头部为图表横坐标；</p>
+</blockquote>
+<p>如果不满足以上条件的图，建议直接绘制，采用data的方式去导入数据，而不采用数据集</p>
+<hr>
+<h5 id="🚩关于拼接比较"><a href="#🚩关于拼接比较" class="headerlink" title="🚩关于拼接比较"></a>🚩关于拼接比较</h5><p>拼接比较的目的是处理部分内容数据，思路是先在处理后数组中将需要保留的字段进行拼接，然后另一个新数组也同时获取这个比较字段，同时增加新字段，新字段就是我们需要处理的部分内容数据，此时相比较两个数组，根据数组的属性（如出现次数，是否存在）来对内容数据进行处理（如增删查改，累加，赋值）。</p>
+<p>举个例子⑧🙋🌰：</p>
+<p><strong>每日各车间平均运行时长</strong></p>
+<p>此时，需要抽取的数据为日期信息，车间信息，运行状态信息，以及时长数据。需要处理的是时长，但是处理的方式只能是一对一，所以此时我们将日期信息和车间信息进行拼接来处理时长数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tempArr = [];</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> state.<span class="property">sumda</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> list = state.<span class="property">sumda</span>[i];</span><br><span class="line">            <span class="keyword">if</span> (!(list.<span class="property">ChangeTime</span> &amp;&amp; list.<span class="property">MachineFactory</span>)) &#123;</span><br><span class="line">              <span class="comment">// 如果 20GP</span></span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">let</span> compare = &#123;</span><br><span class="line">                <span class="attr">type</span>: list.<span class="property">ChangeTime</span> + <span class="string">&quot; &quot;</span> + list.<span class="property">MachineFactory</span>,</span><br><span class="line">              &#125;; <span class="comment">//作比较的对象 (因为我需要这种格式，你也可以自定义格式)</span></span><br><span class="line">              <span class="keyword">if</span> (tempArr.<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">//这段代码必须要写</span></span><br><span class="line">                <span class="keyword">let</span> num = <span class="title class_">Number</span>(list.<span class="property">times</span>);</span><br><span class="line">                <span class="keyword">let</span> cou = <span class="title class_">Number</span>(list.<span class="property">count</span>);</span><br><span class="line">                <span class="comment">// console.log(num);</span></span><br><span class="line">                <span class="comment">// console.log(cou);</span></span><br><span class="line">                <span class="keyword">let</span> obj = &#123;</span><br><span class="line">                  <span class="attr">type</span>: list.<span class="property">ChangeTime</span> + <span class="string">&quot; &quot;</span> + list.<span class="property">MachineFactory</span>,</span><br><span class="line">                  <span class="attr">total</span>: num,</span><br><span class="line">                  <span class="attr">count</span>: cou,</span><br><span class="line">                &#125;;</span><br><span class="line">                tempArr.<span class="title function_">push</span>(obj);</span><br><span class="line">                <span class="comment">// console.log(tempArr,&quot;0000000&quot;);</span></span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> flag = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">let</span> j <span class="keyword">in</span> tempArr) &#123;</span><br><span class="line">                  <span class="comment">//这个循环只做一个操作，有相同类型的就进行统计</span></span><br><span class="line">                  <span class="keyword">if</span> (tempArr[j][<span class="string">&quot;type&quot;</span>] == compare.<span class="property">type</span>) &#123;</span><br><span class="line">                    tempArr[j][<span class="string">&quot;total&quot;</span>] += <span class="title class_">Number</span>(list.<span class="property">times</span>);</span><br><span class="line">                    tempArr[j][<span class="string">&quot;count&quot;</span>] += <span class="title class_">Number</span>(list.<span class="property">count</span>);</span><br><span class="line">                    flag = <span class="literal">false</span>; <span class="comment">//已经统计过的，就不要再重复了</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                  &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                  <span class="comment">//如果没有这种类型的，就push进去</span></span><br><span class="line">                  <span class="keyword">let</span> num = <span class="title class_">Number</span>(list.<span class="property">times</span>);</span><br><span class="line">                  <span class="keyword">let</span> cou = <span class="title class_">Number</span>(list.<span class="property">count</span>);</span><br><span class="line">                  <span class="keyword">var</span> obj = &#123;</span><br><span class="line">                    <span class="attr">type</span>: list.<span class="property">ChangeTime</span> + <span class="string">&quot; &quot;</span> + list.<span class="property">MachineFactory</span>,</span><br><span class="line">                    <span class="attr">total</span>: num,</span><br><span class="line">                    <span class="attr">count</span>: cou,</span><br><span class="line">                  &#125;;</span><br><span class="line">                  tempArr.<span class="title function_">push</span>(obj);</span><br><span class="line">                  <span class="variable language_">console</span>.<span class="title function_">log</span>(tempArr);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="variable language_">console</span>.<span class="title function_">log</span>(tempArr);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="🚩删除或添加指定元素"><a href="#🚩删除或添加指定元素" class="headerlink" title="🚩删除或添加指定元素"></a>🚩删除或添加指定元素</h5><p><strong>.splice()</strong></p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/04/25/clickhouse-build/">Clickhouse搭建</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/04/25/hudi-build/">Hudi搭建</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">谷素</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.0">Stellar 1.28.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%92%AF%E8%B5%9B%E5%89%8D%E6%95%B4%E7%90%86"><span class="toc-text">💯赛前整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A5%87%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-text">🥇数据可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%95%90%E5%89%8D%E7%BD%AE%E9%85%8D%E7%BD%AE"><span class="toc-text">🕐前置配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%9A%A9vue-config-js"><span class="toc-text">🚩vue.config.js</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%A4%90%E5%85%B3%E9%97%AD%E8%AF%AD%E6%B3%95%E6%A3%80%E6%B5%8B"><span class="toc-text">🤐关闭语法检测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%81%E8%B7%A8%E5%9F%9F"><span class="toc-text">😁跨域</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%9A%A9%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">🚩全局配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%A4%94%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82"><span class="toc-text">🤔数据请求</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%95%91%E7%94%B5%E5%95%86"><span class="toc-text">🕑电商</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%9A%A9%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="toc-text">🚩柱状图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">😏数据处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%8E%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">😎全局样式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%9A%A9%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-text">🚩折线图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%82%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">😂数据处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%A4%AA%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">🤪全局样式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%9A%A9%E6%8A%98%E6%9F%B1%E6%B7%B7%E5%90%88%E5%9B%BE"><span class="toc-text">🚩折柱混合图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%9D%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">😝数据处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%A5%B4%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">🥴全局样式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%9A%A9%E9%A5%BC%E7%8A%B6%E5%9B%BE"><span class="toc-text">🚩饼状图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%9C%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">😜数据处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%A4%A4%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">🤤全局样式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%9A%A9%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-text">🚩散点图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%A4%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">😤数据处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%98%AC%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F"><span class="toc-text">😬全局样式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%95%92%E5%B7%A5%E4%B8%9A"><span class="toc-text">🕒工业</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%98%AE%E2%80%8D%F0%9F%92%A8%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-text">😮‍💨数据处理方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%9A%A9%E5%85%83%E6%95%B0%E6%8D%AE%E7%AD%9B%E9%80%89"><span class="toc-text">🚩元数据筛选</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%9A%A9%E6%95%B0%E6%8D%AE%E5%8E%BB%E9%87%8D"><span class="toc-text">🚩数据去重</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%9A%A9%E6%97%B6%E9%97%B4%E6%88%B3%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%AE%A1%E7%AE%97"><span class="toc-text">🚩时间戳转换与计算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%9A%A9%E6%95%B0%E6%8D%AEkey%E5%A6%82%E4%BD%95%E8%B5%8B%E5%80%BC%E4%B8%BA%E7%A9%BA"><span class="toc-text">🚩数据key如何赋值为空</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%9A%A9dataset%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="toc-text">🚩dataset数据集使用情况</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%9A%A9%E5%85%B3%E4%BA%8E%E6%8B%BC%E6%8E%A5%E6%AF%94%E8%BE%83"><span class="toc-text">🚩关于拼接比较</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%F0%9F%9A%A9%E5%88%A0%E9%99%A4%E6%88%96%E6%B7%BB%E5%8A%A0%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0"><span class="toc-text">🚩删除或添加指定元素</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.28.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
