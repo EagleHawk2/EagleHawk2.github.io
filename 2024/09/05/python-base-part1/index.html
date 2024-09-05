@@ -17,22 +17,20 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   
-  <title>Flink搭建 - 为之</title>
+  <title>第一章 Python语言概述 - 为之</title>
 
   
-    <meta name="description" content="Flink配置解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;flink -C &#x2F;opt&#x2F;module   @配置环境1234567vi &#x2F;etc&#x2F;profileexport FLINK_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;flinkexport PATH&#x3D;$PATH:$FLINK_HOME&#x2F;bin&#x2F;&#x2F;以下配置是flink on yarn所需要的配置内容export HADOOP_CON">
+    <meta name="description" content="Python语言基础 第一章	Python语言概述1.1	计算机语言啊1	计算机的种类机器语言机器语言是最低级的语言，是用二进制代码表示的计算机能直接识别和执行的一种及其指令的集合。  灵活 可直接执行 速度快  汇编语言汇编语言适用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，即“符号语言”  目标代码简短 占用内存少 执行速度快  高级语言高级语言编写的程序不能直接被计算机识别，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flink搭建">
-<meta property="og:url" content="http://example.com/2024/04/25/flink-build/index.html">
+<meta property="og:title" content="第一章 Python语言概述">
+<meta property="og:url" content="http://example.com/2024/09/05/python-base-part1/index.html">
 <meta property="og:site_name" content="为之">
-<meta property="og:description" content="Flink配置解压文件 1tar -zxvf &#x2F;opt&#x2F;software&#x2F;flink -C &#x2F;opt&#x2F;module   @配置环境1234567vi &#x2F;etc&#x2F;profileexport FLINK_HOME&#x3D;&#x2F;opt&#x2F;module&#x2F;flinkexport PATH&#x3D;$PATH:$FLINK_HOME&#x2F;bin&#x2F;&#x2F;以下配置是flink on yarn所需要的配置内容export HADOOP_CON">
+<meta property="og:description" content="Python语言基础 第一章	Python语言概述1.1	计算机语言啊1	计算机的种类机器语言机器语言是最低级的语言，是用二进制代码表示的计算机能直接识别和执行的一种及其指令的集合。  灵活 可直接执行 速度快  汇编语言汇编语言适用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，即“符号语言”  目标代码简短 占用内存少 执行速度快  高级语言高级语言编写的程序不能直接被计算机识别，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/04/25/flink-build/bd1.png">
-<meta property="article:published_time" content="2024-04-25T07:23:05.835Z">
-<meta property="article:modified_time" content="2024-04-25T07:23:26.374Z">
+<meta property="article:published_time" content="2024-09-05T02:54:24.000Z">
+<meta property="article:modified_time" content="2024-09-05T02:55:06.097Z">
 <meta property="article:author" content="谷素">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/04/25/flink-build/bd1.png">
   
   
   
@@ -79,63 +77,225 @@
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
-<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Flink/">Flink</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-04-25T07:23:05.835Z">2024-04-25</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-04-25T07:23:26.374Z">2024-04-25</time></span></div></div></div>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python/">Python</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-05T02:54:24.000Z">2024-09-05</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-05T02:55:06.097Z">2024-09-05</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>Flink搭建</span></h1>
+        <h1 class="text title"><span>第一章 Python语言概述</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="Flink配置"><a href="#Flink配置" class="headerlink" title="Flink配置"></a>Flink配置</h2><p><strong>解压文件</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/flink -C /opt/module</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="@配置环境"></a>@配置环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"><span class="built_in">export</span> FLINK_HOME=/opt/module/flink</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$FLINK_HOME</span>/bin</span><br><span class="line">//以下配置是flink on yarn所需要的配置内容</span><br><span class="line"><span class="built_in">export</span> HADOOP_CONF_DIR=/opt/module/hadoop/etc/hadoop</span><br><span class="line"><span class="built_in">export</span> HADOOP_CLASSPATH=`/opt/module/hadoop/bin/hadoop classpath`</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="@配置文件"></a>@配置文件</h3><h4 id="flink-conf-yaml"><a href="#flink-conf-yaml" class="headerlink" title="#flink-conf.yaml"></a>#flink-conf.yaml</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/flink/conf/flink-conf.yaml</span><br><span class="line">jobmanager.rpc.address:master</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="masters"><a href="#masters" class="headerlink" title="#masters"></a>#masters</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/flink/conf/masters</span><br><span class="line">master:8081</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="workers"><a href="#workers" class="headerlink" title="#workers"></a>#workers</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/module/flink/conf/workers</span><br><span class="line">slave1</span><br><span class="line">slave2</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="分发节点和启动集群"><a href="#分发节点和启动集群" class="headerlink" title="@分发节点和启动集群"></a>@分发节点和启动集群</h3><h4 id="分发节点"><a href="#分发节点" class="headerlink" title="#分发节点"></a>#分发节点</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scp -r /opt/<span class="variable language_">module</span>/flume <span class="attr">slave1</span>:<span class="regexp">/opt/m</span>odule</span><br><span class="line">scp -r /opt/<span class="variable language_">module</span>/flume <span class="attr">slave2</span>:<span class="regexp">/opt/m</span>odule</span><br><span class="line">scp -r /etc/profile <span class="attr">slave1</span>:/etc</span><br><span class="line">scp -r /etc/profile <span class="attr">slave2</span>:/etc</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="#启动集群"></a>#启动集群</h4><p><strong>启动集群</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">start</span><span class="operator">-</span>cluster.sh</span><br></pre></td></tr></table></figure>
-
-<p><strong>关闭集群</strong></p>
-<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">stop</span>-cluster.sh</span><br></pre></td></tr></table></figure>
-
-<p><strong>启动resourcemanager</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn<span class="operator">-</span>daemon.sh <span class="keyword">start</span> resourcemanager</span><br></pre></td></tr></table></figure>
-
-<p><strong>启动nodemanager</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn<span class="operator">-</span>daemon.sh <span class="keyword">start</span> nodemanager</span><br></pre></td></tr></table></figure>
-
-<p><strong>执行测试代码</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flink run -m yarn-cluster -p 2 -yjm 2G -ytm 2G <span class="variable">$FLINK_HOME</span>/examples/batch/WordCount.jar</span><br></pre></td></tr></table></figure>
-
-<h3 id="部分报错"><a href="#部分报错" class="headerlink" title="@部分报错"></a>@部分报错</h3><blockquote>
-<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="bd1.png" alt="报错"/></div><div class="image-meta"><span class="image-caption center">报错</span></div></div>
+  </div><article class="md-text content"><h1 id="Python语言基础"><a href="#Python语言基础" class="headerlink" title="Python语言基础"></a>Python语言基础</h1><hr>
+<h2 id="第一章Python语言概述"><a href="#第一章Python语言概述" class="headerlink" title="第一章	Python语言概述"></a>第一章	Python语言概述</h2><h3 id="1-1计算机语言啊"><a href="#1-1计算机语言啊" class="headerlink" title="1.1	计算机语言啊"></a>1.1	计算机语言啊</h3><h4 id="1计算机的种类"><a href="#1计算机的种类" class="headerlink" title="1	计算机的种类"></a>1	计算机的种类</h4><h5 id="机器语言"><a href="#机器语言" class="headerlink" title="机器语言"></a>机器语言</h5><p>机器语言是最低级的语言，是用二进制代码表示的计算机能直接识别和执行的一种及其指令的集合。</p>
+<ul>
+<li>灵活</li>
+<li>可直接执行</li>
+<li>速度快</li>
+</ul>
+<h5 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h5><p>汇编语言适用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，即“符号语言”</p>
+<ul>
+<li>目标代码简短</li>
+<li>占用内存少</li>
+<li>执行速度快</li>
+</ul>
+<h5 id="高级语言"><a href="#高级语言" class="headerlink" title="高级语言"></a>高级语言</h5><p>高级语言编写的程序不能直接被计算机识别，必须经过转换才能被执行。</p>
+<p>根据转换方法可以分为两类：</p>
+<ul>
+<li>解释类<ul>
+<li>一边执行一边编译</li>
+</ul>
+</li>
+<li>编译类<ul>
+<li>先进行编译后再进行执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2Python简介"><a href="#1-2Python简介" class="headerlink" title="1.2	Python简介"></a>1.2	Python简介</h3><h4 id="1Python语言的历史"><a href="#1Python语言的历史" class="headerlink" title="1	Python语言的历史"></a>1	Python语言的历史</h4><p>1989年荷兰人Guido van Rossum发明了这种面向对象的解释型高级编程语言。</p>
+<blockquote>
+<p>有趣的是荷兰人的名字都喜欢使用<code>van</code>来做为过渡语</p>
+<p>比较著名的是某位高姓画家</p>
+<p>——Vincent Willem van Gogh</p>
 </blockquote>
-<p><strong>出错原因：</strong></p>
-<p>类加载器的相关报错，可能时类加载器的问题</p>
-<p><strong>解决方法：</strong></p>
-<p>可以使用配置”classloader.check-leaked-classloader“禁用此检查</p>
-<p>编辑flink-conf.yaml</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">classloader.check-leaked-classloader:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>1991年Python的第一个公开发行版本发行。</p>
+<p>2019.1 Python获得“TIOBE最佳年度称号”（The Importance Of Being Earnest），这是它获得的第三个最佳。</p>
+<h4 id="2Python语言的特点"><a href="#2Python语言的特点" class="headerlink" title="2	Python语言的特点"></a>2	Python语言的特点</h4><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>语言简单</li>
+<li>开源免费</li>
+<li>面向对象</li>
+<li>跨平台</li>
+<li>强大的生态系统<ul>
+<li>常用第三方库：Matplotlib（数据可视化库）、NumPy（数值计算功能库）、SciPy（数学、科学、工程计算功能库）、pandas（数据分析高层次应用库）、Scrapy（网路爬虫功能库）、BeautifulSoup（HTML和XML的解析库）、Django（Web应用框架）、Flask（Web应用微框架）</li>
+</ul>
+</li>
+</ul>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li>运行速度慢</li>
+<li>存在多线程性能瓶颈</li>
+<li>代码不能加密</li>
+<li>Python2.x和Python3.x不兼容<ul>
+<li>IBM（蓝色巨人），会不会重蹈覆辙嘞？</li>
+</ul>
+</li>
+</ul>
+<h4 id="3Python语言的应用"><a href="#3Python语言的应用" class="headerlink" title="3	Python语言的应用"></a>3	Python语言的应用</h4><h5 id="数据科学"><a href="#数据科学" class="headerlink" title="数据科学"></a>数据科学</h5><p>数学＋数据就是数据科学</p>
+<table>
+<thead>
+<tr>
+<th align="center">第三方库</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Scrapy库</td>
+<td align="center">编写网络爬虫程序采集网页数据</td>
+</tr>
+<tr>
+<td align="center">pandas库</td>
+<td align="center">清洗数据、排序数据</td>
+</tr>
+<tr>
+<td align="center">NumPy库、SciPy库</td>
+<td align="center">丰富的科学计算和数据分析功能</td>
+</tr>
+<tr>
+<td align="center">Matplotlib库</td>
+<td align="center">数据可视化图表</td>
+</tr>
+</tbody></table>
+<h5 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h5><table>
+<thead>
+<tr>
+<th align="center">第三方库</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">scikit-learn</td>
+<td align="center">基于Python语言的机器学习工具</td>
+</tr>
+<tr>
+<td align="center">Keras</td>
+<td align="center">基于Python语言的深度学习库，提供了Python编写的高级神经网络API</td>
+</tr>
+<tr>
+<td align="center">NLTK</td>
+<td align="center">Python自然语言工具包，用于标记化、词形还原、词干化、解析、POS标注</td>
+</tr>
+<tr>
+<td align="center">Tensorflow、Caffe</td>
+<td align="center">深度学习框架</td>
+</tr>
+</tbody></table>
+<h5 id="网站开发"><a href="#网站开发" class="headerlink" title="网站开发"></a>网站开发</h5><p>网站开发框架：Django、Flask、Pyramid、Bottle、Tornado、web2py</p>
+<h5 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h5><p>云计算平台OpenStack使用Python开发。</p>
+<p>自动化部署工具：Ansible、Salt</p>
+<h5 id="网络爬虫"><a href="#网络爬虫" class="headerlink" title="网络爬虫"></a>网络爬虫</h5><p>爬虫框架：Scrapy</p>
+<h4 id="4Python语言的版本"><a href="#4Python语言的版本" class="headerlink" title="4	Python语言的版本"></a>4	Python语言的版本</h4><p>目前，Python主要经历了三个版本：1.0版本（1994年发行）、2.0版本（2000年发行）、3.0版本（2008年发行）</p>
+<p>但是Python2.x和Python3.x彼此不兼容，如：</p>
+<ol>
+<li>Python2.x中，print语句被Python3.x中的<code>print()</code>函数所代替；</li>
+<li>Python3.x中，整数之间相除，结果是浮点数，而在Python2.x中是整数；</li>
+<li>Python3.x源代码文件默认使用UTF-8编码，所以支持直接写入中文，而Python2.x默认编码是ASCⅠ编码，所以在Python2.x中需要进行相应的转换；</li>
+<li>Python3.x中，<code>range()</code>函数与<code>xrange()</code>函数被正和为一个<code>range()</code>函数，所以再Python3.x中不存在<code>xrange()</code>函数，而在Python2.x中并存;</li>
+</ol>
+<p>但是Python3.x虽然和Python2.x再一部分语法中不兼容，但是它们的思想都是共通的。</p>
+<h4 id="5Python语言的使用"><a href="#5Python语言的使用" class="headerlink" title="5	Python语言的使用"></a>5	Python语言的使用</h4><ul>
+<li><p>Python的命令提示符：<code>&gt;&gt;&gt;</code></p>
+</li>
+<li><p>Python自带的集成开发环境：IDLE</p>
+</li>
+<li><p>IDLE常用快捷键</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">快捷键</th>
+<th align="center">功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">F1</td>
+<td align="center">打开Python帮助文档</td>
+</tr>
+<tr>
+<td align="center">F5</td>
+<td align="center">运行Python代码文件</td>
+</tr>
+<tr>
+<td align="center">Ctrl+]</td>
+<td align="center">缩进代码块</td>
+</tr>
+<tr>
+<td align="center">Ctrl+[</td>
+<td align="center">取消代码块缩进</td>
+</tr>
+<tr>
+<td align="center">Ctrl+F6</td>
+<td align="center">重新启动IDLE Shell</td>
+</tr>
+<tr>
+<td align="center">Ctrl+Z</td>
+<td align="center">撤销一步操作</td>
+</tr>
+<tr>
+<td align="center">Ctrl+Shift+Z</td>
+<td align="center">恢复上一次撤销操作</td>
+</tr>
+<tr>
+<td align="center">Ctrl+S</td>
+<td align="center">保存文件</td>
+</tr>
+<tr>
+<td align="center">Alt+P</td>
+<td align="center">浏览历史命令（上一条）</td>
+</tr>
+<tr>
+<td align="center">Alt+N</td>
+<td align="center">浏览历史命令（下一条）</td>
+</tr>
+<tr>
+<td align="center">Alt+&#x2F;</td>
+<td align="center">自动补全前面曾经出现过的单词，如果之前有多个单词具有相同前缀，可以连续按该快捷键，再多个单词中循环选择</td>
+</tr>
+<tr>
+<td align="center">Alt+3</td>
+<td align="center">注释代码块</td>
+</tr>
+<tr>
+<td align="center">Alt+4</td>
+<td align="center">取消代码块注释</td>
+</tr>
+<tr>
+<td align="center">Alt+g</td>
+<td align="center">转到某一行</td>
+</tr>
+</tbody></table>
+<h4 id="6第三方开发工具"><a href="#6第三方开发工具" class="headerlink" title="6	第三方开发工具"></a>6	第三方开发工具</h4><h5 id="PyCharm"><a href="#PyCharm" class="headerlink" title="PyCharm"></a>PyCharm</h5><ul>
+<li>Python编辑器</li>
+<li>跨平台性</li>
+<li>提供Django开发，支持Google App Engine</li>
+</ul>
+<h5 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h5><ul>
+<li>自由集成式开发环境</li>
+<li>跨平台性</li>
+<li>通过安装插件，可以作为其他计算机语言的开发工具（C++&#x2F;Python）</li>
+</ul>
+<h5 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h5><ul>
+<li>最初只支持Python开发，现在已经支持40+的编程语言</li>
+</ul>
+<h4 id="7Python规范"><a href="#7Python规范" class="headerlink" title="7	Python规范"></a>7	Python规范</h4><h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p>单行注释：<code>#</code></p>
+<p>多行注释：开头 <code>&quot;&quot;&quot;</code>	结尾 <code>&quot;&quot;&quot;</code></p>
+<p>编码规则注释：主要是为了解决Python2.x中不支持直接写中文问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></table></figure>
 
-<p>需要注意的是，false前需要有一个空格键占位符，否则无法生效</p>
+<hr>
+<h5 id="代码缩进"><a href="#代码缩进" class="headerlink" title="代码缩进"></a>代码缩进</h5><p>可以使用空格和Tab键进行缩进</p>
+<p>在集成环境中，可以输入<code>:</code> 按回车键</p>
 
 <div class="article-footer fs14">
     <section id="license">
@@ -145,7 +305,7 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/04/25/flume-build/">Flume搭建</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/04/25/clickhouse-build/">Clickhouse搭建</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/09/05/leecode-arithmetic150-part80/">80. 删除有序数组中的重复项 II</a></div></section></div>
 
 
 
@@ -159,7 +319,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flink%E9%85%8D%E7%BD%AE"><span class="toc-text">Flink配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-text">@配置环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">@配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#flink-conf-yaml"><span class="toc-text">#flink-conf.yaml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#masters"><span class="toc-text">#masters</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#workers"><span class="toc-text">#workers</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9%E5%92%8C%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="toc-text">@分发节点和启动集群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%8F%91%E8%8A%82%E7%82%B9"><span class="toc-text">#分发节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="toc-text">#启动集群</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E6%8A%A5%E9%94%99"><span class="toc-text">@部分报错</span></a></li></ol></li></ol></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-text">Python语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0Python%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="toc-text">第一章	Python语言概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%95%8A"><span class="toc-text">1.1	计算机语言啊</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-text">1	计算机的种类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80"><span class="toc-text">机器语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-text">汇编语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80"><span class="toc-text">高级语言</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2Python%E7%AE%80%E4%BB%8B"><span class="toc-text">1.2	Python简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1Python%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-text">1	Python语言的历史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2Python%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">2	Python语言的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3Python%E8%AF%AD%E8%A8%80%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">3	Python语言的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6"><span class="toc-text">数据科学</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="toc-text">人工智能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91"><span class="toc-text">网站开发</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="toc-text">系统管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB"><span class="toc-text">网络爬虫</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4Python%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-text">4	Python语言的版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5Python%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">5	Python语言的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-text">6	第三方开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PyCharm"><span class="toc-text">PyCharm</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Eclipse"><span class="toc-text">Eclipse</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Jupyter-Notebook"><span class="toc-text">Jupyter Notebook</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7Python%E8%A7%84%E8%8C%83"><span class="toc-text">7	Python规范</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%A9%E8%BF%9B"><span class="toc-text">代码缩进</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
 </div></aside><div class='float-panel blur'>
